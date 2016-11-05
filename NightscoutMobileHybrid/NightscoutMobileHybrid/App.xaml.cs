@@ -8,7 +8,7 @@ namespace NightscoutMobileHybrid
 		{
 			InitializeComponent();
 
-			MainPage = new NightscoutMobileHybridPage();
+			MainPage = new NavigationPage(new NightscoutMobileHybridPage());
 		}
 
 		protected override void OnStart()

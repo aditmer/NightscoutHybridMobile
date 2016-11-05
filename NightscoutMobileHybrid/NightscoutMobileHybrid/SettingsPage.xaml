@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="NightscoutMobileHybrid.SettingsPage">
+	<ContentPage.Content>
+		<StackLayout Padding="0,15,0,0" BackgroundColor="Black">
+			<Label Text="Enter your Nightscout URL below" TextColor="White" />
+			<Entry x:Name="entURL" Placeholder="https://your-nightscout-url.azurewebsites.net" />
+
+			<StackLayout Orientation="Horizontal">
+				<Button x:Name="btnSave" Text="Save" Clicked="btnSave_Clicked" TextColor="White" BackgroundColor="Gray" />
+				<Button x:Name="btnCancel" Text="Cancel" Clicked="BtnCancel_Clicked" TextColor="White" BackgroundColor="Gray" />
+			</StackLayout>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
