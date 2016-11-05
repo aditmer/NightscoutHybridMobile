@@ -7,8 +7,12 @@ namespace NightscoutMobileHybrid
 		public App()
 		{
 			InitializeComponent();
+			//var navPage = new NavigationPage(new NightscoutMobileHybridPage());
+			//navPage.BarBackgroundColor = Color.Black;
+			//navPage.BarTextColor = Color.White;
 
-			MainPage = new NavigationPage(new NightscoutMobileHybridPage());
+			MainPage = new NightscoutMobileHybridPage();
+
 		}
 
 		protected override void OnStart()

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:NightscoutMobileHybrid" x:Class="NightscoutMobileHybrid.NightscoutMobileHybridPage"
-		Title="Nightscout">
+		Title="Nightscout" >
 	<StackLayout Padding="0,15,0,0" BackgroundColor="Black">
 		<WebView x:Name="wvNightscout" HeightRequest="1000" WidthRequest="1000"></WebView>
 
@@ -9,7 +9,7 @@
 			<Button x:Name="btnChangeURL" Text="Change URL" Clicked="BtnChangeURL_Clicked" WidthRequest="100" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />
 			<Button x:Name="btnRefresh" Text="Refresh" Clicked="BtnRefresh_Clicked" WidthRequest="75" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />
 			<Label Text="Screen Lock Override" VerticalTextAlignment="Center" TextColor="White" />
-			<Switch x:Name="swScreenLockOverride" VerticalOptions="Center" />
+			<Switch x:Name="swScreenLockOverride" Toggled="SwScreenLockOverride_Toggled" VerticalOptions="Center" />
 		</StackLayout>
 	</StackLayout>
 </ContentPage>

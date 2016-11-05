@@ -26,6 +26,7 @@ namespace NightscoutMobileHybrid
 			//btnChangeURL.Clicked += BtnChangeURL_Clicked;
 			//slVolume.ValueChanged += SlVolume_ValueChanged;
 			//btnRefresh.Clicked += BtnRefresh_Clicked;
+			//swScreenLockOverride.Toggled += SwScreenLockOverride_Toggled;
 		}
 
 		void SlVolume_ValueChanged(object sender, ValueChangedEventArgs e)
@@ -41,6 +42,18 @@ namespace NightscoutMobileHybrid
 		void BtnChangeURL_Clicked(object sender, System.EventArgs e)
 		{
 			Navigation.PushModalAsync(new SettingsPage(), true);
+		}
+
+		void SwScreenLockOverride_Toggled(object sender, ToggledEventArgs e)
+		{
+			if (e.Value)
+			{
+				DependencyService.Get<IScreenLock>().Lock();
+			}
+			else
+			{
+				DependencyService.Get<IScreenLock>().Unlock();
+			}
 		}
 	}
 }
