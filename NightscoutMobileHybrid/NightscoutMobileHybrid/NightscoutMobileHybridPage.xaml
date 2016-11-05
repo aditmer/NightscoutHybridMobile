@@ -3,6 +3,7 @@
 	<StackLayout Padding="0,15,0,0" BackgroundColor="Black">
 		<WebView x:Name="wvNightscout" Source="https://lydia-nightscout.azurewebsites.net" HeightRequest="1000" WidthRequest="1000"></WebView>
 
+		<Slider x:Name="slVolume" Minimum="0" Maximum="1" ValueChanged="SlVolume_ValueChanged" />
 		<StackLayout Orientation="Horizontal">
 			<Button x:Name="btnChangeURL" Text="Change URL" WidthRequest="100" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />
 			<Button x:Name="btnRefresh" Text="Refresh" WidthRequest="75" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />
