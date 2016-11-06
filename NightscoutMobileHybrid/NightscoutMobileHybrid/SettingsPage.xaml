@@ -3,7 +3,7 @@
 	<ContentPage.Content>
 		<StackLayout Padding="0,15,0,0" BackgroundColor="Black">
 			<Label Text="Enter your Nightscout URL below" TextColor="White" />
-			<Entry x:Name="entURL" Placeholder="https://your-nightscout-url.azurewebsites.net" />
+			<Entry x:Name="entURL" BackgroundColor="White" Placeholder="https://your-nightscout-url.azurewebsites.net" />
 
 			<StackLayout Orientation="Horizontal">
 				<Button x:Name="btnSave" Text="Save" Clicked="btnSave_Clicked" TextColor="White" BackgroundColor="Gray" />

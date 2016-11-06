@@ -17,7 +17,7 @@ namespace NightscoutMobileHybrid.Droid
 			var ctx = Forms.Context; // useful for many Android SDK features
 			//TODO implement screen lock on Android
 			//reference:  https://forums.xamarin.com/discussion/38489/preventing-sleep-mode-keeping-the-app-alive
-			this.Window.SetFlags(WindowManagerFlags.KeepScreenOn, WindowManagerFlags.KeepScreenOn);
+			//this.Window.SetFlags(WindowManagerFlags.KeepScreenOn, WindowManagerFlags.KeepScreenOn);
 		}
 
 		public void Unlock()
