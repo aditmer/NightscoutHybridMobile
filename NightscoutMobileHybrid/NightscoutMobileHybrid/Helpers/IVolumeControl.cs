@@ -6,5 +6,7 @@ namespace NightscoutMobileHybrid
 		void SetVolume(float Volume);
 
 		double GetVolume();
+
+		double GetMaxVolume();
 	}
 }

@@ -4,7 +4,7 @@
 	<StackLayout Padding="0,15,0,0" BackgroundColor="Black">
 		<WebView x:Name="wvNightscout" HeightRequest="1000" WidthRequest="1000"></WebView>
 
-		<Slider x:Name="slVolume" Minimum="0" Maximum="1" ValueChanged="SlVolume_ValueChanged" />
+		<Slider x:Name="slVolume" Minimum="0"  ValueChanged="SlVolume_ValueChanged" />
 		<StackLayout Orientation="Horizontal">
 			<Button x:Name="btnChangeURL" Text="Change URL" Clicked="BtnChangeURL_Clicked" WidthRequest="100" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />
 			<Button x:Name="btnRefresh" Text="Refresh" Clicked="BtnRefresh_Clicked" WidthRequest="75" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />

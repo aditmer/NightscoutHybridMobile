@@ -23,5 +23,11 @@ namespace NightscoutMobileHybrid.Droid
 			AudioManager audioMan = (AudioManager)global::Android.App.Application.Context.GetSystemService(Context.AudioService);
 			audioMan.SetStreamVolume(Android.Media.Stream.Music, Convert.ToInt32(Volume), 0);
 		}
+
+		public double GetMaxVolume()
+		{
+			AudioManager audioMan = (AudioManager)global::Android.App.Application.Context.GetSystemService(Context.AudioService);
+			return audioMan.GetStreamMaxVolume(Android.Media.Stream.Music);
+		}
 	}
 }

@@ -32,9 +32,14 @@ namespace NightscoutMobileHybrid.iOS
 
 			applicationMusicPlayer.Volume = Volume;
 
-			//TODO implement system volume control implementation 
-			//likely using https://developer.xamarin.com/api/type/MonoTouch.MediaPlayer.MPMusicPlayerController/
+
 			//reference:  https://github.com/nightscout/ios-monitor/blob/master/Nighscout/SNVolumeSlider.m
+		}
+
+		public double GetMaxVolume()
+		{
+			//iOS volume is a float between 0 and 1; this method is needed because it can vary on Android.
+			return 1;
 		}
 	}
 }

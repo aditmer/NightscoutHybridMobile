@@ -22,6 +22,7 @@ namespace NightscoutMobileHybrid.Droid
 
 		public void Unlock()
 		{
+			//TODO implement Android Screen Unlock
 			throw new NotImplementedException();
 		}
 	}

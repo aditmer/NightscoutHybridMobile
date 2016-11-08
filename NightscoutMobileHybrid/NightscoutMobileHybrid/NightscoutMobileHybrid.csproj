@@ -42,12 +42,12 @@
       <DependentUpon>NightscoutMobileHybridPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IVolumeControl.cs" />
     <Compile Include="SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="IScreenLock.cs" />
+    <Compile Include="Helpers\IScreenLock.cs" />
+    <Compile Include="Helpers\IVolumeControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

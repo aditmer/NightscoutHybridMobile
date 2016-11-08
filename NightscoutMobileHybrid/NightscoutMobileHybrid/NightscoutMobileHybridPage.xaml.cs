@@ -23,6 +23,8 @@ namespace NightscoutMobileHybrid
 				wvNightscout.Source = Settings.URL;
 			});
 
+			slVolume.Maximum = DependencyService.Get<IVolumeControl>().GetMaxVolume();
+
 			//btnChangeURL.Clicked += BtnChangeURL_Clicked;
 			//slVolume.ValueChanged += SlVolume_ValueChanged;
 			//btnRefresh.Clicked += BtnRefresh_Clicked;
