@@ -1,4 +1,5 @@
 ﻿using System;
+using Android.OS;
 using Android.Views;
 using NightscoutMobileHybrid.Droid;
 using Xamarin.Forms;
@@ -8,22 +9,24 @@ namespace NightscoutMobileHybrid.Droid
 {
 	public class ScreenLockImplementation : Java.Lang.Object, IScreenLock
 	{
+		PowerManager _pm;
+		PowerManager.WakeLock _wl;
 		public ScreenLockImplementation()
 		{
+			var ctx = Forms.Context; // useful for many Android SDK features
+			_pm = (PowerManager)ctx.GetSystemService(Android.Content.Context.PowerService);
+			_wl = _pm.NewWakeLock(WakeLockFlags.Full, "Stay on");
 		}
 
 		public void Lock()
 		{
-			var ctx = Forms.Context; // useful for many Android SDK features
-			//TODO implement screen lock on Android
-			//reference:  https://forums.xamarin.com/discussion/38489/preventing-sleep-mode-keeping-the-app-alive
-			//this.Window.SetFlags(WindowManagerFlags.KeepScreenOn, WindowManagerFlags.KeepScreenOn);
+			_wl.Acquire();
+
 		}
 
 		public void Unlock()
 		{
-			//TODO implement Android Screen Unlock
-			throw new NotImplementedException();
+			_wl.Release();
 		}
 	}
 }
