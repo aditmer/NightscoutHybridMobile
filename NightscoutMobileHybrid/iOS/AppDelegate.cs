@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using HockeyApp.iOS;
 using UIKit;
 
 namespace NightscoutMobileHybrid.iOS
@@ -20,6 +21,10 @@ namespace NightscoutMobileHybrid.iOS
 #endif
 
 			LoadApplication(new App());
+
+			var manager = BITHockeyManager.SharedHockeyManager;
+			manager.Configure("d8783c34856046d9bc081c47708843f6");
+			manager.StartManager();
 
 			return base.FinishedLaunching(app, options);
 		}

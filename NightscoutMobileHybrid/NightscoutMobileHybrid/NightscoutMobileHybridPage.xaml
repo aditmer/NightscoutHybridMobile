@@ -6,9 +6,9 @@
 
 		<Slider x:Name="slVolume" Minimum="0"  ValueChanged="SlVolume_ValueChanged" />
 		<StackLayout Orientation="Horizontal">
-			<Button x:Name="btnChangeURL" Text="Change URL" Clicked="BtnChangeURL_Clicked" WidthRequest="100" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />
-			<Button x:Name="btnRefresh" Text="Refresh" Clicked="BtnRefresh_Clicked" WidthRequest="75" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />
-			<Label Text="Screen Lock Override" VerticalTextAlignment="Center" TextColor="White" />
+			<Button x:Name="btnChangeURL" Text="Change URL" Clicked="BtnChangeURL_Clicked" WidthRequest="100" FontSize="10" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />
+			<Button x:Name="btnRefresh" Text="Refresh" Clicked="BtnRefresh_Clicked" WidthRequest="70" FontSize="10" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />
+			<Label Text="Stay Awake" FontSize="10" WidthRequest="100" HorizontalTextAlignment="End" VerticalTextAlignment="Center" TextColor="White" />
 			<Switch x:Name="swScreenLockOverride" Toggled="SwScreenLockOverride_Toggled" VerticalOptions="Center" />
 		</StackLayout>
 	</StackLayout>

@@ -27,6 +27,126 @@ namespace NightscoutMobileHybrid.Droid
 		public static void UpdateIdValues()
 		{
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::NightscoutMobileHybrid.Droid.Resource.Attribute.actionBarSize;
+			global::HockeyApp.Resource.Color.hockeyapp_background_header = global::NightscoutMobileHybrid.Droid.Resource.Color.hockeyapp_background_header;
+			global::HockeyApp.Resource.Color.hockeyapp_background_light = global::NightscoutMobileHybrid.Droid.Resource.Color.hockeyapp_background_light;
+			global::HockeyApp.Resource.Color.hockeyapp_background_white = global::NightscoutMobileHybrid.Droid.Resource.Color.hockeyapp_background_white;
+			global::HockeyApp.Resource.Color.hockeyapp_button_background = global::NightscoutMobileHybrid.Droid.Resource.Color.hockeyapp_button_background;
+			global::HockeyApp.Resource.Color.hockeyapp_button_background_pressed = global::NightscoutMobileHybrid.Droid.Resource.Color.hockeyapp_button_background_pressed;
+			global::HockeyApp.Resource.Color.hockeyapp_button_background_selected = global::NightscoutMobileHybrid.Droid.Resource.Color.hockeyapp_button_background_selected;
+			global::HockeyApp.Resource.Color.hockeyapp_text_black = global::NightscoutMobileHybrid.Droid.Resource.Color.hockeyapp_text_black;
+			global::HockeyApp.Resource.Color.hockeyapp_text_light = global::NightscoutMobileHybrid.Droid.Resource.Color.hockeyapp_text_light;
+			global::HockeyApp.Resource.Color.hockeyapp_text_normal = global::NightscoutMobileHybrid.Droid.Resource.Color.hockeyapp_text_normal;
+			global::HockeyApp.Resource.Color.hockeyapp_text_white = global::NightscoutMobileHybrid.Droid.Resource.Color.hockeyapp_text_white;
+			global::HockeyApp.Resource.Drawable.hockeyapp_btn_background = global::NightscoutMobileHybrid.Droid.Resource.Drawable.hockeyapp_btn_background;
+			global::HockeyApp.Resource.Id.button_add_response = global::NightscoutMobileHybrid.Droid.Resource.Id.button_add_response;
+			global::HockeyApp.Resource.Id.button_attachment = global::NightscoutMobileHybrid.Droid.Resource.Id.button_attachment;
+			global::HockeyApp.Resource.Id.button_login = global::NightscoutMobileHybrid.Droid.Resource.Id.button_login;
+			global::HockeyApp.Resource.Id.button_refresh = global::NightscoutMobileHybrid.Droid.Resource.Id.button_refresh;
+			global::HockeyApp.Resource.Id.button_send = global::NightscoutMobileHybrid.Droid.Resource.Id.button_send;
+			global::HockeyApp.Resource.Id.button_update = global::NightscoutMobileHybrid.Droid.Resource.Id.button_update;
+			global::HockeyApp.Resource.Id.input_email = global::NightscoutMobileHybrid.Droid.Resource.Id.input_email;
+			global::HockeyApp.Resource.Id.input_message = global::NightscoutMobileHybrid.Droid.Resource.Id.input_message;
+			global::HockeyApp.Resource.Id.input_name = global::NightscoutMobileHybrid.Droid.Resource.Id.input_name;
+			global::HockeyApp.Resource.Id.input_password = global::NightscoutMobileHybrid.Droid.Resource.Id.input_password;
+			global::HockeyApp.Resource.Id.input_subject = global::NightscoutMobileHybrid.Droid.Resource.Id.input_subject;
+			global::HockeyApp.Resource.Id.label_author = global::NightscoutMobileHybrid.Droid.Resource.Id.label_author;
+			global::HockeyApp.Resource.Id.label_date = global::NightscoutMobileHybrid.Droid.Resource.Id.label_date;
+			global::HockeyApp.Resource.Id.label_last_updated = global::NightscoutMobileHybrid.Droid.Resource.Id.label_last_updated;
+			global::HockeyApp.Resource.Id.label_message = global::NightscoutMobileHybrid.Droid.Resource.Id.label_message;
+			global::HockeyApp.Resource.Id.label_text = global::NightscoutMobileHybrid.Droid.Resource.Id.label_text;
+			global::HockeyApp.Resource.Id.label_title = global::NightscoutMobileHybrid.Droid.Resource.Id.label_title;
+			global::HockeyApp.Resource.Id.label_version = global::NightscoutMobileHybrid.Droid.Resource.Id.label_version;
+			global::HockeyApp.Resource.Id.list_attachments = global::NightscoutMobileHybrid.Droid.Resource.Id.list_attachments;
+			global::HockeyApp.Resource.Id.list_feedback_messages = global::NightscoutMobileHybrid.Droid.Resource.Id.list_feedback_messages;
+			global::HockeyApp.Resource.Id.text_headline = global::NightscoutMobileHybrid.Droid.Resource.Id.text_headline;
+			global::HockeyApp.Resource.Id.view_header = global::NightscoutMobileHybrid.Droid.Resource.Id.view_header;
+			global::HockeyApp.Resource.Id.web_update_details = global::NightscoutMobileHybrid.Droid.Resource.Id.web_update_details;
+			global::HockeyApp.Resource.Id.wrapper_attachments = global::NightscoutMobileHybrid.Droid.Resource.Id.wrapper_attachments;
+			global::HockeyApp.Resource.Id.wrapper_feedback = global::NightscoutMobileHybrid.Droid.Resource.Id.wrapper_feedback;
+			global::HockeyApp.Resource.Id.wrapper_feedback_scroll = global::NightscoutMobileHybrid.Droid.Resource.Id.wrapper_feedback_scroll;
+			global::HockeyApp.Resource.Id.wrapper_messages = global::NightscoutMobileHybrid.Droid.Resource.Id.wrapper_messages;
+			global::HockeyApp.Resource.Id.wrapper_messages_buttons = global::NightscoutMobileHybrid.Droid.Resource.Id.wrapper_messages_buttons;
+			global::HockeyApp.Resource.Layout.hockeyapp_activity_expiry_info = global::NightscoutMobileHybrid.Droid.Resource.Layout.hockeyapp_activity_expiry_info;
+			global::HockeyApp.Resource.Layout.hockeyapp_activity_feedback = global::NightscoutMobileHybrid.Droid.Resource.Layout.hockeyapp_activity_feedback;
+			global::HockeyApp.Resource.Layout.hockeyapp_activity_login = global::NightscoutMobileHybrid.Droid.Resource.Layout.hockeyapp_activity_login;
+			global::HockeyApp.Resource.Layout.hockeyapp_activity_update = global::NightscoutMobileHybrid.Droid.Resource.Layout.hockeyapp_activity_update;
+			global::HockeyApp.Resource.Layout.hockeyapp_fragment_update = global::NightscoutMobileHybrid.Droid.Resource.Layout.hockeyapp_fragment_update;
+			global::HockeyApp.Resource.Layout.hockeyapp_view_feedback_message = global::NightscoutMobileHybrid.Droid.Resource.Layout.hockeyapp_view_feedback_message;
+			global::HockeyApp.Resource.String.hockeyapp_crash_dialog_app_name_fallback = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_crash_dialog_app_name_fallback;
+			global::HockeyApp.Resource.String.hockeyapp_crash_dialog_message = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_crash_dialog_message;
+			global::HockeyApp.Resource.String.hockeyapp_crash_dialog_negative_button = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_crash_dialog_negative_button;
+			global::HockeyApp.Resource.String.hockeyapp_crash_dialog_neutral_button = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_crash_dialog_neutral_button;
+			global::HockeyApp.Resource.String.hockeyapp_crash_dialog_positive_button = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_crash_dialog_positive_button;
+			global::HockeyApp.Resource.String.hockeyapp_crash_dialog_title = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_crash_dialog_title;
+			global::HockeyApp.Resource.String.hockeyapp_dialog_error_message = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_dialog_error_message;
+			global::HockeyApp.Resource.String.hockeyapp_dialog_error_title = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_dialog_error_title;
+			global::HockeyApp.Resource.String.hockeyapp_dialog_negative_button = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_dialog_negative_button;
+			global::HockeyApp.Resource.String.hockeyapp_dialog_positive_button = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_dialog_positive_button;
+			global::HockeyApp.Resource.String.hockeyapp_download_failed_dialog_message = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_download_failed_dialog_message;
+			global::HockeyApp.Resource.String.hockeyapp_download_failed_dialog_negative_button = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_download_failed_dialog_negative_button;
+			global::HockeyApp.Resource.String.hockeyapp_download_failed_dialog_positive_button = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_download_failed_dialog_positive_button;
+			global::HockeyApp.Resource.String.hockeyapp_download_failed_dialog_title = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_download_failed_dialog_title;
+			global::HockeyApp.Resource.String.hockeyapp_error_no_network_message = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_error_no_network_message;
+			global::HockeyApp.Resource.String.hockeyapp_expiry_info_text = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_expiry_info_text;
+			global::HockeyApp.Resource.String.hockeyapp_expiry_info_title = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_expiry_info_title;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_attach_file = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_attach_file;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_attach_picture = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_attach_picture;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_attachment_button_text = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_attachment_button_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_attachment_error = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_attachment_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_attachment_loading = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_attachment_loading;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_email_hint = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_email_hint;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_failed_text = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_failed_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_failed_title = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_failed_title;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_fetching_feedback_text = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_fetching_feedback_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_generic_error = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_generic_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_last_updated_text = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_last_updated_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_max_attachments_allowed = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_max_attachments_allowed;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_message_hint = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_message_hint;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_name_hint = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_name_hint;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_refresh_button_text = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_refresh_button_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_response_button_text = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_response_button_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_select_file = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_select_file;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_select_picture = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_select_picture;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_send_button_text = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_send_button_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_send_generic_error = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_send_generic_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_send_network_error = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_send_network_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_sending_feedback_text = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_sending_feedback_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_subject_hint = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_subject_hint;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_title = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_title;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_validate_email_empty = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_validate_email_empty;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_validate_email_error = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_validate_email_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_validate_name_error = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_validate_name_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_validate_subject_error = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_validate_subject_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_validate_text_error = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_feedback_validate_text_error;
+			global::HockeyApp.Resource.String.hockeyapp_login_email_hint = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_login_email_hint;
+			global::HockeyApp.Resource.String.hockeyapp_login_headline_text = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_login_headline_text;
+			global::HockeyApp.Resource.String.hockeyapp_login_headline_text_email_only = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_login_headline_text_email_only;
+			global::HockeyApp.Resource.String.hockeyapp_login_login_button_text = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_login_login_button_text;
+			global::HockeyApp.Resource.String.hockeyapp_login_missing_credentials_toast = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_login_missing_credentials_toast;
+			global::HockeyApp.Resource.String.hockeyapp_login_password_hint = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_login_password_hint;
+			global::HockeyApp.Resource.String.hockeyapp_paint_dialog_message = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_paint_dialog_message;
+			global::HockeyApp.Resource.String.hockeyapp_paint_dialog_negative_button = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_paint_dialog_negative_button;
+			global::HockeyApp.Resource.String.hockeyapp_paint_dialog_neutral_button = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_paint_dialog_neutral_button;
+			global::HockeyApp.Resource.String.hockeyapp_paint_dialog_positive_button = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_paint_dialog_positive_button;
+			global::HockeyApp.Resource.String.hockeyapp_paint_indicator_toast = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_paint_indicator_toast;
+			global::HockeyApp.Resource.String.hockeyapp_paint_menu_clear = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_paint_menu_clear;
+			global::HockeyApp.Resource.String.hockeyapp_paint_menu_save = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_paint_menu_save;
+			global::HockeyApp.Resource.String.hockeyapp_paint_menu_undo = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_paint_menu_undo;
+			global::HockeyApp.Resource.String.hockeyapp_permission_dialog_negative_button = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_permission_dialog_negative_button;
+			global::HockeyApp.Resource.String.hockeyapp_permission_dialog_positive_button = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_permission_dialog_positive_button;
+			global::HockeyApp.Resource.String.hockeyapp_permission_update_message = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_permission_update_message;
+			global::HockeyApp.Resource.String.hockeyapp_permission_update_title = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_permission_update_title;
+			global::HockeyApp.Resource.String.hockeyapp_update_button = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_update_button;
+			global::HockeyApp.Resource.String.hockeyapp_update_dialog_message = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_update_dialog_message;
+			global::HockeyApp.Resource.String.hockeyapp_update_dialog_negative_button = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_update_dialog_negative_button;
+			global::HockeyApp.Resource.String.hockeyapp_update_dialog_positive_button = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_update_dialog_positive_button;
+			global::HockeyApp.Resource.String.hockeyapp_update_dialog_title = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_update_dialog_title;
+			global::HockeyApp.Resource.String.hockeyapp_update_mandatory_toast = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_update_mandatory_toast;
+			global::HockeyApp.Resource.String.hockeyapp_update_version_details_label = global::NightscoutMobileHybrid.Droid.Resource.String.hockeyapp_update_version_details_label;
+			global::HockeyApp.Resource.String.library_name = global::NightscoutMobileHybrid.Droid.Resource.String.library_name;
+			global::HockeyApp.Resource.Style.HockeyApp_ButtonStyle = global::NightscoutMobileHybrid.Droid.Resource.Style.HockeyApp_ButtonStyle;
+			global::HockeyApp.Resource.Style.HockeyApp_EditTextStyle = global::NightscoutMobileHybrid.Droid.Resource.Style.HockeyApp_EditTextStyle;
+			global::HockeyApp.Resource.Style.HockeyApp_SingleLineInputStyle = global::NightscoutMobileHybrid.Droid.Resource.Style.HockeyApp_SingleLineInputStyle;
 		}
 		
 		public partial class Animation
@@ -1091,32 +1211,32 @@ namespace NightscoutMobileHybrid.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0a0048
-			public const int abc_background_cache_hint_selector_material_dark = 2131361864;
+			// aapt resource value: 0x7f0a0052
+			public const int abc_background_cache_hint_selector_material_dark = 2131361874;
 			
-			// aapt resource value: 0x7f0a0049
-			public const int abc_background_cache_hint_selector_material_light = 2131361865;
+			// aapt resource value: 0x7f0a0053
+			public const int abc_background_cache_hint_selector_material_light = 2131361875;
 			
-			// aapt resource value: 0x7f0a004a
-			public const int abc_color_highlight_material = 2131361866;
+			// aapt resource value: 0x7f0a0054
+			public const int abc_color_highlight_material = 2131361876;
 			
 			// aapt resource value: 0x7f0a000e
 			public const int abc_input_method_navigation_guard = 2131361806;
 			
-			// aapt resource value: 0x7f0a004b
-			public const int abc_primary_text_disable_only_material_dark = 2131361867;
+			// aapt resource value: 0x7f0a0055
+			public const int abc_primary_text_disable_only_material_dark = 2131361877;
 			
-			// aapt resource value: 0x7f0a004c
-			public const int abc_primary_text_disable_only_material_light = 2131361868;
+			// aapt resource value: 0x7f0a0056
+			public const int abc_primary_text_disable_only_material_light = 2131361878;
 			
-			// aapt resource value: 0x7f0a004d
-			public const int abc_primary_text_material_dark = 2131361869;
+			// aapt resource value: 0x7f0a0057
+			public const int abc_primary_text_material_dark = 2131361879;
 			
-			// aapt resource value: 0x7f0a004e
-			public const int abc_primary_text_material_light = 2131361870;
+			// aapt resource value: 0x7f0a0058
+			public const int abc_primary_text_material_light = 2131361880;
 			
-			// aapt resource value: 0x7f0a004f
-			public const int abc_search_url_text = 2131361871;
+			// aapt resource value: 0x7f0a0059
+			public const int abc_search_url_text = 2131361881;
 			
 			// aapt resource value: 0x7f0a000f
 			public const int abc_search_url_text_normal = 2131361807;
@@ -1127,11 +1247,11 @@ namespace NightscoutMobileHybrid.Droid
 			// aapt resource value: 0x7f0a0011
 			public const int abc_search_url_text_selected = 2131361809;
 			
-			// aapt resource value: 0x7f0a0050
-			public const int abc_secondary_text_material_dark = 2131361872;
+			// aapt resource value: 0x7f0a005a
+			public const int abc_secondary_text_material_dark = 2131361882;
 			
-			// aapt resource value: 0x7f0a0051
-			public const int abc_secondary_text_material_light = 2131361873;
+			// aapt resource value: 0x7f0a005b
+			public const int abc_secondary_text_material_light = 2131361883;
 			
 			// aapt resource value: 0x7f0a0012
 			public const int accent_material_dark = 2131361810;
@@ -1247,6 +1367,36 @@ namespace NightscoutMobileHybrid.Droid
 			// aapt resource value: 0x7f0a0029
 			public const int hint_foreground_material_light = 2131361833;
 			
+			// aapt resource value: 0x7f0a0048
+			public const int hockeyapp_background_header = 2131361864;
+			
+			// aapt resource value: 0x7f0a0049
+			public const int hockeyapp_background_light = 2131361865;
+			
+			// aapt resource value: 0x7f0a004a
+			public const int hockeyapp_background_white = 2131361866;
+			
+			// aapt resource value: 0x7f0a004b
+			public const int hockeyapp_button_background = 2131361867;
+			
+			// aapt resource value: 0x7f0a004c
+			public const int hockeyapp_button_background_pressed = 2131361868;
+			
+			// aapt resource value: 0x7f0a004d
+			public const int hockeyapp_button_background_selected = 2131361869;
+			
+			// aapt resource value: 0x7f0a004e
+			public const int hockeyapp_text_black = 2131361870;
+			
+			// aapt resource value: 0x7f0a004f
+			public const int hockeyapp_text_light = 2131361871;
+			
+			// aapt resource value: 0x7f0a0050
+			public const int hockeyapp_text_normal = 2131361872;
+			
+			// aapt resource value: 0x7f0a0051
+			public const int hockeyapp_text_white = 2131361873;
+			
 			// aapt resource value: 0x7f0a002a
 			public const int material_blue_grey_800 = 2131361834;
 			
@@ -1331,11 +1481,11 @@ namespace NightscoutMobileHybrid.Droid
 			// aapt resource value: 0x7f0a0045
 			public const int switch_thumb_disabled_material_light = 2131361861;
 			
-			// aapt resource value: 0x7f0a0052
-			public const int switch_thumb_material_dark = 2131361874;
+			// aapt resource value: 0x7f0a005c
+			public const int switch_thumb_material_dark = 2131361884;
 			
-			// aapt resource value: 0x7f0a0053
-			public const int switch_thumb_material_light = 2131361875;
+			// aapt resource value: 0x7f0a005d
+			public const int switch_thumb_material_light = 2131361885;
 			
 			// aapt resource value: 0x7f0a0046
 			public const int switch_thumb_normal_material_dark = 2131361862;
@@ -1949,259 +2099,262 @@ namespace NightscoutMobileHybrid.Droid
 			public const int design_snackbar_background = 2130837580;
 			
 			// aapt resource value: 0x7f02004d
-			public const int ic_audiotrack = 2130837581;
+			public const int hockeyapp_btn_background = 2130837581;
 			
 			// aapt resource value: 0x7f02004e
-			public const int ic_audiotrack_light = 2130837582;
+			public const int ic_audiotrack = 2130837582;
 			
 			// aapt resource value: 0x7f02004f
-			public const int ic_bluetooth_grey = 2130837583;
+			public const int ic_audiotrack_light = 2130837583;
 			
 			// aapt resource value: 0x7f020050
-			public const int ic_bluetooth_white = 2130837584;
+			public const int ic_bluetooth_grey = 2130837584;
 			
 			// aapt resource value: 0x7f020051
-			public const int ic_cast_dark = 2130837585;
+			public const int ic_bluetooth_white = 2130837585;
 			
 			// aapt resource value: 0x7f020052
-			public const int ic_cast_disabled_light = 2130837586;
+			public const int ic_cast_dark = 2130837586;
 			
 			// aapt resource value: 0x7f020053
-			public const int ic_cast_grey = 2130837587;
+			public const int ic_cast_disabled_light = 2130837587;
 			
 			// aapt resource value: 0x7f020054
-			public const int ic_cast_light = 2130837588;
+			public const int ic_cast_grey = 2130837588;
 			
 			// aapt resource value: 0x7f020055
-			public const int ic_cast_off_light = 2130837589;
+			public const int ic_cast_light = 2130837589;
 			
 			// aapt resource value: 0x7f020056
-			public const int ic_cast_on_0_light = 2130837590;
+			public const int ic_cast_off_light = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int ic_cast_on_1_light = 2130837591;
+			public const int ic_cast_on_0_light = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int ic_cast_on_2_light = 2130837592;
+			public const int ic_cast_on_1_light = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int ic_cast_on_light = 2130837593;
+			public const int ic_cast_on_2_light = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int ic_cast_white = 2130837594;
+			public const int ic_cast_on_light = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int ic_close_dark = 2130837595;
+			public const int ic_cast_white = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int ic_close_light = 2130837596;
+			public const int ic_close_dark = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int ic_collapse = 2130837597;
+			public const int ic_close_light = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int ic_collapse_00000 = 2130837598;
+			public const int ic_collapse = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int ic_collapse_00001 = 2130837599;
+			public const int ic_collapse_00000 = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int ic_collapse_00002 = 2130837600;
+			public const int ic_collapse_00001 = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int ic_collapse_00003 = 2130837601;
+			public const int ic_collapse_00002 = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int ic_collapse_00004 = 2130837602;
+			public const int ic_collapse_00003 = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int ic_collapse_00005 = 2130837603;
+			public const int ic_collapse_00004 = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int ic_collapse_00006 = 2130837604;
+			public const int ic_collapse_00005 = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int ic_collapse_00007 = 2130837605;
+			public const int ic_collapse_00006 = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int ic_collapse_00008 = 2130837606;
+			public const int ic_collapse_00007 = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int ic_collapse_00009 = 2130837607;
+			public const int ic_collapse_00008 = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int ic_collapse_00010 = 2130837608;
+			public const int ic_collapse_00009 = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int ic_collapse_00011 = 2130837609;
+			public const int ic_collapse_00010 = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int ic_collapse_00012 = 2130837610;
+			public const int ic_collapse_00011 = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int ic_collapse_00013 = 2130837611;
+			public const int ic_collapse_00012 = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int ic_collapse_00014 = 2130837612;
+			public const int ic_collapse_00013 = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int ic_collapse_00015 = 2130837613;
+			public const int ic_collapse_00014 = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int ic_expand = 2130837614;
+			public const int ic_collapse_00015 = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int ic_expand_00000 = 2130837615;
+			public const int ic_expand = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int ic_expand_00001 = 2130837616;
+			public const int ic_expand_00000 = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int ic_expand_00002 = 2130837617;
+			public const int ic_expand_00001 = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int ic_expand_00003 = 2130837618;
+			public const int ic_expand_00002 = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int ic_expand_00004 = 2130837619;
+			public const int ic_expand_00003 = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int ic_expand_00005 = 2130837620;
+			public const int ic_expand_00004 = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int ic_expand_00006 = 2130837621;
+			public const int ic_expand_00005 = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int ic_expand_00007 = 2130837622;
+			public const int ic_expand_00006 = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int ic_expand_00008 = 2130837623;
+			public const int ic_expand_00007 = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int ic_expand_00009 = 2130837624;
+			public const int ic_expand_00008 = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int ic_expand_00010 = 2130837625;
+			public const int ic_expand_00009 = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int ic_expand_00011 = 2130837626;
+			public const int ic_expand_00010 = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int ic_expand_00012 = 2130837627;
+			public const int ic_expand_00011 = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int ic_expand_00013 = 2130837628;
+			public const int ic_expand_00012 = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int ic_expand_00014 = 2130837629;
+			public const int ic_expand_00013 = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int ic_expand_00015 = 2130837630;
+			public const int ic_expand_00014 = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int ic_media_pause = 2130837631;
+			public const int ic_expand_00015 = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int ic_media_play = 2130837632;
+			public const int ic_media_pause = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int ic_media_route_disabled_mono_dark = 2130837633;
+			public const int ic_media_play = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int ic_media_route_off_mono_dark = 2130837634;
+			public const int ic_media_route_disabled_mono_dark = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int ic_media_route_on_0_mono_dark = 2130837635;
+			public const int ic_media_route_off_mono_dark = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int ic_media_route_on_1_mono_dark = 2130837636;
+			public const int ic_media_route_on_0_mono_dark = 2130837636;
 			
 			// aapt resource value: 0x7f020085
-			public const int ic_media_route_on_2_mono_dark = 2130837637;
+			public const int ic_media_route_on_1_mono_dark = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int ic_media_route_on_mono_dark = 2130837638;
+			public const int ic_media_route_on_2_mono_dark = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int ic_pause_dark = 2130837639;
+			public const int ic_media_route_on_mono_dark = 2130837639;
 			
 			// aapt resource value: 0x7f020088
-			public const int ic_pause_light = 2130837640;
+			public const int ic_pause_dark = 2130837640;
 			
 			// aapt resource value: 0x7f020089
-			public const int ic_play_dark = 2130837641;
+			public const int ic_pause_light = 2130837641;
 			
 			// aapt resource value: 0x7f02008a
-			public const int ic_play_light = 2130837642;
+			public const int ic_play_dark = 2130837642;
 			
 			// aapt resource value: 0x7f02008b
-			public const int ic_speaker_dark = 2130837643;
+			public const int ic_play_light = 2130837643;
 			
 			// aapt resource value: 0x7f02008c
-			public const int ic_speaker_group_dark = 2130837644;
+			public const int ic_speaker_dark = 2130837644;
 			
 			// aapt resource value: 0x7f02008d
-			public const int ic_speaker_group_light = 2130837645;
+			public const int ic_speaker_group_dark = 2130837645;
 			
 			// aapt resource value: 0x7f02008e
-			public const int ic_speaker_light = 2130837646;
+			public const int ic_speaker_group_light = 2130837646;
 			
 			// aapt resource value: 0x7f02008f
-			public const int ic_tv_dark = 2130837647;
+			public const int ic_speaker_light = 2130837647;
 			
 			// aapt resource value: 0x7f020090
-			public const int ic_tv_light = 2130837648;
+			public const int ic_tv_dark = 2130837648;
 			
 			// aapt resource value: 0x7f020091
-			public const int icon = 2130837649;
+			public const int ic_tv_light = 2130837649;
 			
 			// aapt resource value: 0x7f020092
-			public const int mr_dialog_material_background_dark = 2130837650;
+			public const int icon = 2130837650;
 			
 			// aapt resource value: 0x7f020093
-			public const int mr_dialog_material_background_light = 2130837651;
+			public const int mr_dialog_material_background_dark = 2130837651;
 			
 			// aapt resource value: 0x7f020094
-			public const int mr_ic_audiotrack_light = 2130837652;
+			public const int mr_dialog_material_background_light = 2130837652;
 			
 			// aapt resource value: 0x7f020095
-			public const int mr_ic_cast_dark = 2130837653;
+			public const int mr_ic_audiotrack_light = 2130837653;
 			
 			// aapt resource value: 0x7f020096
-			public const int mr_ic_cast_light = 2130837654;
+			public const int mr_ic_cast_dark = 2130837654;
 			
 			// aapt resource value: 0x7f020097
-			public const int mr_ic_close_dark = 2130837655;
+			public const int mr_ic_cast_light = 2130837655;
 			
 			// aapt resource value: 0x7f020098
-			public const int mr_ic_close_light = 2130837656;
+			public const int mr_ic_close_dark = 2130837656;
 			
 			// aapt resource value: 0x7f020099
-			public const int mr_ic_media_route_connecting_mono_dark = 2130837657;
+			public const int mr_ic_close_light = 2130837657;
 			
 			// aapt resource value: 0x7f02009a
-			public const int mr_ic_media_route_connecting_mono_light = 2130837658;
+			public const int mr_ic_media_route_connecting_mono_dark = 2130837658;
 			
 			// aapt resource value: 0x7f02009b
-			public const int mr_ic_media_route_mono_dark = 2130837659;
+			public const int mr_ic_media_route_connecting_mono_light = 2130837659;
 			
 			// aapt resource value: 0x7f02009c
-			public const int mr_ic_media_route_mono_light = 2130837660;
+			public const int mr_ic_media_route_mono_dark = 2130837660;
 			
 			// aapt resource value: 0x7f02009d
-			public const int mr_ic_pause_dark = 2130837661;
+			public const int mr_ic_media_route_mono_light = 2130837661;
 			
 			// aapt resource value: 0x7f02009e
-			public const int mr_ic_pause_light = 2130837662;
+			public const int mr_ic_pause_dark = 2130837662;
 			
 			// aapt resource value: 0x7f02009f
-			public const int mr_ic_play_dark = 2130837663;
+			public const int mr_ic_pause_light = 2130837663;
 			
 			// aapt resource value: 0x7f0200a0
-			public const int mr_ic_play_light = 2130837664;
+			public const int mr_ic_play_dark = 2130837664;
 			
 			// aapt resource value: 0x7f0200a1
-			public const int notification_template_icon_bg = 2130837665;
+			public const int mr_ic_play_light = 2130837665;
+			
+			// aapt resource value: 0x7f0200a2
+			public const int notification_template_icon_bg = 2130837666;
 			
 			static Drawable()
 			{
@@ -2216,8 +2369,8 @@ namespace NightscoutMobileHybrid.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0b008b
-			public const int action0 = 2131427467;
+			// aapt resource value: 0x7f0b00a7
+			public const int action0 = 2131427495;
 			
 			// aapt resource value: 0x7f0b005a
 			public const int action_bar = 2131427418;
@@ -2243,8 +2396,8 @@ namespace NightscoutMobileHybrid.Droid
 			// aapt resource value: 0x7f0b005b
 			public const int action_context_bar = 2131427419;
 			
-			// aapt resource value: 0x7f0b008f
-			public const int action_divider = 2131427471;
+			// aapt resource value: 0x7f0b00ab
+			public const int action_divider = 2131427499;
 			
 			// aapt resource value: 0x7f0b0004
 			public const int action_menu_divider = 2131427332;
@@ -2279,8 +2432,26 @@ namespace NightscoutMobileHybrid.Droid
 			// aapt resource value: 0x7f0b0044
 			public const int buttonPanel = 2131427396;
 			
-			// aapt resource value: 0x7f0b008c
-			public const int cancel_action = 2131427468;
+			// aapt resource value: 0x7f0b007f
+			public const int button_add_response = 2131427455;
+			
+			// aapt resource value: 0x7f0b007a
+			public const int button_attachment = 2131427450;
+			
+			// aapt resource value: 0x7f0b0084
+			public const int button_login = 2131427460;
+			
+			// aapt resource value: 0x7f0b0080
+			public const int button_refresh = 2131427456;
+			
+			// aapt resource value: 0x7f0b007b
+			public const int button_send = 2131427451;
+			
+			// aapt resource value: 0x7f0b0088
+			public const int button_update = 2131427464;
+			
+			// aapt resource value: 0x7f0b00a8
+			public const int cancel_action = 2131427496;
 			
 			// aapt resource value: 0x7f0b0014
 			public const int center = 2131427348;
@@ -2294,8 +2465,8 @@ namespace NightscoutMobileHybrid.Droid
 			// aapt resource value: 0x7f0b0052
 			public const int checkbox = 2131427410;
 			
-			// aapt resource value: 0x7f0b0092
-			public const int chronometer = 2131427474;
+			// aapt resource value: 0x7f0b00ae
+			public const int chronometer = 2131427502;
 			
 			// aapt resource value: 0x7f0b001d
 			public const int clip_horizontal = 2131427357;
@@ -2345,8 +2516,8 @@ namespace NightscoutMobileHybrid.Droid
 			// aapt resource value: 0x7f0b0017
 			public const int end = 2131427351;
 			
-			// aapt resource value: 0x7f0b0097
-			public const int end_padder = 2131427479;
+			// aapt resource value: 0x7f0b00b3
+			public const int end_padder = 2131427507;
 			
 			// aapt resource value: 0x7f0b000b
 			public const int enterAlways = 2131427339;
@@ -2390,29 +2561,71 @@ namespace NightscoutMobileHybrid.Droid
 			// aapt resource value: 0x7f0b003f
 			public const int image = 2131427391;
 			
-			// aapt resource value: 0x7f0b0096
-			public const int info = 2131427478;
+			// aapt resource value: 0x7f0b00b2
+			public const int info = 2131427506;
+			
+			// aapt resource value: 0x7f0b0076
+			public const int input_email = 2131427446;
+			
+			// aapt resource value: 0x7f0b0078
+			public const int input_message = 2131427448;
+			
+			// aapt resource value: 0x7f0b0075
+			public const int input_name = 2131427445;
+			
+			// aapt resource value: 0x7f0b0083
+			public const int input_password = 2131427459;
+			
+			// aapt resource value: 0x7f0b0077
+			public const int input_subject = 2131427447;
 			
 			// aapt resource value: 0x7f0b0001
 			public const int item_touch_helper_previous_elevation = 2131427329;
 			
+			// aapt resource value: 0x7f0b008a
+			public const int label_author = 2131427466;
+			
+			// aapt resource value: 0x7f0b008b
+			public const int label_date = 2131427467;
+			
+			// aapt resource value: 0x7f0b007d
+			public const int label_last_updated = 2131427453;
+			
+			// aapt resource value: 0x7f0b0072
+			public const int label_message = 2131427442;
+			
+			// aapt resource value: 0x7f0b008c
+			public const int label_text = 2131427468;
+			
+			// aapt resource value: 0x7f0b0086
+			public const int label_title = 2131427462;
+			
+			// aapt resource value: 0x7f0b0087
+			public const int label_version = 2131427463;
+			
 			// aapt resource value: 0x7f0b0019
 			public const int left = 2131427353;
 			
-			// aapt resource value: 0x7f0b0090
-			public const int line1 = 2131427472;
+			// aapt resource value: 0x7f0b00ac
+			public const int line1 = 2131427500;
 			
-			// aapt resource value: 0x7f0b0094
-			public const int line3 = 2131427476;
+			// aapt resource value: 0x7f0b00b0
+			public const int line3 = 2131427504;
 			
 			// aapt resource value: 0x7f0b0025
 			public const int listMode = 2131427365;
 			
+			// aapt resource value: 0x7f0b008d
+			public const int list_attachments = 2131427469;
+			
+			// aapt resource value: 0x7f0b0081
+			public const int list_feedback_messages = 2131427457;
+			
 			// aapt resource value: 0x7f0b0041
 			public const int list_item = 2131427393;
 			
-			// aapt resource value: 0x7f0b008e
-			public const int media_actions = 2131427470;
+			// aapt resource value: 0x7f0b00aa
+			public const int media_actions = 2131427498;
 			
 			// aapt resource value: 0x7f0b0034
 			public const int middle = 2131427380;
@@ -2420,77 +2633,77 @@ namespace NightscoutMobileHybrid.Droid
 			// aapt resource value: 0x7f0b0021
 			public const int mini = 2131427361;
 			
-			// aapt resource value: 0x7f0b007d
-			public const int mr_art = 2131427453;
+			// aapt resource value: 0x7f0b0099
+			public const int mr_art = 2131427481;
 			
-			// aapt resource value: 0x7f0b0072
-			public const int mr_chooser_list = 2131427442;
+			// aapt resource value: 0x7f0b008e
+			public const int mr_chooser_list = 2131427470;
 			
-			// aapt resource value: 0x7f0b0075
-			public const int mr_chooser_route_desc = 2131427445;
+			// aapt resource value: 0x7f0b0091
+			public const int mr_chooser_route_desc = 2131427473;
 			
-			// aapt resource value: 0x7f0b0073
-			public const int mr_chooser_route_icon = 2131427443;
+			// aapt resource value: 0x7f0b008f
+			public const int mr_chooser_route_icon = 2131427471;
 			
-			// aapt resource value: 0x7f0b0074
-			public const int mr_chooser_route_name = 2131427444;
+			// aapt resource value: 0x7f0b0090
+			public const int mr_chooser_route_name = 2131427472;
 			
-			// aapt resource value: 0x7f0b007a
-			public const int mr_close = 2131427450;
+			// aapt resource value: 0x7f0b0096
+			public const int mr_close = 2131427478;
 			
-			// aapt resource value: 0x7f0b0080
-			public const int mr_control_divider = 2131427456;
+			// aapt resource value: 0x7f0b009c
+			public const int mr_control_divider = 2131427484;
 			
-			// aapt resource value: 0x7f0b0086
-			public const int mr_control_play_pause = 2131427462;
+			// aapt resource value: 0x7f0b00a2
+			public const int mr_control_play_pause = 2131427490;
 			
-			// aapt resource value: 0x7f0b0089
-			public const int mr_control_subtitle = 2131427465;
+			// aapt resource value: 0x7f0b00a5
+			public const int mr_control_subtitle = 2131427493;
 			
-			// aapt resource value: 0x7f0b0088
-			public const int mr_control_title = 2131427464;
+			// aapt resource value: 0x7f0b00a4
+			public const int mr_control_title = 2131427492;
 			
-			// aapt resource value: 0x7f0b0087
-			public const int mr_control_title_container = 2131427463;
+			// aapt resource value: 0x7f0b00a3
+			public const int mr_control_title_container = 2131427491;
 			
-			// aapt resource value: 0x7f0b007b
-			public const int mr_custom_control = 2131427451;
+			// aapt resource value: 0x7f0b0097
+			public const int mr_custom_control = 2131427479;
 			
-			// aapt resource value: 0x7f0b007c
-			public const int mr_default_control = 2131427452;
+			// aapt resource value: 0x7f0b0098
+			public const int mr_default_control = 2131427480;
 			
-			// aapt resource value: 0x7f0b0077
-			public const int mr_dialog_area = 2131427447;
+			// aapt resource value: 0x7f0b0093
+			public const int mr_dialog_area = 2131427475;
 			
-			// aapt resource value: 0x7f0b0076
-			public const int mr_expandable_area = 2131427446;
+			// aapt resource value: 0x7f0b0092
+			public const int mr_expandable_area = 2131427474;
 			
-			// aapt resource value: 0x7f0b008a
-			public const int mr_group_expand_collapse = 2131427466;
+			// aapt resource value: 0x7f0b00a6
+			public const int mr_group_expand_collapse = 2131427494;
 			
-			// aapt resource value: 0x7f0b007e
-			public const int mr_media_main_control = 2131427454;
+			// aapt resource value: 0x7f0b009a
+			public const int mr_media_main_control = 2131427482;
 			
-			// aapt resource value: 0x7f0b0079
-			public const int mr_name = 2131427449;
+			// aapt resource value: 0x7f0b0095
+			public const int mr_name = 2131427477;
 			
-			// aapt resource value: 0x7f0b007f
-			public const int mr_playback_control = 2131427455;
+			// aapt resource value: 0x7f0b009b
+			public const int mr_playback_control = 2131427483;
 			
-			// aapt resource value: 0x7f0b0078
-			public const int mr_title_bar = 2131427448;
+			// aapt resource value: 0x7f0b0094
+			public const int mr_title_bar = 2131427476;
 			
-			// aapt resource value: 0x7f0b0081
-			public const int mr_volume_control = 2131427457;
+			// aapt resource value: 0x7f0b009d
+			public const int mr_volume_control = 2131427485;
 			
-			// aapt resource value: 0x7f0b0082
-			public const int mr_volume_group_list = 2131427458;
+			// aapt resource value: 0x7f0b009e
+			public const int mr_volume_group_list = 2131427486;
 			
-			// aapt resource value: 0x7f0b0084
-			public const int mr_volume_item_icon = 2131427460;
+			// aapt resource value: 0x7f0b00a0
+			public const int mr_volume_item_icon = 2131427488;
 			
-			// aapt resource value: 0x7f0b0085
-			public const int mr_volume_slider = 2131427461;
+			// aapt resource value: 0x7f0b00a1
+			public const int mr_volume_slider = 2131427489;
 			
 			// aapt resource value: 0x7f0b002e
 			public const int multiply = 2131427374;
@@ -2591,8 +2804,8 @@ namespace NightscoutMobileHybrid.Droid
 			// aapt resource value: 0x7f0b002b
 			public const int showTitle = 2131427371;
 			
-			// aapt resource value: 0x7f0b0098
-			public const int sliding_tabs = 2131427480;
+			// aapt resource value: 0x7f0b00b4
+			public const int sliding_tabs = 2131427508;
 			
 			// aapt resource value: 0x7f0b006c
 			public const int snackbar_action = 2131427436;
@@ -2621,8 +2834,8 @@ namespace NightscoutMobileHybrid.Droid
 			// aapt resource value: 0x7f0b001b
 			public const int start = 2131427355;
 			
-			// aapt resource value: 0x7f0b008d
-			public const int status_bar_latest_event_content = 2131427469;
+			// aapt resource value: 0x7f0b00a9
+			public const int status_bar_latest_event_content = 2131427497;
 			
 			// aapt resource value: 0x7f0b0065
 			public const int submit_area = 2131427429;
@@ -2630,17 +2843,20 @@ namespace NightscoutMobileHybrid.Droid
 			// aapt resource value: 0x7f0b0026
 			public const int tabMode = 2131427366;
 			
-			// aapt resource value: 0x7f0b0095
-			public const int text = 2131427477;
+			// aapt resource value: 0x7f0b00b1
+			public const int text = 2131427505;
 			
-			// aapt resource value: 0x7f0b0093
-			public const int text2 = 2131427475;
+			// aapt resource value: 0x7f0b00af
+			public const int text2 = 2131427503;
 			
 			// aapt resource value: 0x7f0b004d
 			public const int textSpacerNoButtons = 2131427405;
 			
-			// aapt resource value: 0x7f0b0091
-			public const int time = 2131427473;
+			// aapt resource value: 0x7f0b0082
+			public const int text_headline = 2131427458;
+			
+			// aapt resource value: 0x7f0b00ad
+			public const int time = 2131427501;
 			
 			// aapt resource value: 0x7f0b0043
 			public const int title = 2131427395;
@@ -2648,8 +2864,8 @@ namespace NightscoutMobileHybrid.Droid
 			// aapt resource value: 0x7f0b0048
 			public const int title_template = 2131427400;
 			
-			// aapt resource value: 0x7f0b0099
-			public const int toolbar = 2131427481;
+			// aapt resource value: 0x7f0b00b5
+			public const int toolbar = 2131427509;
 			
 			// aapt resource value: 0x7f0b001c
 			public const int top = 2131427356;
@@ -2666,17 +2882,38 @@ namespace NightscoutMobileHybrid.Droid
 			// aapt resource value: 0x7f0b002c
 			public const int useLogo = 2131427372;
 			
+			// aapt resource value: 0x7f0b0085
+			public const int view_header = 2131427461;
+			
 			// aapt resource value: 0x7f0b0000
 			public const int view_offset_helper = 2131427328;
 			
-			// aapt resource value: 0x7f0b0083
-			public const int volume_item_container = 2131427459;
+			// aapt resource value: 0x7f0b009f
+			public const int volume_item_container = 2131427487;
+			
+			// aapt resource value: 0x7f0b0089
+			public const int web_update_details = 2131427465;
 			
 			// aapt resource value: 0x7f0b0039
 			public const int withText = 2131427385;
 			
 			// aapt resource value: 0x7f0b002d
 			public const int wrap_content = 2131427373;
+			
+			// aapt resource value: 0x7f0b0079
+			public const int wrapper_attachments = 2131427449;
+			
+			// aapt resource value: 0x7f0b0074
+			public const int wrapper_feedback = 2131427444;
+			
+			// aapt resource value: 0x7f0b0073
+			public const int wrapper_feedback_scroll = 2131427443;
+			
+			// aapt resource value: 0x7f0b007c
+			public const int wrapper_messages = 2131427452;
+			
+			// aapt resource value: 0x7f0b007e
+			public const int wrapper_messages_buttons = 2131427454;
 			
 			static Id()
 			{
@@ -2865,64 +3102,82 @@ namespace NightscoutMobileHybrid.Droid
 			public const int design_navigation_menu_item = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int mr_chooser_dialog = 2130903077;
+			public const int hockeyapp_activity_expiry_info = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int mr_chooser_list_item = 2130903078;
+			public const int hockeyapp_activity_feedback = 2130903078;
 			
 			// aapt resource value: 0x7f030027
-			public const int mr_controller_material_dialog_b = 2130903079;
+			public const int hockeyapp_activity_login = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int mr_controller_volume_item = 2130903080;
+			public const int hockeyapp_activity_update = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int mr_playback_control = 2130903081;
+			public const int hockeyapp_fragment_update = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int mr_volume_control = 2130903082;
+			public const int hockeyapp_view_feedback_message = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int notification_media_action = 2130903083;
+			public const int mr_chooser_dialog = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int notification_media_cancel_action = 2130903084;
+			public const int mr_chooser_list_item = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int notification_template_big_media = 2130903085;
+			public const int mr_controller_material_dialog_b = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int notification_template_big_media_narrow = 2130903086;
+			public const int mr_controller_volume_item = 2130903086;
 			
 			// aapt resource value: 0x7f03002f
-			public const int notification_template_lines = 2130903087;
+			public const int mr_playback_control = 2130903087;
 			
 			// aapt resource value: 0x7f030030
-			public const int notification_template_media = 2130903088;
+			public const int mr_volume_control = 2130903088;
 			
 			// aapt resource value: 0x7f030031
-			public const int notification_template_part_chronometer = 2130903089;
+			public const int notification_media_action = 2130903089;
 			
 			// aapt resource value: 0x7f030032
-			public const int notification_template_part_time = 2130903090;
+			public const int notification_media_cancel_action = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int select_dialog_item_material = 2130903091;
+			public const int notification_template_big_media = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public const int select_dialog_multichoice_material = 2130903092;
+			public const int notification_template_big_media_narrow = 2130903092;
 			
 			// aapt resource value: 0x7f030035
-			public const int select_dialog_singlechoice_material = 2130903093;
+			public const int notification_template_lines = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int support_simple_spinner_dropdown_item = 2130903094;
+			public const int notification_template_media = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int Tabbar = 2130903095;
+			public const int notification_template_part_chronometer = 2130903095;
 			
 			// aapt resource value: 0x7f030038
-			public const int Toolbar = 2130903096;
+			public const int notification_template_part_time = 2130903096;
+			
+			// aapt resource value: 0x7f030039
+			public const int select_dialog_item_material = 2130903097;
+			
+			// aapt resource value: 0x7f03003a
+			public const int select_dialog_multichoice_material = 2130903098;
+			
+			// aapt resource value: 0x7f03003b
+			public const int select_dialog_singlechoice_material = 2130903099;
+			
+			// aapt resource value: 0x7f03003c
+			public const int support_simple_spinner_dropdown_item = 2130903100;
+			
+			// aapt resource value: 0x7f03003d
+			public const int Tabbar = 2130903101;
+			
+			// aapt resource value: 0x7f03003e
+			public const int Toolbar = 2130903102;
 			
 			static Layout()
 			{
@@ -3003,6 +3258,222 @@ namespace NightscoutMobileHybrid.Droid
 			// aapt resource value: 0x7f060011
 			public const int character_counter_pattern = 2131099665;
 			
+			// aapt resource value: 0x7f060027
+			public const int hockeyapp_crash_dialog_app_name_fallback = 2131099687;
+			
+			// aapt resource value: 0x7f060028
+			public const int hockeyapp_crash_dialog_message = 2131099688;
+			
+			// aapt resource value: 0x7f060029
+			public const int hockeyapp_crash_dialog_negative_button = 2131099689;
+			
+			// aapt resource value: 0x7f06002a
+			public const int hockeyapp_crash_dialog_neutral_button = 2131099690;
+			
+			// aapt resource value: 0x7f06002b
+			public const int hockeyapp_crash_dialog_positive_button = 2131099691;
+			
+			// aapt resource value: 0x7f06002c
+			public const int hockeyapp_crash_dialog_title = 2131099692;
+			
+			// aapt resource value: 0x7f06002d
+			public const int hockeyapp_dialog_error_message = 2131099693;
+			
+			// aapt resource value: 0x7f06002e
+			public const int hockeyapp_dialog_error_title = 2131099694;
+			
+			// aapt resource value: 0x7f06002f
+			public const int hockeyapp_dialog_negative_button = 2131099695;
+			
+			// aapt resource value: 0x7f060030
+			public const int hockeyapp_dialog_positive_button = 2131099696;
+			
+			// aapt resource value: 0x7f060031
+			public const int hockeyapp_download_failed_dialog_message = 2131099697;
+			
+			// aapt resource value: 0x7f060032
+			public const int hockeyapp_download_failed_dialog_negative_button = 2131099698;
+			
+			// aapt resource value: 0x7f060033
+			public const int hockeyapp_download_failed_dialog_positive_button = 2131099699;
+			
+			// aapt resource value: 0x7f060034
+			public const int hockeyapp_download_failed_dialog_title = 2131099700;
+			
+			// aapt resource value: 0x7f060035
+			public const int hockeyapp_error_no_network_message = 2131099701;
+			
+			// aapt resource value: 0x7f060036
+			public const int hockeyapp_expiry_info_text = 2131099702;
+			
+			// aapt resource value: 0x7f060037
+			public const int hockeyapp_expiry_info_title = 2131099703;
+			
+			// aapt resource value: 0x7f060038
+			public const int hockeyapp_feedback_attach_file = 2131099704;
+			
+			// aapt resource value: 0x7f060039
+			public const int hockeyapp_feedback_attach_picture = 2131099705;
+			
+			// aapt resource value: 0x7f06003a
+			public const int hockeyapp_feedback_attachment_button_text = 2131099706;
+			
+			// aapt resource value: 0x7f06003b
+			public const int hockeyapp_feedback_attachment_error = 2131099707;
+			
+			// aapt resource value: 0x7f06003c
+			public const int hockeyapp_feedback_attachment_loading = 2131099708;
+			
+			// aapt resource value: 0x7f06003d
+			public const int hockeyapp_feedback_email_hint = 2131099709;
+			
+			// aapt resource value: 0x7f06003e
+			public const int hockeyapp_feedback_failed_text = 2131099710;
+			
+			// aapt resource value: 0x7f06003f
+			public const int hockeyapp_feedback_failed_title = 2131099711;
+			
+			// aapt resource value: 0x7f060040
+			public const int hockeyapp_feedback_fetching_feedback_text = 2131099712;
+			
+			// aapt resource value: 0x7f060041
+			public const int hockeyapp_feedback_generic_error = 2131099713;
+			
+			// aapt resource value: 0x7f060042
+			public const int hockeyapp_feedback_last_updated_text = 2131099714;
+			
+			// aapt resource value: 0x7f060043
+			public const int hockeyapp_feedback_max_attachments_allowed = 2131099715;
+			
+			// aapt resource value: 0x7f060044
+			public const int hockeyapp_feedback_message_hint = 2131099716;
+			
+			// aapt resource value: 0x7f060045
+			public const int hockeyapp_feedback_name_hint = 2131099717;
+			
+			// aapt resource value: 0x7f060046
+			public const int hockeyapp_feedback_refresh_button_text = 2131099718;
+			
+			// aapt resource value: 0x7f060047
+			public const int hockeyapp_feedback_response_button_text = 2131099719;
+			
+			// aapt resource value: 0x7f060048
+			public const int hockeyapp_feedback_select_file = 2131099720;
+			
+			// aapt resource value: 0x7f060049
+			public const int hockeyapp_feedback_select_picture = 2131099721;
+			
+			// aapt resource value: 0x7f06004a
+			public const int hockeyapp_feedback_send_button_text = 2131099722;
+			
+			// aapt resource value: 0x7f06004b
+			public const int hockeyapp_feedback_send_generic_error = 2131099723;
+			
+			// aapt resource value: 0x7f06004c
+			public const int hockeyapp_feedback_send_network_error = 2131099724;
+			
+			// aapt resource value: 0x7f06004d
+			public const int hockeyapp_feedback_sending_feedback_text = 2131099725;
+			
+			// aapt resource value: 0x7f06004e
+			public const int hockeyapp_feedback_subject_hint = 2131099726;
+			
+			// aapt resource value: 0x7f06004f
+			public const int hockeyapp_feedback_title = 2131099727;
+			
+			// aapt resource value: 0x7f060050
+			public const int hockeyapp_feedback_validate_email_empty = 2131099728;
+			
+			// aapt resource value: 0x7f060051
+			public const int hockeyapp_feedback_validate_email_error = 2131099729;
+			
+			// aapt resource value: 0x7f060052
+			public const int hockeyapp_feedback_validate_name_error = 2131099730;
+			
+			// aapt resource value: 0x7f060053
+			public const int hockeyapp_feedback_validate_subject_error = 2131099731;
+			
+			// aapt resource value: 0x7f060054
+			public const int hockeyapp_feedback_validate_text_error = 2131099732;
+			
+			// aapt resource value: 0x7f060055
+			public const int hockeyapp_login_email_hint = 2131099733;
+			
+			// aapt resource value: 0x7f060056
+			public const int hockeyapp_login_headline_text = 2131099734;
+			
+			// aapt resource value: 0x7f060057
+			public const int hockeyapp_login_headline_text_email_only = 2131099735;
+			
+			// aapt resource value: 0x7f060058
+			public const int hockeyapp_login_login_button_text = 2131099736;
+			
+			// aapt resource value: 0x7f060059
+			public const int hockeyapp_login_missing_credentials_toast = 2131099737;
+			
+			// aapt resource value: 0x7f06005a
+			public const int hockeyapp_login_password_hint = 2131099738;
+			
+			// aapt resource value: 0x7f06005b
+			public const int hockeyapp_paint_dialog_message = 2131099739;
+			
+			// aapt resource value: 0x7f06005c
+			public const int hockeyapp_paint_dialog_negative_button = 2131099740;
+			
+			// aapt resource value: 0x7f06005d
+			public const int hockeyapp_paint_dialog_neutral_button = 2131099741;
+			
+			// aapt resource value: 0x7f06005e
+			public const int hockeyapp_paint_dialog_positive_button = 2131099742;
+			
+			// aapt resource value: 0x7f06005f
+			public const int hockeyapp_paint_indicator_toast = 2131099743;
+			
+			// aapt resource value: 0x7f060060
+			public const int hockeyapp_paint_menu_clear = 2131099744;
+			
+			// aapt resource value: 0x7f060061
+			public const int hockeyapp_paint_menu_save = 2131099745;
+			
+			// aapt resource value: 0x7f060062
+			public const int hockeyapp_paint_menu_undo = 2131099746;
+			
+			// aapt resource value: 0x7f060063
+			public const int hockeyapp_permission_dialog_negative_button = 2131099747;
+			
+			// aapt resource value: 0x7f060064
+			public const int hockeyapp_permission_dialog_positive_button = 2131099748;
+			
+			// aapt resource value: 0x7f060065
+			public const int hockeyapp_permission_update_message = 2131099749;
+			
+			// aapt resource value: 0x7f060066
+			public const int hockeyapp_permission_update_title = 2131099750;
+			
+			// aapt resource value: 0x7f060067
+			public const int hockeyapp_update_button = 2131099751;
+			
+			// aapt resource value: 0x7f060068
+			public const int hockeyapp_update_dialog_message = 2131099752;
+			
+			// aapt resource value: 0x7f060069
+			public const int hockeyapp_update_dialog_negative_button = 2131099753;
+			
+			// aapt resource value: 0x7f06006a
+			public const int hockeyapp_update_dialog_positive_button = 2131099754;
+			
+			// aapt resource value: 0x7f06006b
+			public const int hockeyapp_update_dialog_title = 2131099755;
+			
+			// aapt resource value: 0x7f06006c
+			public const int hockeyapp_update_mandatory_toast = 2131099756;
+			
+			// aapt resource value: 0x7f06006d
+			public const int hockeyapp_update_version_details_label = 2131099757;
+			
+			// aapt resource value: 0x7f060026
+			public const int library_name = 2131099686;
+			
 			// aapt resource value: 0x7f060000
 			public const int mr_button_content_description = 2131099648;
 			
@@ -3079,8 +3550,8 @@ namespace NightscoutMobileHybrid.Droid
 			// aapt resource value: 0x7f09001c
 			public const int Animation_Design_BottomSheetDialog = 2131296284;
 			
-			// aapt resource value: 0x7f090174
-			public const int AppCompatDialogStyle = 2131296628;
+			// aapt resource value: 0x7f090177
+			public const int AppCompatDialogStyle = 2131296631;
 			
 			// aapt resource value: 0x7f0900be
 			public const int Base_AlertDialog_AppCompat = 2131296446;
@@ -3524,10 +3995,19 @@ namespace NightscoutMobileHybrid.Droid
 			public const int CardView_Light = 2131296282;
 			
 			// aapt resource value: 0x7f090172
-			public const int MyTheme = 2131296626;
+			public const int HockeyApp_ButtonStyle = 2131296626;
 			
 			// aapt resource value: 0x7f090173
-			public const int MyTheme_Base = 2131296627;
+			public const int HockeyApp_EditTextStyle = 2131296627;
+			
+			// aapt resource value: 0x7f090174
+			public const int HockeyApp_SingleLineInputStyle = 2131296628;
+			
+			// aapt resource value: 0x7f090175
+			public const int MyTheme = 2131296629;
+			
+			// aapt resource value: 0x7f090176
+			public const int MyTheme_Base = 2131296630;
 			
 			// aapt resource value: 0x7f09004b
 			public const int Platform_AppCompat = 2131296331;
