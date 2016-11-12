@@ -107,6 +107,7 @@
     <Compile Include="VolumeControlImplementation.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="ScreenLockImplementation.cs" />
+    <Compile Include="PushNotificationImplementation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
