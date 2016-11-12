@@ -18,17 +18,19 @@ namespace NightscoutMobileHybrid
 		void btnSave_Clicked(object sender, System.EventArgs e)
 		{
 			string sURL = entURL.Text;
-			sURL = sURL.Replace("https", "");
-			sURL = sURL.Replace("http", "");
-			sURL = sURL.Replace("://", "");
+			//sURL = sURL.Replace("https", "");
+			//sURL = sURL.Replace("http", "");
+			//sURL = sURL.Replace("://", "");
 
-			sURL = "https://" + sURL;
+			//sURL = "https://" + sURL;
 
 			Settings.URL = sURL;
 
 			MessagingCenter.Send<SettingsPage>(this, "URLChanged");
 
 			Navigation.PopModalAsync(true);
+
+			DependencyService.Get<IPushNotifications>().Register();
 		}
 
 		void BtnCancel_Clicked(object sender, EventArgs e)

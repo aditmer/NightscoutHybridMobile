@@ -6,8 +6,8 @@
 			<Entry x:Name="entURL" BackgroundColor="White" Placeholder="https://your-nightscout-url.azurewebsites.net" />
 
 			<StackLayout Orientation="Horizontal">
-				<Button x:Name="btnSave" Text="Save" Clicked="btnSave_Clicked" TextColor="White" BackgroundColor="Gray" />
-				<Button x:Name="btnCancel" Text="Cancel" Clicked="BtnCancel_Clicked" TextColor="White" BackgroundColor="Gray" />
+				<Button x:Name="btnSave" Text="Save" Clicked="btnSave_Clicked" WidthRequest="100" TextColor="White" BackgroundColor="Gray" />
+				<Button x:Name="btnCancel" Text="Cancel" Clicked="BtnCancel_Clicked" WidthRequest="100" TextColor="White" BackgroundColor="Gray" />
 			</StackLayout>
 		</StackLayout>
 	</ContentPage.Content>

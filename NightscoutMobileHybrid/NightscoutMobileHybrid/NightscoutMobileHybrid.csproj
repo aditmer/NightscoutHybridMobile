@@ -48,6 +48,7 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Helpers\IScreenLock.cs" />
     <Compile Include="Helpers\IVolumeControl.cs" />
+    <Compile Include="Helpers\IPushNotifications.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
