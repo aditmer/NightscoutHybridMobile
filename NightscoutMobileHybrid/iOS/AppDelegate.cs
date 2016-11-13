@@ -53,18 +53,25 @@ namespace NightscoutMobileHybrid.iOS
 				//adds a tag for the current Nightscout URL in the App Settings
 				NSSet tags = new NSSet(Settings.URL); 
 
-				const string template = "{\"aps\":{\"alert\":\"$(message)\"},\"request\":\"$(requestid)\"}";
+				//const string template = "{\"aps\":{\"alert\":\"$(message)\"},\"request\":\"$(requestid)\"}";
 
 				const string templateBodyAPNS = "{\"apns\":{\"alert\":\"$(message)\"},\"eventName\":\"${eventName}\",\"group\":\"${group}\",\"key\":\"${group}2\",\"level\":${level},\"sound\":\"${sound}\",\"title\":\"${title}\"}";
 
+				//var alert = new JObject(
+				//new JProperty("aps", new JObject(new JProperty("alert", notificationText))),
+				//new JProperty("inAppMessage", notificationText))
+				//.ToString(Newtonsoft.Json.Formatting.None);
+				
 				JObject templates = new JObject();
 				templates["genericMessage"] = new JObject
 				{
 					{"body", templateBodyAPNS}
 				};
 
-				Hub.RegisterTemplateAsync(deviceToken,
-				Hub.RegisterNativeAsync(deviceToken, tags, (errorCallback) =>
+				var expiryDate = DateTime.Now.AddDays(90).ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
+
+				Hub.RegisterTemplateAsync(deviceToken,"Night Scout Alerts",templates.ToString(),
+                      expiryDate,tags,(errorCallback) =>
 				{
 					if (errorCallback != null)
 						Console.WriteLine("RegisterNativeAsync error: " + errorCallback.ToString());
