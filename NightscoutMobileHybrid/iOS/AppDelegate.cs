@@ -55,7 +55,7 @@ namespace NightscoutMobileHybrid.iOS
 
 				//const string template = "{\"aps\":{\"alert\":\"$(message)\"},\"request\":\"$(requestid)\"}";
 
-				const string templateBodyAPNS = "{\"apns\":{\"alert\":\"$(message)\"},\"eventName\":\"${eventName}\",\"group\":\"${group}\",\"key\":\"${group}2\",\"level\":${level},\"sound\":\"${sound}\",\"title\":\"${title}\"}";
+				const string templateBodyAPNS = "{\"aps\":{\"alert\":\"$(message)\"},\"eventName\":\"$(eventName)\",\"group\":\"$(group)\",\"key\":\"$(key)\",\"level\":\"$(level)\",\"sound\":\"$(sound)\",\"title\":\"$(title)\"}";
 
 				//var alert = new JObject(
 				//new JProperty("aps", new JObject(new JProperty("alert", notificationText))),
