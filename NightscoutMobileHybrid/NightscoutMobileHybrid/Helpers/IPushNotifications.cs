@@ -4,7 +4,6 @@ namespace NightscoutMobileHybrid
 	public interface IPushNotifications
 	{
 		void Register();
-
 		void Unregister();
 	}
 }
