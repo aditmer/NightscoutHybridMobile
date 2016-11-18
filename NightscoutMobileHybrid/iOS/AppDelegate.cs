@@ -42,16 +42,17 @@ namespace NightscoutMobileHybrid.iOS
 		{
 			Hub = new SBNotificationHub(Constants.ConnectionString, Constants.NotificationHubPath);
 
-			Hub.UnregisterAllAsync(deviceToken, (error) =>
-			{
-				if (error != null)
-				{
-					Console.WriteLine("Error calling Unregister: {0}", error.ToString());
-					return;
-				}
+			//Hub.UnregisterAllAsync(deviceToken, (error) =>
+			//{
+			//	if (error != null)
+			//	{
+			//		Console.WriteLine("Error calling Unregister: {0}", error.ToString());
+			//		return;
+			//	}
 
 				//adds a tag for the current Nightscout URL in the App Settings
-				NSSet tags = new NSSet(Settings.URL); 
+				//TODO get the azuretag from status.json
+				NSSet tags = new NSSet("nstest-server.azurewebsites.net"); 
 
 				//const string template = "{\"aps\":{\"alert\":\"$(message)\"},\"request\":\"$(requestid)\"}";
 
@@ -62,27 +63,27 @@ namespace NightscoutMobileHybrid.iOS
 				//new JProperty("inAppMessage", notificationText))
 				//.ToString(Newtonsoft.Json.Formatting.None);
 				
-				JObject templates = new JObject();
-				templates["genericMessage"] = new JObject
-				{
-					{"body", templateBodyAPNS}
-				};
+				//JObject templates = new JObject();
+				//templates["genericMessage"] = new JObject
+				//{
+				//	{"body", templateBodyAPNS}
+				//};
 
 				var expiryDate = DateTime.Now.AddDays(90).ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
 
-				Hub.RegisterTemplateAsync(deviceToken,"Night Scout Alerts",templates.ToString(),
+				Hub.RegisterTemplateAsync(deviceToken,"nightscout",templateBodyAPNS,
                       expiryDate,tags,(errorCallback) =>
 				{
 					if (errorCallback != null)
 						Console.WriteLine("RegisterNativeAsync error: " + errorCallback.ToString());
 				});
-			});
+			//});
 		}
 
 		public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
 		{
 			//base.FailedToRegisterForRemoteNotifications(application, error);
-			Console.WriteLine("RegisterNativeAsync error: ");// + errorCallback.ToString());
+			Console.WriteLine("RegisterNativeAsync error: " + error.ToString());
 		}
 
 		public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)

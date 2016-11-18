@@ -71,7 +71,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer: Andrew Ditmer (DV36RSZTVH)</CodesignKey>
+    <CodesignKey>iPhone Developer: Andrew Ditmer (CTRR73DVXX)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
     <MtouchFastDev>true</MtouchFastDev>
@@ -84,7 +84,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
-    <CodesignProvision>ef5aae39-905c-4ba9-83c5-b9f96b4044cc</CodesignProvision>
+    <CodesignProvision>Nightscout Dev Profile</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -193,7 +193,6 @@
     <Compile Include="VolumeControlImplementation.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="ScreenLockImplementation.cs" />
-    <Compile Include="Constants.cs" />
     <Compile Include="PushNotificationsImplementation.cs" />
   </ItemGroup>
   <ItemGroup>

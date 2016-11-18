@@ -19,7 +19,9 @@ namespace NightscoutMobileHybrid
 		{
 			string sURL = entURL.Text;
 			sURL = sURL.Replace("https", "");
+			sURL = sURL.Replace("HTTPS", "");
 			sURL = sURL.Replace("http", "");
+			sURL = sURL.Replace("HTTP", "");
 			sURL = sURL.Replace("://", "");
 
 			sURL = "https://" + sURL;

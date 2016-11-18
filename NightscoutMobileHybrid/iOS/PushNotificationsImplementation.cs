@@ -21,7 +21,7 @@ namespace NightscoutMobileHybrid.iOS
 
 		void IPushNotifications.Register()
 		{
-			
+
 
 			//Push notifications registration
 			if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
@@ -34,14 +34,14 @@ namespace NightscoutMobileHybrid.iOS
 				UIApplication.SharedApplication.RegisterForRemoteNotifications();
 
 			}
-			else {
+			else
+			{
 				UIRemoteNotificationType notificationTypes = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
 				UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(notificationTypes);
 			}
+
+
 		}
-
-
-
 
 
 	}
