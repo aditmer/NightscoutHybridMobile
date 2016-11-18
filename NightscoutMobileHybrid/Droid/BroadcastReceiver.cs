@@ -27,7 +27,7 @@ public class BroadcastReceiver : GcmBroadcastReceiverBase<PushHandlerService>
     public static string[] SENDER_IDS = new string[] { NightscoutMobileHybrid.Constants.SenderID };
 
     //TODO: Use URL without the http://?
-    public const string TAG = "nstest-server.azurewebsites.net";
+    public const string TAG = "921a2ea1643ac807adc27026c2eb351e25c53ff2";
 }
 
 [Service] // Must use the service tag
@@ -119,7 +119,7 @@ public class PushHandlerService : GcmServiceBase
         //Set the notification info
         //we use the pending intent, passing our ui intent over, which will get called
         //when the notification is tapped.
-        //notification.SetLatestEventInfo(Forms.Context, title, desc, PendingIntent.GetActivity(this, 0, uiIntent, 0));
+        notification.SetLatestEventInfo(Forms.Context, title, desc, PendingIntent.GetActivity(this, 0, uiIntent, 0));
 
         //Show the notification
         notificationManager.Notify(1, notification);
