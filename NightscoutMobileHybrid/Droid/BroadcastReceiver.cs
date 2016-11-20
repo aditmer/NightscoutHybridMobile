@@ -8,6 +8,7 @@ using Gcm.Client;
 using WindowsAzure.Messaging;
 using NightscoutMobileHybrid.Droid;
 using Xamarin.Forms;
+using Android.Media;
 
 [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
 [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -22,6 +23,7 @@ using Xamarin.Forms;
 [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE }, Categories = new string[] { "@PACKAGE_NAME@" })]
 [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_REGISTRATION_CALLBACK }, Categories = new string[] { "@PACKAGE_NAME@" })]
 [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_LIBRARY_RETRY }, Categories = new string[] { "@PACKAGE_NAME@" })]
+[Service(Exported = false), IntentFilter(new[] { "com.google.android.c2dm.intent.RECEIVE" })]
 public class BroadcastReceiver : GcmBroadcastReceiverBase<PushHandlerService>
 {
     public static string[] SENDER_IDS = new string[] { NightscoutMobileHybrid.Constants.SenderID };
@@ -52,9 +54,10 @@ public class PushHandlerService : GcmServiceBase
         }
 
         string messageText = intent.Extras.GetString("message");
+        string messageTitle = intent.Extras.GetString("title");
         if (!string.IsNullOrEmpty(messageText))
         {
-            createNotification("New hub message!", messageText);
+            createNotification(messageTitle, messageText);
         }
         else
         {
@@ -104,26 +107,24 @@ public class PushHandlerService : GcmServiceBase
 
     void createNotification(string title, string desc)
     {
-        //Create notification
-        var notificationManager = GetSystemService(Context.NotificationService) as NotificationManager;
+        var intent = new Intent(this, typeof(MainActivity));
+        intent.AddFlags(ActivityFlags.SingleTop);
+        var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.UpdateCurrent);
 
-        //Create an intent to show UI
-        var uiIntent = new Intent(this, typeof(MainActivity));
+        var notificationBuilder = new Notification.Builder(this)
+            .SetSmallIcon(NightscoutMobileHybrid.Droid.Resource.Drawable.icon)
+            .SetContentTitle(title)
+            .SetContentText(desc)
+            .SetAutoCancel(true)
+            .SetDefaults(NotificationDefaults.Sound | NotificationDefaults.Vibrate)
+            .SetSound(RingtoneManager.GetDefaultUri(RingtoneType.Alarm))
+            .SetContentIntent(pendingIntent);
 
-        //Create the notification
-        var notification = new Notification(Android.Resource.Drawable.SymActionEmail, title);
-
-        //Auto-cancel will remove the notification once the user touches it
-        notification.Flags = NotificationFlags.AutoCancel;
-
-        //Set the notification info
-        //we use the pending intent, passing our ui intent over, which will get called
-        //when the notification is tapped.
-        notification.SetLatestEventInfo(Forms.Context, title, desc, PendingIntent.GetActivity(this, 0, uiIntent, 0));
-
-        //Show the notification
-        notificationManager.Notify(1, notification);
-        dialogNotify(title, desc);
+        var notificationManager = (NotificationManager)GetSystemService(Context.NotificationService);
+        notificationManager.Notify(0, notificationBuilder.Build());
+        
+        //TODO: Figure out if we should do in-app notifications at all.  If not, remove this all together.
+        //dialogNotify(title, desc);
     }
 
     protected void dialogNotify(String title, String message)
