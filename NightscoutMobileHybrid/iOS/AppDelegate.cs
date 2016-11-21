@@ -42,17 +42,19 @@ namespace NightscoutMobileHybrid.iOS
 		{
 			Hub = new SBNotificationHub(Constants.ConnectionString, Constants.NotificationHubPath);
 
-			//Hub.UnregisterAllAsync(deviceToken, (error) =>
-			//{
-			//	if (error != null)
-			//	{
-			//		Console.WriteLine("Error calling Unregister: {0}", error.ToString());
-			//		return;
-			//	}
+			Hub.UnregisterAllAsync(deviceToken, (error) =>
+			{
+				if (error != null)
+				{
+					Console.WriteLine("Error calling Unregister: {0}", error.ToString());
+					return;
+				}
+			});
+
 
 				//adds a tag for the current Nightscout URL in the App Settings
 				//TODO get the azuretag from status.json
-				NSSet tags = new NSSet("nstest-server.azurewebsites.net"); 
+				NSSet tags = new NSSet("921a2ea1643ac807adc27026c2eb351e25c53ff2"); 
 
 				//const string template = "{\"aps\":{\"alert\":\"$(message)\"},\"request\":\"$(requestid)\"}";
 
@@ -77,7 +79,7 @@ namespace NightscoutMobileHybrid.iOS
 					if (errorCallback != null)
 						Console.WriteLine("RegisterNativeAsync error: " + errorCallback.ToString());
 				});
-			//});
+
 		}
 
 		public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
