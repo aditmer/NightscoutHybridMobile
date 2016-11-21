@@ -139,18 +139,18 @@ public class PushHandlerService : GcmServiceBase
         //dialogNotify(title, desc);
     }
 
-    protected void dialogNotify(String title, String message)
-    {
-        var ctx = Forms.Context;
-        Xamarin.Forms.Device.BeginInvokeOnMainThread(() => {
-            AlertDialog.Builder dlg = new AlertDialog.Builder(ctx);
-            AlertDialog alert = dlg.Create();
-            alert.SetTitle(title);
-            alert.SetButton("Ok", delegate {
-                alert.Dismiss();
-            });
-            alert.SetMessage(message);
-            alert.Show();
-        });
-    }
+    //protected void dialogNotify(String title, String message)
+    //{
+    //    var ctx = Forms.Context;
+    //    Xamarin.Forms.Device.BeginInvokeOnMainThread(() => {
+    //        AlertDialog.Builder dlg = new AlertDialog.Builder(ctx);
+    //        AlertDialog alert = dlg.Create();
+    //        alert.SetTitle(title);
+    //        alert.SetButton("Ok", delegate {
+    //            alert.Dismiss();
+    //        });
+    //        alert.SetMessage(message);
+    //        alert.Show();
+    //    });
+    //}
 }
