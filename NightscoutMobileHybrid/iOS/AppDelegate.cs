@@ -53,8 +53,7 @@ namespace NightscoutMobileHybrid.iOS
 
 
 				//adds a tag for the current Nightscout URL in the App Settings
-				//TODO get the azuretag from status.json
-				NSSet tags = new NSSet("921a2ea1643ac807adc27026c2eb351e25c53ff2"); 
+				NSSet tags = new NSSet(ApplicationSettings.AzureTag); 
 
 				//const string template = "{\"aps\":{\"alert\":\"$(message)\"},\"request\":\"$(requestid)\"}";
 

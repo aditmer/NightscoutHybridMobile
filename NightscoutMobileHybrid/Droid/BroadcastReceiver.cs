@@ -9,6 +9,7 @@ using WindowsAzure.Messaging;
 using NightscoutMobileHybrid.Droid;
 using Xamarin.Forms;
 using Android.Media;
+using NightscoutMobileHybrid;
 
 [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
 [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -28,8 +29,7 @@ public class BroadcastReceiver : GcmBroadcastReceiverBase<PushHandlerService>
 {
     public static string[] SENDER_IDS = new string[] { NightscoutMobileHybrid.Constants.SenderID };
 
-    //TODO: Use URL without the http://?
-    public const string TAG = "921a2ea1643ac807adc27026c2eb351e25c53ff2";
+    
 }
 
 [Service] // Must use the service tag
@@ -69,14 +69,14 @@ public class PushHandlerService : GcmServiceBase
         }
         else
         {
-            Log.Error(BroadcastReceiver.TAG, "Unknown message details: " + msg.ToString());
+            Log.Error(ApplicationSettings.AzureTag, "Unknown message details: " + msg.ToString());
             createNotification("0", "Unknown message details", msg.ToString());
         }
     }
 
     protected override void OnError(Context context, string errorId)
     {
-        Log.Error(BroadcastReceiver.TAG, "GCM Error: " + errorId);
+        Log.Error(ApplicationSettings.AzureTag, "GCM Error: " + errorId);
     }
 
     protected override void OnRegistered(Context context, string registrationId)
@@ -91,11 +91,11 @@ public class PushHandlerService : GcmServiceBase
         }
         catch (Exception ex)
         {
-            Log.Error(BroadcastReceiver.TAG, ex.Message);
+            Log.Error(ApplicationSettings.AzureTag, ex.Message);
         }
 
-        //TODO: Get from URL
-        var tags = new List<string>() { BroadcastReceiver.TAG };
+        
+        var tags = new List<string>() { ApplicationSettings.AzureTag };
 
         try
         {
@@ -105,7 +105,7 @@ public class PushHandlerService : GcmServiceBase
         }
         catch (Exception ex)
         {
-            Log.Error(BroadcastReceiver.TAG, ex.Message);
+            Log.Error(ApplicationSettings.AzureTag, ex.Message);
         }
     }
 

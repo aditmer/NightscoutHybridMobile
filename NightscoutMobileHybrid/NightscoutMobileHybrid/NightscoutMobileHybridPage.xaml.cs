@@ -8,9 +8,9 @@ namespace NightscoutMobileHybrid
 		{
 			InitializeComponent();
 
-			if (Settings.URL != string.Empty)
+			if (ApplicationSettings.URL != string.Empty)
 			{
-				wvNightscout.Source = Settings.URL;
+				wvNightscout.Source = ApplicationSettings.URL;
 			}
 			else
 			{
@@ -20,7 +20,7 @@ namespace NightscoutMobileHybrid
 
 			MessagingCenter.Subscribe<SettingsPage>(this, "URLChanged", (SettingsPage obj) =>
 			{
-				wvNightscout.Source = Settings.URL;
+				wvNightscout.Source = ApplicationSettings.URL;
 			});
 
 			slVolume.Maximum = DependencyService.Get<IVolumeControl>().GetMaxVolume();
@@ -38,7 +38,7 @@ namespace NightscoutMobileHybrid
 
 		void BtnRefresh_Clicked(object sender, System.EventArgs e)
 		{
-			wvNightscout.Source = Settings.URL;
+			wvNightscout.Source = ApplicationSettings.URL;
 		}
 
 		void BtnChangeURL_Clicked(object sender, System.EventArgs e)
