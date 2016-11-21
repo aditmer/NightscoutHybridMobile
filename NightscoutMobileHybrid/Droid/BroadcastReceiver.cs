@@ -49,19 +49,28 @@ public class PushHandlerService : GcmServiceBase
 
         if (intent != null && intent.Extras != null)
         {
-            foreach (var key in intent.Extras.KeySet())
-                msg.AppendLine(key + "=" + intent.Extras.Get(key).ToString());
+            foreach (var thisKey in intent.Extras.KeySet())
+                msg.AppendLine(thisKey + "=" + intent.Extras.Get(thisKey).ToString());
         }
 
-        string messageText = intent.Extras.GetString("message");
-        string messageTitle = intent.Extras.GetString("title");
-        if (!string.IsNullOrEmpty(messageText))
+        //Get the data from the ANH template
+        string message = intent.Extras.GetString("message");
+        string title = intent.Extras.GetString("title", "Nightscout");
+        string key = intent.Extras.GetString("key", "0");   //Key is used as the tag, 0 is the default for unregister and errors
+        //TODO: Do something with the rest of the payload
+        //string eventName = intent.Extras.GetString("eventName");
+        //string group = intent.Extras.GetString("group");
+        //string level = intent.Extras.GetString("level");
+        //string sound = intent.Extras.GetString("sound");
+
+        if (!string.IsNullOrEmpty(message))
         {
-            createNotification(messageTitle, messageText);
+            createNotification(key, title, message);
         }
         else
         {
-            createNotification("Unknown message details", msg.ToString());
+            Log.Error(BroadcastReceiver.TAG, "Unknown message details: " + msg.ToString());
+            createNotification("0", "Unknown message details", msg.ToString());
         }
     }
 
@@ -102,10 +111,10 @@ public class PushHandlerService : GcmServiceBase
 
     protected override void OnUnRegistered(Context context, string registrationId)
     {
-        createNotification("GCM Unregistered...", "The device has been unregistered!");
+        createNotification("0", "GCM Unregistered...", "The device has been unregistered!");
     }
 
-    void createNotification(string title, string desc)
+    void createNotification(string key, string title, string desc)
     {
         var intent = new Intent(this, typeof(MainActivity));
         intent.AddFlags(ActivityFlags.SingleTop);
@@ -116,12 +125,15 @@ public class PushHandlerService : GcmServiceBase
             .SetContentTitle(title)
             .SetContentText(desc)
             .SetAutoCancel(true)
-            .SetDefaults(NotificationDefaults.Sound | NotificationDefaults.Vibrate)
-            .SetSound(RingtoneManager.GetDefaultUri(RingtoneType.Alarm))
+            .SetDefaults(NotificationDefaults.Vibrate | NotificationDefaults.Lights)
+            .SetSound(Android.Net.Uri.Parse(ContentResolver.SchemeAndroidResource + "://" + PackageName + "/Raw/" + NightscoutMobileHybrid.Droid.Resource.Raw.alarm))
+            .SetPriority((int)NotificationPriority.Max)
             .SetContentIntent(pendingIntent);
 
         var notificationManager = (NotificationManager)GetSystemService(Context.NotificationService);
-        notificationManager.Notify(0, notificationBuilder.Build());
+        var notification = notificationBuilder.Build();
+        notification.Flags = NotificationFlags.Insistent;
+        notificationManager.Notify(key, 1, notification);
         
         //TODO: Figure out if we should do in-app notifications at all.  If not, remove this all together.
         //dialogNotify(title, desc);
