@@ -135,10 +135,11 @@ public class PushHandlerService : GcmServiceBase
         notification.Flags = NotificationFlags.Insistent;
         notificationManager.Notify(key, 1, notification);
         
-        //TODO: Figure out if we should do in-app notifications at all.  If not, remove this all together.
+        //Not using in-app notifications (Nightscout handles all of that for us)
         //dialogNotify(title, desc);
     }
 
+    //Not using in-app notifications
     //protected void dialogNotify(String title, String message)
     //{
     //    var ctx = Forms.Context;
