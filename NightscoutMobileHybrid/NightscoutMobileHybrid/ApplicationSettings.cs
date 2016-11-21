@@ -12,7 +12,7 @@ namespace NightscoutMobileHybrid
 	/// of your client applications. All settings are laid out the same exact way with getters
 	/// and setters. 
 	/// </summary>
-	public static class AppSettings
+	public static class ApplicationSettings
 	{
 		private static ISettings AppSettings
 		{
