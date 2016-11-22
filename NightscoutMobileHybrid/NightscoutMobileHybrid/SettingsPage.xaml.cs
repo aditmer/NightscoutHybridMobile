@@ -38,9 +38,7 @@ namespace NightscoutMobileHybrid
 			if (azureTag != "")
 			{
 				ApplicationSettings.AzureTag = azureTag;
-				#if ENABLE_TEST_CLOUD
 				DependencyService.Get<IPushNotifications>().Register();
-				#endif
 			}
 		}
 

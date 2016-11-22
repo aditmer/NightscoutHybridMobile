@@ -61,16 +61,25 @@ public class PushHandlerService : GcmServiceBase
         //string eventName = intent.Extras.GetString("eventName");
         //string group = intent.Extras.GetString("group");
         //string level = intent.Extras.GetString("level");
-        //string sound = intent.Extras.GetString("sound");
+        string sound = intent.Extras.GetString("sound");
+        int soundResourceId = 0;
+        if (sound == "alarm.mp3")
+        {
+            soundResourceId = NightscoutMobileHybrid.Droid.Resource.Raw.alarm;
+        }
+        else if (sound == "alarm2.mp3")
+        {
+            soundResourceId = NightscoutMobileHybrid.Droid.Resource.Raw.alarm2;
+        }
 
         if (!string.IsNullOrEmpty(message))
         {
-            createNotification(key, title, message);
+            createNotification(key, title, message, soundResourceId);
         }
         else
         {
             Log.Error(ApplicationSettings.AzureTag, "Unknown message details: " + msg.ToString());
-            createNotification("0", "Unknown message details", msg.ToString());
+            createNotification("0", "Unknown message details", msg.ToString(), soundResourceId);
         }
     }
 
@@ -111,10 +120,10 @@ public class PushHandlerService : GcmServiceBase
 
     protected override void OnUnRegistered(Context context, string registrationId)
     {
-        createNotification("0", "GCM Unregistered...", "The device has been unregistered!");
+        createNotification("0", "GCM Unregistered...", "The device has been unregistered!", 0);
     }
 
-    void createNotification(string key, string title, string desc)
+    void createNotification(string key, string title, string desc, int sound)
     {
         var intent = new Intent(this, typeof(MainActivity));
         intent.AddFlags(ActivityFlags.SingleTop);
@@ -125,14 +134,25 @@ public class PushHandlerService : GcmServiceBase
             .SetContentTitle(title)
             .SetContentText(desc)
             .SetAutoCancel(true)
-            .SetDefaults(NotificationDefaults.Vibrate | NotificationDefaults.Lights)
-            .SetSound(Android.Net.Uri.Parse(ContentResolver.SchemeAndroidResource + "://" + PackageName + "/Raw/" + NightscoutMobileHybrid.Droid.Resource.Raw.alarm))
             .SetPriority((int)NotificationPriority.Max)
             .SetContentIntent(pendingIntent);
 
+        if (sound == 0)
+        {
+            notificationBuilder.SetDefaults(NotificationDefaults.Vibrate | NotificationDefaults.Lights | NotificationDefaults.Sound);
+        }
+        else
+        {
+            notificationBuilder.SetDefaults(NotificationDefaults.Vibrate | NotificationDefaults.Lights);
+            notificationBuilder.SetSound(Android.Net.Uri.Parse(ContentResolver.SchemeAndroidResource + "://" + PackageName + "/Raw/" + sound));
+        }
+
         var notificationManager = (NotificationManager)GetSystemService(Context.NotificationService);
         var notification = notificationBuilder.Build();
-        notification.Flags = NotificationFlags.Insistent;
+        if (sound != 0)
+        {
+            notification.Flags = NotificationFlags.Insistent;
+        }
         notificationManager.Notify(key, 1, notification);
         
         //Not using in-app notifications (Nightscout handles all of that for us)
