@@ -60,7 +60,7 @@ namespace NightscoutMobileHybrid.UITests
 
 			//Enable Care Portal
 
-			app.Tap(x => x.Class("WebView").Marked("Web View").Css("I.icon-menu").Index(0));
+			app.Tap(x => x.Class("WebView").Marked("Web View").Css("I.icon-menu"));//.Index(0));
 			app.Screenshot("Tapped hamburger menu");
 			//app.ScrollDown();
 			//app.ScrollDown();
@@ -69,18 +69,18 @@ namespace NightscoutMobileHybrid.UITests
 			app.Screenshot("Checked Enable Careportal checkbox");
 			app.Tap(x => x.Class("WebView").Marked("Web View").Css("#save"));
 
-		
+
 			//Enter API Secret
-			app.Tap(x => x.Class("WebView").Marked("Web View").Css("I.icon-lock").Index(0));
+			app.Tap(x => x.Class("WebView").Marked("Web View").Css("I.icon-lock"));//.Index(0));
 			app.Screenshot("Tapped on Unlock menu");
 			app.EnterText(x => x.Class("WebView").Css("#apisecret"), "SRMAPISECRET");
 			app.Screenshot("Entered API Secret");
 			app.SwipeRightToLeft();
-			app.Tap(x => x.Class("WebView").Marked("Web View").Css("SPAN.ui-button-text").Index(1));
+			app.Tap(x => x.Class("WebView").Marked("Web View").Css("SPAN.ui-button-text"));//.Index(1));
 			//app.Screenshot("Tapped on view WebView");
 
 			//Enter BG Treatment
-			app.Tap(x => x.Class("WebView").Marked("Web View").Css("I.icon-plus").Index(0));
+			app.Tap(x => x.Class("WebView").Marked("Web View").Css("I.icon-plus"));//.Index(0));
 			app.Screenshot("Tapped on Add Treatment menu");
 			app.Tap(x => x.Class("WebView").Marked("Web View").Css("#eventType"));
 			app.Screenshot("Tapped on Treatment Type picker");
