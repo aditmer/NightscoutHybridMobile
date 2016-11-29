@@ -8,7 +8,8 @@ namespace NightscoutMobileHybrid.iOS
 {
 	public class PushNotificationsImplementation : IPushNotifications
 	{
-		
+
+		public static string deviceToken;
 
 		public PushNotificationsImplementation()
 		{
@@ -43,6 +44,10 @@ namespace NightscoutMobileHybrid.iOS
 
 		}
 
+		public string GetDeviceToken()
+		{
+			return deviceToken;
+		}
 
 	}
 }

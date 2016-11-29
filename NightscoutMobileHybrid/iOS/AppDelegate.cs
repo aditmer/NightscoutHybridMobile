@@ -40,44 +40,46 @@ namespace NightscoutMobileHybrid.iOS
 
 		public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
 		{
-			Hub = new SBNotificationHub(Constants.ConnectionString, Constants.NotificationHubPath);
+			PushNotificationsImplementation.deviceToken = deviceToken.ToString();
+			//Commented out on 11/29/16 by aed so we can register for notifications on the server
+			//Hub = new SBNotificationHub(Constants.ConnectionString, Constants.NotificationHubPath);
 
-			Hub.UnregisterAllAsync(deviceToken, (error) =>
-			{
-				if (error != null)
-				{
-					Console.WriteLine("Error calling Unregister: {0}", error.ToString());
-					return;
-				}
-			});
+			//Hub.UnregisterAllAsync(deviceToken, (error) =>
+			//{
+			//	if (error != null)
+			//	{
+			//		Console.WriteLine("Error calling Unregister: {0}", error.ToString());
+			//		return;
+			//	}
+			//});
 
 
-				//adds a tag for the current Nightscout URL in the App Settings
-				NSSet tags = new NSSet(ApplicationSettings.AzureTag); 
+			//	//adds a tag for the current Nightscout URL in the App Settings
+			//	NSSet tags = new NSSet(ApplicationSettings.AzureTag); 
 
-				//const string template = "{\"aps\":{\"alert\":\"$(message)\"},\"request\":\"$(requestid)\"}";
+			//	//const string template = "{\"aps\":{\"alert\":\"$(message)\"},\"request\":\"$(requestid)\"}";
 
-				const string templateBodyAPNS = "{\"aps\":{\"alert\":\"$(message)\",\"sound\":\"$(sound)\"},\"eventName\":\"$(eventName)\",\"group\":\"$(group)\",\"key\":\"$(key)\",\"level\":\"$(level)\",\"title\":\"$(title)\"}";
+			//	const string templateBodyAPNS = "{\"aps\":{\"alert\":\"$(message)\",\"sound\":\"$(sound)\"},\"eventName\":\"$(eventName)\",\"group\":\"$(group)\",\"key\":\"$(key)\",\"level\":\"$(level)\",\"title\":\"$(title)\"}";
 
-				//var alert = new JObject(
-				//new JProperty("aps", new JObject(new JProperty("alert", notificationText))),
-				//new JProperty("inAppMessage", notificationText))
-				//.ToString(Newtonsoft.Json.Formatting.None);
+			//	//var alert = new JObject(
+			//	//new JProperty("aps", new JObject(new JProperty("alert", notificationText))),
+			//	//new JProperty("inAppMessage", notificationText))
+			//	//.ToString(Newtonsoft.Json.Formatting.None);
 				
-				//JObject templates = new JObject();
-				//templates["genericMessage"] = new JObject
-				//{
-				//	{"body", templateBodyAPNS}
-				//};
+			//	//JObject templates = new JObject();
+			//	//templates["genericMessage"] = new JObject
+			//	//{
+			//	//	{"body", templateBodyAPNS}
+			//	//};
 
-				var expiryDate = DateTime.Now.AddDays(90).ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
+			//	var expiryDate = DateTime.Now.AddDays(90).ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
 
-				Hub.RegisterTemplateAsync(deviceToken,"nightscout",templateBodyAPNS,
-                      expiryDate,tags,(errorCallback) =>
-				{
-					if (errorCallback != null)
-						Console.WriteLine("RegisterNativeAsync error: " + errorCallback.ToString());
-				});
+			//	Hub.RegisterTemplateAsync(deviceToken,"nightscout",templateBodyAPNS,
+   //                   expiryDate,tags,(errorCallback) =>
+			//	{
+			//		if (errorCallback != null)
+			//			Console.WriteLine("RegisterNativeAsync error: " + errorCallback.ToString());
+			//	});
 
 		}
 

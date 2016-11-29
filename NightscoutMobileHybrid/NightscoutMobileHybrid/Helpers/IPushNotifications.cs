@@ -5,5 +5,7 @@ namespace NightscoutMobileHybrid
 	{
 		void Register();
 		void Unregister();
+
+		string GetDeviceToken();
 	}
 }

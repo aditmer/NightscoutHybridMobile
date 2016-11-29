@@ -7,6 +7,8 @@ namespace NightscoutMobileHybrid.Droid
 {
 	public class PushNotificationImplementation : Java.Lang.Object, IPushNotifications
 	{
+		public static string deviceToken;
+
 		public PushNotificationImplementation()
 		{
 		}
@@ -28,6 +30,11 @@ namespace NightscoutMobileHybrid.Droid
             var ctx = Forms.Context;
 
             GcmClient.UnRegister(ctx);
+		}
+
+		public string GetDeviceToken()
+		{
+			return deviceToken;
 		}
 	}
 }

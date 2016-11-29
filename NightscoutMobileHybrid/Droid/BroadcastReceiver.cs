@@ -90,32 +90,35 @@ public class PushHandlerService : GcmServiceBase
 
     protected override void OnRegistered(Context context, string registrationId)
     {
-        RegistrationID = registrationId;
+		PushNotificationImplementation.deviceToken = registrationId;
 
-        Hub = new NotificationHub(NightscoutMobileHybrid.Constants.NotificationHubPath, NightscoutMobileHybrid.Constants.ConnectionString, context);
+		//commented out on 11/29/16 by aed so we can register on the server
+        //RegistrationID = registrationId;
 
-        try
-        {
-            Hub.UnregisterAll(registrationId);
-        }
-        catch (Exception ex)
-        {
-            Log.Error(ApplicationSettings.AzureTag, ex.Message);
-        }
+        //Hub = new NotificationHub(NightscoutMobileHybrid.Constants.NotificationHubPath, NightscoutMobileHybrid.Constants.ConnectionString, context);
+
+        //try
+        //{
+        //    Hub.UnregisterAll(registrationId);
+        //}
+        //catch (Exception ex)
+        //{
+        //    Log.Error(ApplicationSettings.AzureTag, ex.Message);
+        //}
 
         
-        var tags = new List<string>() { ApplicationSettings.AzureTag };
+        //var tags = new List<string>() { ApplicationSettings.AzureTag };
 
-        try
-        {
-            const string templateBodyGCM = "{\"data\":{\"message\":\"$(message)\",\"eventName\":\"$(eventName)\",\"group\":\"$(group)\",\"key\":\"$(key)\",\"level\":\"$(level)\",\"sound\":\"$(sound)\",\"title\":\"$(title)\"}}";
+        //try
+        //{
+        //    const string templateBodyGCM = "{\"data\":{\"message\":\"$(message)\",\"eventName\":\"$(eventName)\",\"group\":\"$(group)\",\"key\":\"$(key)\",\"level\":\"$(level)\",\"sound\":\"$(sound)\",\"title\":\"$(title)\"}}";
 
-            var hubRegistration = Hub.RegisterTemplate(registrationId, "nightscout", templateBodyGCM, tags.ToArray());
-        }
-        catch (Exception ex)
-        {
-            Log.Error(ApplicationSettings.AzureTag, ex.Message);
-        }
+        //    var hubRegistration = Hub.RegisterTemplate(registrationId, "nightscout", templateBodyGCM, tags.ToArray());
+        //}
+        //catch (Exception ex)
+        //{
+        //    Log.Error(ApplicationSettings.AzureTag, ex.Message);
+        //}
     }
 
     protected override void OnUnRegistered(Context context, string registrationId)

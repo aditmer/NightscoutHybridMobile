@@ -47,11 +47,11 @@ namespace NightscoutMobileHybrid
 			{
 				ApplicationSettings.AzureTag = azureTag;
 
-				//TODO change this to call server registration API
+
 				DependencyService.Get<IPushNotifications>().Register();
 
 				RegisterRequest registration = new RegisterRequest();
-				registration.deviceToken = ""; //TODO get from platform code
+				registration.deviceToken = DependencyService.Get<IPushNotifications>().GetDeviceToken();
 				registration.platform = Device.OS.ToString();
 
 				registration.settings = new RegistrationSettings();
