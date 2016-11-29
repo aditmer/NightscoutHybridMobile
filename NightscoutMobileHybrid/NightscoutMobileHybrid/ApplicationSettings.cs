@@ -26,7 +26,12 @@ namespace NightscoutMobileHybrid
 
 		private const string URLkey = "URL";
 		private const string AzureTagkey = "AzureTag";
+		private const string InfoNotificationskey = "InfoNotifications";
+		private const string AlertNotificationskey = "AlertNotifications";
+		private const string AnouncementNotificationskey = "AnouncementNotifications";
+		private const string RegistrationIDkey = "RegistrationID";
 		private static readonly string SettingsDefault = string.Empty;
+		private static readonly bool SettingsDefaultBool = false;
 
 		#endregion
 
@@ -57,7 +62,53 @@ namespace NightscoutMobileHybrid
 			}
 		}
 
+		public static bool InfoNotifications
+		{
+			get
+			{
+				return AppSettings.GetValueOrDefault<bool>(InfoNotificationskey, SettingsDefaultBool);
+			}
+			set
+			{
+				AppSettings.AddOrUpdateValue<bool>(InfoNotificationskey, value);
+			}
+		}
 
+		public static bool AlertNotifications
+		{
+			get
+			{
+				return AppSettings.GetValueOrDefault<bool>(AlertNotificationskey, SettingsDefaultBool);
+			}
+			set
+			{
+				AppSettings.AddOrUpdateValue<bool>(AlertNotificationskey, value);
+			}
+		}
+
+		public static bool AnouncementNotifications
+		{
+			get
+			{
+				return AppSettings.GetValueOrDefault<bool>(AnouncementNotificationskey, SettingsDefaultBool);
+			}
+			set
+			{
+				AppSettings.AddOrUpdateValue<bool>(AnouncementNotificationskey, value);
+			}
+		}
+
+		public static string RegistrationID
+		{
+			get
+			{
+				return AppSettings.GetValueOrDefault<string>(RegistrationIDkey, SettingsDefault);
+			}
+			set
+			{
+				AppSettings.AddOrUpdateValue<string>(RegistrationIDkey, value);
+			}
+		}
 
 	}
 }

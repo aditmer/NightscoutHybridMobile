@@ -5,10 +5,21 @@
 			<Label Text="Enter your Nightscout URL below" TextColor="White" />
 			<Entry x:Name="entURL" BackgroundColor="White" Placeholder="https://your-nightscout-url.azurewebsites.net" />
 
+			<Label Text="Info Notifications" />
+			<Switch x:Name="swInfo" />
+
+			<Label Text="Alert Notifications" />
+			<Switch x:Name="swAlert" />
+
+			<Label Text="Anouncement Notifications" />
+			<Switch x:Name="swAnouncement" />
+			
 			<StackLayout Orientation="Horizontal">
 				<Button x:Name="btnSave" Text="Save" Clicked="btnSave_Clicked" WidthRequest="100" TextColor="White" BackgroundColor="Gray" />
 				<Button x:Name="btnCancel" Text="Cancel" Clicked="BtnCancel_Clicked" WidthRequest="100" TextColor="White" BackgroundColor="Gray" />
 			</StackLayout>
+
+		
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

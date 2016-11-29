@@ -51,6 +51,9 @@
     <Compile Include="Helpers\IVolumeControl.cs" />
     <Compile Include="Helpers\IPushNotifications.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="RegisterRequest.cs" />
+    <Compile Include="RegistrationSettings.cs" />
+    <Compile Include="RegisterResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xamarin.Forms;
@@ -13,8 +15,11 @@ namespace NightscoutMobileHybrid
 		{
 			InitializeComponent();
 
-			entURL.Text = ApplicationSettings.URL;
 
+			entURL.Text = ApplicationSettings.URL;
+			swInfo.IsToggled = ApplicationSettings.InfoNotifications;
+			swAlert.IsToggled = ApplicationSettings.AlertNotifications;
+			swAnouncement.IsToggled = ApplicationSettings.AnouncementNotifications;
 		}
 
 		async void btnSave_Clicked(object sender, System.EventArgs e)
@@ -29,6 +34,9 @@ namespace NightscoutMobileHybrid
 			sURL = "https://" + sURL;
 
 			ApplicationSettings.URL = sURL;
+			ApplicationSettings.InfoNotifications = swInfo.IsToggled;
+			ApplicationSettings.AlertNotifications = swAlert.IsToggled;
+			ApplicationSettings.AnouncementNotifications = swAnouncement.IsToggled;
 
 			MessagingCenter.Send<SettingsPage>(this, "URLChanged");
 
@@ -38,7 +46,21 @@ namespace NightscoutMobileHybrid
 			if (azureTag != "")
 			{
 				ApplicationSettings.AzureTag = azureTag;
+
+				//TODO change this to call server registration API
 				DependencyService.Get<IPushNotifications>().Register();
+
+				RegisterRequest registration = new RegisterRequest();
+				registration.deviceToken = ""; //TODO get from platform code
+				registration.platform = Device.OS.ToString();
+
+				registration.settings = new RegistrationSettings();
+				registration.settings.info = ApplicationSettings.InfoNotifications;
+				registration.settings.alert = ApplicationSettings.AlertNotifications;
+				registration.settings.announcement = ApplicationSettings.AnouncementNotifications;
+
+
+				await RegisterPush(registration);
 			}
 		}
 
@@ -79,5 +101,27 @@ namespace NightscoutMobileHybrid
 
 			return site.settings.azureTag;
 		}
+
+		public async static Task RegisterPush(RegisterRequest request)
+		{
+			var httpClient = new HttpClient();
+
+				string resourceAddress = "http://71.87.114.90/api/v1/notifications/azure/register";
+
+				 
+
+				string postBody = JsonConvert.SerializeObject(request);
+
+				httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+				HttpResponseMessage httpResponse = await httpClient.PostAsync(resourceAddress, new StringContent(postBody, Encoding.UTF8, "application/json"));
+
+				var content = await httpResponse.Content.ReadAsStringAsync();
+				RegisterResponse response = JsonConvert.DeserializeObject<RegisterResponse>(content);
+
+			ApplicationSettings.RegistrationID = response.registrationId;
+
+		}
+
+		
 	}
 }
