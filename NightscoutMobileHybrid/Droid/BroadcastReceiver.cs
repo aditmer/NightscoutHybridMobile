@@ -90,8 +90,9 @@ public class PushHandlerService : GcmServiceBase
 
     protected override void OnRegistered(Context context, string registrationId)
     {
-		PushNotificationImplementation.deviceToken = registrationId;
-
+		PushNotificationImplementation.registerRequest.deviceToken = registrationId;
+		ApplicationSettings.DeviceToken = registrationId;
+		SettingsPage.RegisterPush(PushNotificationImplementation.registerRequest);
 		//commented out on 11/29/16 by aed so we can register on the server
         //RegistrationID = registrationId;
 

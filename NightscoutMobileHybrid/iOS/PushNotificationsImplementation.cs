@@ -9,7 +9,7 @@ namespace NightscoutMobileHybrid.iOS
 	public class PushNotificationsImplementation : IPushNotifications
 	{
 
-		public static string deviceToken;
+		public static RegisterRequest registerRequest;
 
 		public PushNotificationsImplementation()
 		{
@@ -20,9 +20,9 @@ namespace NightscoutMobileHybrid.iOS
 			UIApplication.SharedApplication.UnregisterForRemoteNotifications();
 		}
 
-		void IPushNotifications.Register()
+		void IPushNotifications.Register(RegisterRequest request)
 		{
-
+			registerRequest = request;
 
 			//Push notifications registration
 			if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
@@ -44,10 +44,7 @@ namespace NightscoutMobileHybrid.iOS
 
 		}
 
-		public string GetDeviceToken()
-		{
-			return deviceToken;
-		}
+
 
 	}
 }

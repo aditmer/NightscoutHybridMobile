@@ -29,7 +29,8 @@ namespace NightscoutMobileHybrid
 		private const string InfoNotificationskey = "InfoNotifications";
 		private const string AlertNotificationskey = "AlertNotifications";
 		private const string AnouncementNotificationskey = "AnouncementNotifications";
-		private const string RegistrationIDkey = "RegistrationID";
+		private const string InstallationIDkey = "InstallationID";
+		private const string DeviceTokenkey = "DeviceToken";
 		private static readonly string SettingsDefault = string.Empty;
 		private static readonly bool SettingsDefaultBool = false;
 
@@ -98,15 +99,27 @@ namespace NightscoutMobileHybrid
 			}
 		}
 
-		public static string RegistrationID
+		public static string InstallationID
 		{
 			get
 			{
-				return AppSettings.GetValueOrDefault<string>(RegistrationIDkey, SettingsDefault);
+				return AppSettings.GetValueOrDefault<string>(InstallationIDkey, SettingsDefault);
 			}
 			set
 			{
-				AppSettings.AddOrUpdateValue<string>(RegistrationIDkey, value);
+				AppSettings.AddOrUpdateValue<string>(InstallationIDkey, value);
+			}
+		}
+
+		public static string DeviceToken
+		{
+			get
+			{
+				return AppSettings.GetValueOrDefault<string>(DeviceTokenkey, SettingsDefault);
+			}
+			set
+			{
+				AppSettings.AddOrUpdateValue<string>(DeviceTokenkey, value);
 			}
 		}
 

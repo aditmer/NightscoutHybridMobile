@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -48,10 +49,10 @@ namespace NightscoutMobileHybrid
 				ApplicationSettings.AzureTag = azureTag;
 
 
-				DependencyService.Get<IPushNotifications>().Register();
+
 
 				RegisterRequest registration = new RegisterRequest();
-				registration.deviceToken = DependencyService.Get<IPushNotifications>().GetDeviceToken();
+				//registration.deviceToken = DependencyService.Get<IPushNotifications>().GetDeviceToken();
 				registration.platform = Device.OS.ToString();
 
 				registration.settings = new RegistrationSettings();
@@ -60,7 +61,38 @@ namespace NightscoutMobileHybrid
 				registration.settings.announcement = ApplicationSettings.AnouncementNotifications;
 
 
-				await RegisterPush(registration);
+				//If all switches are turned off for notifications, then Unregister
+				bool bUnregister = true;
+
+				//Loops through all properties of the RegistrationSettings to see if ALL of them are false
+				Type t = typeof(RegistrationSettings);
+				foreach (PropertyInfo propertyInfo in t.GetRuntimeProperties())
+				{
+					bool bProp = Convert.ToBoolean(propertyInfo.GetValue(registration.settings));
+
+					if (bProp == true)
+					{
+						bUnregister = false;
+					}
+				}
+
+				if (bUnregister)
+				{
+					await UnregisterPush(ApplicationSettings.InstallationID);
+				}
+				else
+				{
+					if (ApplicationSettings.InstallationID == "")
+					{
+						DependencyService.Get<IPushNotifications>().Register(registration);
+					}
+					else
+					{
+						registration.deviceToken = ApplicationSettings.DeviceToken;
+						registration.installationId = ApplicationSettings.InstallationID;
+						await RegisterPush(registration);
+					}
+				}
 			}
 		}
 
@@ -106,7 +138,7 @@ namespace NightscoutMobileHybrid
 		{
 			var httpClient = new HttpClient();
 
-				string resourceAddress = "http://71.87.114.90/api/v1/notifications/azure/register";
+				string resourceAddress = ApplicationSettings.URL + "/api/v1/notifications/azure/register";
 
 				 
 
@@ -118,10 +150,27 @@ namespace NightscoutMobileHybrid
 				var content = await httpResponse.Content.ReadAsStringAsync();
 				RegisterResponse response = JsonConvert.DeserializeObject<RegisterResponse>(content);
 
-			ApplicationSettings.RegistrationID = response.registrationId;
+			ApplicationSettings.InstallationID = response.installationId;
 
 		}
 
 		
+		async Task UnregisterPush(string InstallationID)
+		{
+			var httpClient = new HttpClient();
+
+			string resourceAddress = ApplicationSettings.URL + "/api/v1/notifications/azure/unregister";
+
+			var installationID = new RegisterResponse { installationId = InstallationID };
+
+			string postBody = JsonConvert.SerializeObject(installationID);
+
+			httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+			HttpResponseMessage httpResponse = await httpClient.PostAsync(resourceAddress, new StringContent(postBody, Encoding.UTF8, "application/json"));
+
+			//var content = await httpResponse.Content.ReadAsStringAsync();
+			//RegisterResponse response = JsonConvert.DeserializeObject<RegisterResponse>(content);
+
+		}
 	}
 }

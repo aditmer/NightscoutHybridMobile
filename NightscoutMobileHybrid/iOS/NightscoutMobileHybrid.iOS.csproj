@@ -84,7 +84,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
-    <CodesignProvision>Nightscout Dev Profile</CodesignProvision>
+    <CodesignProvision>137a0323-4ec8-4a5d-abe9-97e6afa2d2e4</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

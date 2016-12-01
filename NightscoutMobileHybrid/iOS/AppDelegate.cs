@@ -40,7 +40,17 @@ namespace NightscoutMobileHybrid.iOS
 
 		public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
 		{
-			PushNotificationsImplementation.deviceToken = deviceToken.ToString();
+			string s = deviceToken.Description.Replace("<","").Replace(">","").Replace(" ","");
+			//Byte[]  tokenBytes = deviceToken.Bytes;
+			//for (int i = 0; i < 8;i++)
+			//{
+				
+			//	s += String.Format("%08x%08x%08x%08x%08x%08x%08x%08x", deviceToken.Bytes[i])
+			//}
+			 
+			PushNotificationsImplementation.registerRequest.deviceToken = s;
+			ApplicationSettings.DeviceToken = s;
+			SettingsPage.RegisterPush(PushNotificationsImplementation.registerRequest);
 			//Commented out on 11/29/16 by aed so we can register for notifications on the server
 			//Hub = new SBNotificationHub(Constants.ConnectionString, Constants.NotificationHubPath);
 
@@ -74,7 +84,7 @@ namespace NightscoutMobileHybrid.iOS
 
 			//	var expiryDate = DateTime.Now.AddDays(90).ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
 
-			//	Hub.RegisterTemplateAsync(deviceToken,"nightscout",templateBodyAPNS,
+				//Hub.RegisterTemplateAsync(deviceToken,"nightscout",templateBodyAPNS,
    //                   expiryDate,tags,(errorCallback) =>
 			//	{
 			//		if (errorCallback != null)

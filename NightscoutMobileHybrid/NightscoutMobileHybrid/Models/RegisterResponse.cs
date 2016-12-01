@@ -3,7 +3,7 @@ namespace NightscoutMobileHybrid
 {
 	public class RegisterResponse
 	{
-		public string registrationId
+		public string installationId
 		{
 			get;
 			set;

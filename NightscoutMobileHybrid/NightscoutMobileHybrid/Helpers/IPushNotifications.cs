@@ -3,9 +3,9 @@ namespace NightscoutMobileHybrid
 {
 	public interface IPushNotifications
 	{
-		void Register();
+		void Register(RegisterRequest registerRequest);
 		void Unregister();
 
-		string GetDeviceToken();
+
 	}
 }
