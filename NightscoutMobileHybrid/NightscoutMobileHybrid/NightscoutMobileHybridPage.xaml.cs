@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 
 namespace NightscoutMobileHybrid
 {
@@ -22,6 +23,11 @@ namespace NightscoutMobileHybrid
 			{
 				wvNightscout.Source = ApplicationSettings.URL;
 			});
+
+			MessagingCenter.Subscribe<Exception,string>(this, "Register Error", (page,errorMessage) =>
+			 {
+				DisplayAlert("Error", $"There was an error registering for push notifications: {errorMessage}.  This has already been reported to the developers.", "Ok");
+			 });
 
 			slVolume.Maximum = DependencyService.Get<IVolumeControl>().GetMaxVolume();
 
