@@ -7,6 +7,7 @@ using HockeyApp.iOS;
 using UIKit;
 using WindowsAzure.Messaging;
 using Newtonsoft.Json.Linq;
+using UserNotifications;
 
 namespace NightscoutMobileHybrid.iOS
 {
@@ -50,48 +51,68 @@ namespace NightscoutMobileHybrid.iOS
 			 
 			PushNotificationsImplementation.registerRequest.deviceToken = s;
 			ApplicationSettings.DeviceToken = s;
-			SettingsPage.RegisterPush(PushNotificationsImplementation.registerRequest);
-			//Commented out on 11/29/16 by aed so we can register for notifications on the server
-			//Hub = new SBNotificationHub(Constants.ConnectionString, Constants.NotificationHubPath);
-
-			//Hub.UnregisterAllAsync(deviceToken, (error) =>
-			//{
-			//	if (error != null)
-			//	{
-			//		Console.WriteLine("Error calling Unregister: {0}", error.ToString());
-			//		return;
-			//	}
-			//});
+			Webservices.RegisterPush(PushNotificationsImplementation.registerRequest);
 
 
-			//	//adds a tag for the current Nightscout URL in the App Settings
-			//	NSSet tags = new NSSet(ApplicationSettings.AzureTag); 
+            //added on 12/03/16 by aed to add custom actions to the notifications (I think this code goes here)
+            // Create action
+            var actionID = "snooze";
+            var title = "Snooze";
+            var action = UNNotificationAction.FromIdentifier(actionID, title, UNNotificationActionOptions.None);
 
-			//	//const string template = "{\"aps\":{\"alert\":\"$(message)\"},\"request\":\"$(requestid)\"}";
+            // Create category
+            var categoryID = "event";
+            var actions = new UNNotificationAction[] { action };
+            var intentIDs = new string[] { };
+            var categoryOptions = new UNNotificationCategoryOptions[] { };
+            var category = UNNotificationCategory.FromIdentifier(categoryID, actions, intentIDs, UNNotificationCategoryOptions.None);
 
-			//	const string templateBodyAPNS = "{\"aps\":{\"alert\":\"$(message)\",\"sound\":\"$(sound)\"},\"eventName\":\"$(eventName)\",\"group\":\"$(group)\",\"key\":\"$(key)\",\"level\":\"$(level)\",\"title\":\"$(title)\"}";
+            // Register category
+            var categories = new UNNotificationCategory[] { category };
+            UNUserNotificationCenter.Current.SetNotificationCategories(new NSSet<UNNotificationCategory>(categories));
 
-			//	//var alert = new JObject(
-			//	//new JProperty("aps", new JObject(new JProperty("alert", notificationText))),
-			//	//new JProperty("inAppMessage", notificationText))
-			//	//.ToString(Newtonsoft.Json.Formatting.None);
-				
-			//	//JObject templates = new JObject();
-			//	//templates["genericMessage"] = new JObject
-			//	//{
-			//	//	{"body", templateBodyAPNS}
-			//	//};
 
-			//	var expiryDate = DateTime.Now.AddDays(90).ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
+            //Commented out on 11/29/16 by aed so we can register for notifications on the server
+            //Hub = new SBNotificationHub(Constants.ConnectionString, Constants.NotificationHubPath);
 
-				//Hub.RegisterTemplateAsync(deviceToken,"nightscout",templateBodyAPNS,
-   //                   expiryDate,tags,(errorCallback) =>
-			//	{
-			//		if (errorCallback != null)
-			//			Console.WriteLine("RegisterNativeAsync error: " + errorCallback.ToString());
-			//	});
+            //Hub.UnregisterAllAsync(deviceToken, (error) =>
+            //{
+            //	if (error != null)
+            //	{
+            //		Console.WriteLine("Error calling Unregister: {0}", error.ToString());
+            //		return;
+            //	}
+            //});
 
-		}
+
+            //	//adds a tag for the current Nightscout URL in the App Settings
+            //	NSSet tags = new NSSet(ApplicationSettings.AzureTag); 
+
+            //	//const string template = "{\"aps\":{\"alert\":\"$(message)\"},\"request\":\"$(requestid)\"}";
+
+            //	const string templateBodyAPNS = "{\"aps\":{\"alert\":\"$(message)\",\"sound\":\"$(sound)\"},\"eventName\":\"$(eventName)\",\"group\":\"$(group)\",\"key\":\"$(key)\",\"level\":\"$(level)\",\"title\":\"$(title)\"}";
+
+            //	//var alert = new JObject(
+            //	//new JProperty("aps", new JObject(new JProperty("alert", notificationText))),
+            //	//new JProperty("inAppMessage", notificationText))
+            //	//.ToString(Newtonsoft.Json.Formatting.None);
+
+            //	//JObject templates = new JObject();
+            //	//templates["genericMessage"] = new JObject
+            //	//{
+            //	//	{"body", templateBodyAPNS}
+            //	//};
+
+            //	var expiryDate = DateTime.Now.AddDays(90).ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
+
+            //Hub.RegisterTemplateAsync(deviceToken,"nightscout",templateBodyAPNS,
+            //                   expiryDate,tags,(errorCallback) =>
+            //	{
+            //		if (errorCallback != null)
+            //			Console.WriteLine("RegisterNativeAsync error: " + errorCallback.ToString());
+            //	});
+
+        }
 
 		public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
 		{

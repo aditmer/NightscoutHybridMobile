@@ -175,9 +175,7 @@
       <InProject>false</InProject>
     </ImageAsset>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
   </ItemGroup>
@@ -190,6 +188,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="UserNotificationCenterDelegate.cs" />
     <Compile Include="VolumeControlImplementation.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="ScreenLockImplementation.cs" />
