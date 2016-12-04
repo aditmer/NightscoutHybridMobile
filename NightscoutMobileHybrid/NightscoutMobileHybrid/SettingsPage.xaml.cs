@@ -44,7 +44,7 @@ namespace NightscoutMobileHybrid
 			Navigation.PopModalAsync(true);
 
 			var azureTag = await GetAzureTag(sURL);
-			if (azureTag != "")
+			if ((azureTag != "") && (Device.OS != TargetPlatform.Windows))
 			{
 				ApplicationSettings.AzureTag = azureTag;
 
