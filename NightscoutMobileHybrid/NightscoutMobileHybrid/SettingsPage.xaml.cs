@@ -25,11 +25,11 @@ namespace NightscoutMobileHybrid
 
 		async void btnSave_Clicked(object sender, System.EventArgs e)
 		{
-			string sURL = entURL.Text;
+			string sURL = entURL.Text.ToLower();
 			sURL = sURL.Replace("https", "");
-			sURL = sURL.Replace("HTTPS", "");
+			//sURL = sURL.Replace("HTTPS", "");
 			sURL = sURL.Replace("http", "");
-			sURL = sURL.Replace("HTTP", "");
+			//sURL = sURL.Replace("HTTP", "");
 			sURL = sURL.Replace("://", "");
 
 			sURL = "https://" + sURL;
