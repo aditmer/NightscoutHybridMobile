@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Media.Playback;
+using Windows.UI.Xaml;
 
 [assembly: Xamarin.Forms.Dependency(typeof(VolumeControlImplementation))]
 namespace NightscoutMobileHybrid.UWP
 {
     class VolumeControlImplementation : IVolumeControl
     {
-        MediaPlayer player = new MediaPlayer();
+        
         public double GetMaxVolume()
         {
             return 1;
@@ -20,12 +21,12 @@ namespace NightscoutMobileHybrid.UWP
         public double GetVolume()
         {
 
-            return player.Volume;
+            return BackgroundMediaPlayer.Current.Volume; 
         }
 
         public void SetVolume(float Volume)
         {
-            player.Volume = Volume;
+            BackgroundMediaPlayer.Current.Volume = Volume;
         }
     }
 }

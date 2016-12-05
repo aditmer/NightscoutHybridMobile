@@ -43,8 +43,8 @@ namespace NightscoutMobileHybrid
 
 			Navigation.PopModalAsync(true);
 
-			var azureTag = await GetAzureTag(sURL);
-			if (azureTag != "")
+			var azureTag = await Webservices.GetAzureTag(sURL);
+			if ((azureTag != "") && (Device.OS != TargetPlatform.Windows))
 			{
 				ApplicationSettings.AzureTag = azureTag;
 
@@ -78,7 +78,12 @@ namespace NightscoutMobileHybrid
 
 				if (bUnregister)
 				{
-					await UnregisterPush(ApplicationSettings.InstallationID);
+                    //if UnregisterPush does NOT return an empty string, display the error message
+                    string response = await Webservices.UnregisterPush(ApplicationSettings.InstallationID);
+                    if (response != "")
+                    {
+                        await DisplayAlert("Error", response, "Ok");
+                    }
 				}
 				else
 				{
@@ -90,7 +95,7 @@ namespace NightscoutMobileHybrid
 					{
 						registration.deviceToken = ApplicationSettings.DeviceToken;
 						registration.installationId = ApplicationSettings.InstallationID;
-						await RegisterPush(registration);
+						await Webservices.RegisterPush(registration);
 					}
 				}
 			}
@@ -110,108 +115,9 @@ namespace NightscoutMobileHybrid
 
 
 
-		public static async Task<string> GetAzureTag(string URL)
-		{
-			
-				RootObject site = new RootObject();
+		
 
-				var client = new HttpClient();
-				client.MaxResponseContentBufferSize = 256000;
-
-				string sRestUrl = URL + "/api/v1/status.json";  // $"https://{sNSWebsite}/api/v1/entries/sgv.json?[count]=20";
-				var uri = new Uri(string.Format(sRestUrl, string.Empty));
-
-				var response = await client.GetAsync(uri);
-				if (response.IsSuccessStatusCode)
-				{
-					var content = "";
-
-					try
-					{
-						content = await response.Content.ReadAsStringAsync();
-					}
-					catch (Exception ex)
-					{
-						
-						HockeyApp.MetricsManager.TrackEvent(ex.Message);
-					}
-					site = JsonConvert.DeserializeObject<RootObject>(content);
-
-				if (!site.settings.enable.Contains("azurepush"))
-				{
-					
-						site.settings.azureTag = "";
-					}
-
-
-				}
-				else
-				{
-					site.settings.azureTag = "";
-				}
-
-			
-
-			return site.settings.azureTag;
-		}
-
-		public async static Task RegisterPush(RegisterRequest request)
-		{
-			var httpClient = new HttpClient();
-
-			string resourceAddress = ApplicationSettings.URL + "/api/v1/notifications/azure/register";
-
-			 
-
-			string postBody = JsonConvert.SerializeObject(request);
-
-			httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-			try
-			{
-				HttpResponseMessage httpResponse = await httpClient.PostAsync(resourceAddress, new StringContent(postBody, Encoding.UTF8, "application/json"));
-				var content = await httpResponse.Content.ReadAsStringAsync();
-				RegisterResponse response = JsonConvert.DeserializeObject<RegisterResponse>(content);
-
-				ApplicationSettings.InstallationID = response.installationId;
-			}
-			catch(Exception ex)
-			{
-				HockeyApp.MetricsManager.TrackEvent(ex.Message);
-				MessagingCenter.Send<Exception, string>(ex, "Register Error",ex.Message);
-			}
-
-
-		}
 
 		
-		async Task UnregisterPush(string InstallationID)
-		{
-			var httpClient = new HttpClient();
-
-			try
-			{
-				string resourceAddress = ApplicationSettings.URL + "/api/v1/notifications/azure/unregister";
-
-
-				var installationID = new RegisterResponse { installationId = InstallationID };
-
-				string postBody = JsonConvert.SerializeObject(installationID);
-
-				httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-				HttpResponseMessage httpResponse = await httpClient.PostAsync(resourceAddress, new StringContent(postBody, Encoding.UTF8, "application/json"));
-			}
-			catch (Exception ex)
-			{
-				HockeyApp.MetricsManager.TrackEvent(ex.Message);
-				Device.BeginInvokeOnMainThread(() =>
-				{
-					DisplayAlert("Error", $"There was an error unregistering for push notifications: {ex.Message}.  This has already been reported to the developers.", "Ok");
-				});
-			}
-			//var content = await httpResponse.Content.ReadAsStringAsync();
-			//RegisterResponse response = JsonConvert.DeserializeObject<RegisterResponse>(content);
-
-		}
 	}
 }

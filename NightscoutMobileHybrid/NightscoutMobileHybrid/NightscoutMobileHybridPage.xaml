@@ -12,6 +12,9 @@
       <OnPlatform.WinPhone>
         0, 0, 0, 0
       </OnPlatform.WinPhone>
+    <!--<OnPlatform.Windows>
+      0,0,0,0
+    </OnPlatform.Windows>-->
     </OnPlatform>
   </ContentPage.Padding>
 
@@ -20,7 +23,7 @@
 		<!--<Margin>
 			<OnPlatform.iOS>0,20,0,0</OnPlatform.iOS>
 		</Margin>-->
-		<WebView x:Name="wvNightscout" HeightRequest="1000" WidthRequest="1000"></WebView>
+		<WebView x:Name="wvNightscout" HeightRequest="700" WidthRequest="1000"></WebView>
 
 		<Slider x:Name="slVolume" Minimum="0"  ValueChanged="SlVolume_ValueChanged" />
 		<StackLayout Orientation="Horizontal">
