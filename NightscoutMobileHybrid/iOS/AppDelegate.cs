@@ -32,7 +32,7 @@ namespace NightscoutMobileHybrid.iOS
 			manager.Configure("d8783c34856046d9bc081c47708843f6");
 			manager.StartManager();
 
-
+			UNUserNotificationCenter.Current.Delegate = new UserNotificationCenterDelegate();
 
 
 
@@ -71,7 +71,8 @@ namespace NightscoutMobileHybrid.iOS
             var categories = new UNNotificationCategory[] { category };
             UNUserNotificationCenter.Current.SetNotificationCategories(new NSSet<UNNotificationCategory>(categories));
 
-			UNUserNotificationCenter.Current.Delegate = new UserNotificationCenterDelegate();
+
+
 
             //Commented out on 11/29/16 by aed so we can register for notifications on the server
             //Hub = new SBNotificationHub(Constants.ConnectionString, Constants.NotificationHubPath);

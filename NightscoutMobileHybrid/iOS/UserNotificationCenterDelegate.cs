@@ -1,5 +1,6 @@
 using System;
 using Foundation;
+using HockeyApp.iOS;
 using UserNotifications;
 
 namespace NightscoutMobileHybrid.iOS
@@ -15,8 +16,11 @@ namespace NightscoutMobileHybrid.iOS
         #region Override Methods
         public override void DidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler)
         {
+			var manager = BITHockeyManager.SharedHockeyManager;
+			manager.MetricsManager.TrackEvent("iOS Notification Ack");
+
             // Take action based on Action ID
-            switch (response.Notification.Request.Identifier)
+			switch (response.ActionIdentifier) 
             {
                 case "snooze":
 					
@@ -26,20 +30,21 @@ namespace NightscoutMobileHybrid.iOS
 
 					if (userInfo.ContainsKey(new NSString("level")))
 					{
-						ack.Level = (userInfo.ObjectForKey(new NSString("level")) as NSNumber).Int32Value;
+						ack.level = userInfo.ValueForKey(new NSString("level")) as NSString;
+						//ack.Level = level.Int32Value;
 					}
 
 					if (userInfo.ContainsKey(new NSString("group")))
 					{
-						ack.Group = (userInfo.ObjectForKey(new NSString("group")) as NSString).ToString();
+						ack.group = (userInfo.ValueForKey(new NSString("group")) as NSString).ToString();
 					}
 
 					if (userInfo.ContainsKey(new NSString("key")))
 					{
-						ack.Key = (userInfo.ObjectForKey(new NSString("key")) as NSString).ToString();
+						ack.key = (userInfo.ValueForKey(new NSString("key")) as NSString).ToString();
 					}
 
-					ack.TimeInMinutes = 15;
+					ack.time = 15;
 
 					Webservices.SilenceAlarm(ack);
                     break;

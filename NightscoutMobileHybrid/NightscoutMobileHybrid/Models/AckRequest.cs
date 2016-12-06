@@ -3,25 +3,25 @@ namespace NightscoutMobileHybrid
 {
 	public class AckRequest
 	{
-		public int Level
+		public string level
 		{
 			get;
 			set;
 		}
 
-		public string Key
+		public string key
 		{
 			get;
 			set;
 		}
 
-		public string Group
+		public string group
 		{
 			get;
 			set;
 		}
 
-		public int TimeInMinutes
+		public int time
 		{
 			get;
 			set;
