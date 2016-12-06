@@ -54,6 +54,8 @@
     <Compile Include="Models\RegisterResponse.cs" />
     <Compile Include="Models\RegistrationSettings.cs" />
     <Compile Include="Models\Settings.cs" />
+    <Compile Include="Helpers\Webservices.cs" />
+    <Compile Include="Models\AckRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

@@ -133,13 +133,18 @@ public class PushHandlerService : GcmServiceBase
         intent.AddFlags(ActivityFlags.SingleTop);
         var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.UpdateCurrent);
 
+		//addd on 12/5/16 by aed to add actions to the push notifications
+		//TODO add the Webservices.SilenceAlarm call to the pendingIntent (or a new intent)
+		Notification.Action notificationAction = new Notification.Action(0, "Snooze", pendingIntent);
+
         var notificationBuilder = new Notification.Builder(this)
             .SetSmallIcon(NightscoutMobileHybrid.Droid.Resource.Drawable.icon)
             .SetContentTitle(title)
             .SetContentText(desc)
             .SetAutoCancel(true)
             .SetPriority((int)NotificationPriority.Max)
-            .SetContentIntent(pendingIntent);
+            .SetContentIntent(pendingIntent)
+          .AddAction(notificationAction);
 
         if (sound == 0)
         {

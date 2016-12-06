@@ -10,33 +10,35 @@ using Xamarin.Forms;
 
 namespace NightscoutMobileHybrid
 {
-    class Webservices
+    public class Webservices
     {
-        public async void SilenceAlarm(string Level, string Key, string Group, int TimeInMinutes)
+        public static async Task SilenceAlarm(AckRequest ack)
         {
             var httpClient = new HttpClient();
 
             //TODO add the correct URL endpoint
-            string resourceAddress = ApplicationSettings.URL + "/api/v1/notifications/azure/register";
+            string resourceAddress = ApplicationSettings.URL + "/api/v1/notifications/azure/ack";
 
 
-            //TODO create a SilenceAlarmRequest class to serialize
-            string postBody = ""; // JsonConvert.SerializeObject(request);
+            
+			//AckRequest ack = new AckRequest { Level = level, Key = key, Group = group, TimeInMinutes = timeInMinutes }
+
+            string postBody = JsonConvert.SerializeObject(ack);
 
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             try
             {
                 HttpResponseMessage httpResponse = await httpClient.PostAsync(resourceAddress, new StringContent(postBody, Encoding.UTF8, "application/json"));
-                var content = await httpResponse.Content.ReadAsStringAsync();
-                RegisterResponse response = JsonConvert.DeserializeObject<RegisterResponse>(content);
+                //var content = await httpResponse.Content.ReadAsStringAsync();
+                //RegisterResponse response = JsonConvert.DeserializeObject<RegisterResponse>(content);
 
-                ApplicationSettings.InstallationID = response.installationId;
+                //ApplicationSettings.InstallationID = response.installationId;
             }
             catch (Exception ex)
             {
                 HockeyApp.MetricsManager.TrackEvent(ex.Message);
-                MessagingCenter.Send<Exception, string>(ex, "Register Error", ex.Message);
+                MessagingCenter.Send<Exception, string>(ex, "Snooze Error", ex.Message);
             }
 
 

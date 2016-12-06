@@ -1,7 +1,8 @@
 using System;
+using Foundation;
 using UserNotifications;
 
-namespace MonkeyNotification
+namespace NightscoutMobileHybrid.iOS
 {
     public class UserNotificationCenterDelegate : UNUserNotificationCenterDelegate
     {
@@ -18,12 +19,29 @@ namespace MonkeyNotification
             switch (response.Notification.Request.Identifier)
             {
                 case "snooze":
-                    // TODO Call SilenceAlarm web service
-                    // Needs to pass the following paramaters:
-                    // Level (from notification)
-                    // Key (from notification)
-                    // Group (from notification)
-                    // Time (how long to snooze)
+					
+					AckRequest ack = new AckRequest();
+
+					var userInfo = response.Notification.Request.Content.UserInfo;
+
+					if (userInfo.ContainsKey(new NSString("level")))
+					{
+						ack.Level = (userInfo.ObjectForKey(new NSString("level")) as NSNumber).Int32Value;
+					}
+
+					if (userInfo.ContainsKey(new NSString("group")))
+					{
+						ack.Group = (userInfo.ObjectForKey(new NSString("group")) as NSString).ToString();
+					}
+
+					if (userInfo.ContainsKey(new NSString("key")))
+					{
+						ack.Key = (userInfo.ObjectForKey(new NSString("key")) as NSString).ToString();
+					}
+
+					ack.TimeInMinutes = 15;
+
+					Webservices.SilenceAlarm(ack);
                     break;
                // default:
                     // Take action based on identifier
