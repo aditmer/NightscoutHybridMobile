@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -31,8 +32,11 @@ namespace NightscoutMobileHybrid
 		private const string AnouncementNotificationskey = "AnouncementNotifications";
 		private const string InstallationIDkey = "InstallationID";
 		private const string DeviceTokenkey = "DeviceToken";
+		private const string AlarmUrgentMins1key = "AlarmUrgentMins1";
+		private const string AlarmUrgentMins2key = "AlarmUrgentMins2";
 		private static readonly string SettingsDefault = string.Empty;
 		private static readonly bool SettingsDefaultBool = false;
+		private static readonly int SettingsDefaultInt = 0;
 
 		#endregion
 
@@ -120,6 +124,30 @@ namespace NightscoutMobileHybrid
 			set
 			{
 				AppSettings.AddOrUpdateValue<string>(DeviceTokenkey, value);
+			}
+		}
+
+		public static int AlarmUrgentMins1
+		{
+			get
+			{
+				return AppSettings.GetValueOrDefault<int>(AlarmUrgentMins1key, SettingsDefaultInt);
+			}
+			set
+			{
+				AppSettings.AddOrUpdateValue<int>(AlarmUrgentMins1key, value);
+			}
+		}
+
+		public static int AlarmUrgentMins2
+		{
+			get
+			{
+				return AppSettings.GetValueOrDefault<int>(AlarmUrgentMins2key, SettingsDefaultInt);
+			}
+			set
+			{
+				AppSettings.AddOrUpdateValue<int>(AlarmUrgentMins2key, value);
 			}
 		}
 

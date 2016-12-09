@@ -45,7 +45,7 @@ namespace NightscoutMobileHybrid
 
         }
 
-        public static async Task<string> GetAzureTag(string URL)
+        public static async Task GetStatusJson(string URL)
         {
 
             RootObject site = new RootObject();
@@ -87,7 +87,9 @@ namespace NightscoutMobileHybrid
 
 
 
-            return site.settings.azureTag;
+            ApplicationSettings.AzureTag = site.settings.azureTag;
+			ApplicationSettings.AlarmUrgentMins1 = site.settings.alarmUrgentMins[0];
+			ApplicationSettings.AlarmUrgentMins2 = site.settings.alarmUrgentMins[1];
         }
 
         public async static Task RegisterPush(RegisterRequest request)

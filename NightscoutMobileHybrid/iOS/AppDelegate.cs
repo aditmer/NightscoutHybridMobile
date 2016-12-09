@@ -18,6 +18,8 @@ namespace NightscoutMobileHybrid.iOS
 
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
+			
+
 			global::Xamarin.Forms.Forms.Init();
 
 			// Code for starting up the Xamarin Test Cloud Agent
@@ -32,12 +34,108 @@ namespace NightscoutMobileHybrid.iOS
 			manager.Configure("d8783c34856046d9bc081c47708843f6");
 			manager.StartManager();
 
-			UNUserNotificationCenter.Current.Delegate = new UserNotificationCenterDelegate();
 
+
+			// Handling Push notification when app is closed if App was opened by Push Notification...
+			if (options != null && options.Keys != null && options.Keys.Count() != 0 && options.ContainsKey(new NSString("UIApplicationLaunchOptionsRemoteNotificationKey")))
+			{
+				NSDictionary UIApplicationLaunchOptionsRemoteNotificationKey = options.ObjectForKey(new NSString("UIApplicationLaunchOptionsRemoteNotificationKey")) as NSDictionary;
+
+				ProcessNotification(UIApplicationLaunchOptionsRemoteNotificationKey, true);
+			}
 
 
 			return base.FinishedLaunching(app, options);
 		}
+
+		public override bool WillFinishLaunching(UIApplication uiApplication, NSDictionary launchOptions)
+		{
+			UNUserNotificationCenter.Current.Delegate = new UserNotificationCenterDelegate();
+
+			//added on 12/03/16 by aed to add custom actions to the notifications (I think this code goes here)
+			// Create action
+			var actionID = "snooze";
+			var title = "Snooze";
+			var action = UNNotificationAction.FromIdentifier(actionID, title, UNNotificationActionOptions.None);
+
+
+			// Create category
+			var categoryID = "event";
+			var actions = new UNNotificationAction[] { action };
+			var intentIDs = new string[] { };
+			var categoryOptions = new UNNotificationCategoryOptions[] { };
+			var category = UNNotificationCategory.FromIdentifier(categoryID, actions, intentIDs, UNNotificationCategoryOptions.AllowInCarPlay);
+
+			// Register category
+			var categories = new UNNotificationCategory[] { category };
+			UNUserNotificationCenter.Current.SetNotificationCategories(new NSSet<UNNotificationCategory>(categories));
+
+
+
+
+			return base.WillFinishLaunching(uiApplication, launchOptions);
+		}
+
+		// And do this, instead of creating a seperate delegate
+		#region IUNUserNotificationCenterDelegate
+
+		[Export("userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:")]
+		public void DidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler)
+		{
+
+			var manager = BITHockeyManager.SharedHockeyManager;
+			manager.MetricsManager.TrackEvent("iOS Notification Ack");
+
+			// Take action based on Action ID
+			switch (response.ActionIdentifier)
+			{
+				case "snooze":
+
+					AckRequest ack = new AckRequest();
+
+					var userInfo = response.Notification.Request.Content.UserInfo;
+
+					if (userInfo.ContainsKey(new NSString("level")))
+					{
+						ack.level = userInfo.ValueForKey(new NSString("level")) as NSString;
+						//ack.Level = level.Int32Value;
+					}
+
+					if (userInfo.ContainsKey(new NSString("group")))
+					{
+						ack.group = (userInfo.ValueForKey(new NSString("group")) as NSString).ToString();
+					}
+
+					if (userInfo.ContainsKey(new NSString("key")))
+					{
+						ack.key = (userInfo.ValueForKey(new NSString("key")) as NSString).ToString();
+					}
+
+					ack.time = 15;
+
+					Webservices.SilenceAlarm(ack);
+					break;
+					// default:
+					// Take action based on identifier
+					//switch (response.ActionIdentifier)
+					//{
+					//    case UNActionIdentifier.Default:
+					//// Handle default
+					//...
+					//break;
+					//    case UNActionIdentifier.Dismiss:
+					// Handle dismiss
+					//...
+					//break;
+					//}
+					//break;
+			}
+
+			// Inform caller it has been handled
+			completionHandler();
+		}
+
+		#endregion
 
 		public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
 		{
@@ -54,25 +152,7 @@ namespace NightscoutMobileHybrid.iOS
 			Webservices.RegisterPush(PushNotificationsImplementation.registerRequest);
 
 
-            //added on 12/03/16 by aed to add custom actions to the notifications (I think this code goes here)
-            // Create action
-            var actionID = "snooze";
-            var title = "Snooze";
-            var action = UNNotificationAction.FromIdentifier(actionID, title, UNNotificationActionOptions.None);
-
-            // Create category
-            var categoryID = "event";
-            var actions = new UNNotificationAction[] { action };
-            var intentIDs = new string[] { };
-            var categoryOptions = new UNNotificationCategoryOptions[] { };
-            var category = UNNotificationCategory.FromIdentifier(categoryID, actions, intentIDs, UNNotificationCategoryOptions.None);
-
-            // Register category
-            var categories = new UNNotificationCategory[] { category };
-            UNUserNotificationCenter.Current.SetNotificationCategories(new NSSet<UNNotificationCategory>(categories));
-
-
-
+            
 
             //Commented out on 11/29/16 by aed so we can register for notifications on the server
             //Hub = new SBNotificationHub(Constants.ConnectionString, Constants.NotificationHubPath);

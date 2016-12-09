@@ -10,6 +10,7 @@ using NightscoutMobileHybrid.Droid;
 using Xamarin.Forms;
 using Android.Media;
 using NightscoutMobileHybrid;
+using Newtonsoft.Json;
 
 [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
 [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -59,8 +60,8 @@ public class PushHandlerService : GcmServiceBase
         string key = intent.Extras.GetString("key", "0");   //Key is used as the tag, 0 is the default for unregister and errors
         //TODO: Do something with the rest of the payload
         //string eventName = intent.Extras.GetString("eventName");
-        //string group = intent.Extras.GetString("group");
-        //string level = intent.Extras.GetString("level");
+        string group = intent.Extras.GetString("group");
+        string level = intent.Extras.GetString("level");
         string sound = intent.Extras.GetString("sound");
         int soundResourceId = 0;
         if (sound == "alarm.mp3")
@@ -74,12 +75,12 @@ public class PushHandlerService : GcmServiceBase
 
         if (!string.IsNullOrEmpty(message))
         {
-            createNotification(key, title, message, soundResourceId);
+            createNotification(key, title, message, soundResourceId, group, level);
         }
         else
         {
             Log.Error(ApplicationSettings.AzureTag, "Unknown message details: " + msg.ToString());
-            createNotification("0", "Unknown message details", msg.ToString(), soundResourceId);
+            createNotification("0", "Unknown message details", msg.ToString(), soundResourceId,"0","0");
         }
     }
 
@@ -124,18 +125,38 @@ public class PushHandlerService : GcmServiceBase
 
     protected override void OnUnRegistered(Context context, string registrationId)
     {
-        createNotification("0", "GCM Unregistered...", "The device has been unregistered!", 0);
+        createNotification("0", "GCM Unregistered...", "The device has been unregistered!", 0,"0","0");
     }
 
-    void createNotification(string key, string title, string desc, int sound)
+    void createNotification(string key, string title, string desc, int sound, string group, string level)
     {
         var intent = new Intent(this, typeof(MainActivity));
         intent.AddFlags(ActivityFlags.SingleTop);
         var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.UpdateCurrent);
 
 		//addd on 12/5/16 by aed to add actions to the push notifications
-		//TODO add the Webservices.SilenceAlarm call to the pendingIntent (or a new intent)
-		Notification.Action notificationAction = new Notification.Action(0, "Snooze", pendingIntent);
+
+		AckRequest ack = new AckRequest();
+		ack.group = group;
+		ack.key = key;
+		ack.level = level;
+		ack.time = ApplicationSettings.AlarmUrgentMins1;
+		var notificationIntent = new Intent(this, typeof(NotificationActionService));
+		notificationIntent.PutExtra("ack", JsonConvert.SerializeObject(ack));
+		var snoozeIntent1 = PendingIntent.GetService(this, 0, notificationIntent, PendingIntentFlags.CancelCurrent);
+
+		//adds 2nd action that snoozes the alarm for the ApplicationSettings.AlarmUrgentMins[1] amount of time
+		var notificationIntent2 = new Intent(this, typeof(NotificationActionService));
+		AckRequest ack2 = new AckRequest();
+		ack2.group = group;
+		ack2.key = key;
+		ack2.level = level;
+		ack2.time = ApplicationSettings.AlarmUrgentMins2;
+		notificationIntent2.PutExtra("ack", JsonConvert.SerializeObject(ack));
+		var snoozeIntent2 = PendingIntent.GetService(this, 0, notificationIntent2, PendingIntentFlags.CancelCurrent);
+
+		//Notification.Action notificationAction = new Notification.Action(0, "Snooze", snoozeIntent);
+
 
         var notificationBuilder = new Notification.Builder(this)
             .SetSmallIcon(NightscoutMobileHybrid.Droid.Resource.Drawable.icon)
@@ -144,7 +165,8 @@ public class PushHandlerService : GcmServiceBase
             .SetAutoCancel(true)
             .SetPriority((int)NotificationPriority.Max)
             .SetContentIntent(pendingIntent)
-          .AddAction(notificationAction);
+		 .AddAction(0, $"Snooze {ack.time} min", snoozeIntent1)
+          .AddAction(0, $"Snooze {ack2.time} min", snoozeIntent2);
 
         if (sound == 0)
         {

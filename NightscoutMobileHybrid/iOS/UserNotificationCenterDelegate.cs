@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Foundation;
 using HockeyApp.iOS;
 using UserNotifications;
@@ -18,7 +19,7 @@ namespace NightscoutMobileHybrid.iOS
         {
 			var manager = BITHockeyManager.SharedHockeyManager;
 			manager.MetricsManager.TrackEvent("iOS Notification Ack");
-
+			Debug.WriteLine("Snooze me");
             // Take action based on Action ID
 			switch (response.ActionIdentifier) 
             {
