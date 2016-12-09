@@ -16,7 +16,7 @@ namespace NightscoutMobileHybrid
         {
             var httpClient = new HttpClient();
 
-            //TODO add the correct URL endpoint
+            
             string resourceAddress = ApplicationSettings.URL + "/api/v1/notifications/azure/ack";
 
 
@@ -29,7 +29,7 @@ namespace NightscoutMobileHybrid
 
             try
             {
-                HttpResponseMessage httpResponse = await httpClient.PostAsync(resourceAddress, new StringContent(postBody, Encoding.UTF8, "application/json"));
+                httpClient.PostAsync(resourceAddress, new StringContent(postBody, Encoding.UTF8, "application/json"));
                 //var content = await httpResponse.Content.ReadAsStringAsync();
                 //RegisterResponse response = JsonConvert.DeserializeObject<RegisterResponse>(content);
 

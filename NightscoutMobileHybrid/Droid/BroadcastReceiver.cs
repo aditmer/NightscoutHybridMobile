@@ -143,7 +143,7 @@ public class PushHandlerService : GcmServiceBase
 		ack.time = ApplicationSettings.AlarmUrgentMins1;
 		var notificationIntent = new Intent(this, typeof(NotificationActionService));
 		notificationIntent.PutExtra("ack", JsonConvert.SerializeObject(ack));
-		var snoozeIntent1 = PendingIntent.GetService(this, 0, notificationIntent, PendingIntentFlags.CancelCurrent);
+		var snoozeIntent1 = PendingIntent.GetService(this, 0, notificationIntent, PendingIntentFlags.OneShot);
 
 		//adds 2nd action that snoozes the alarm for the ApplicationSettings.AlarmUrgentMins[1] amount of time
 		var notificationIntent2 = new Intent(this, typeof(NotificationActionService));
@@ -152,8 +152,8 @@ public class PushHandlerService : GcmServiceBase
 		ack2.key = key;
 		ack2.level = level;
 		ack2.time = ApplicationSettings.AlarmUrgentMins2;
-		notificationIntent2.PutExtra("ack", JsonConvert.SerializeObject(ack));
-		var snoozeIntent2 = PendingIntent.GetService(this, 0, notificationIntent2, PendingIntentFlags.CancelCurrent);
+		notificationIntent2.PutExtra("ack", JsonConvert.SerializeObject(ack2));
+		var snoozeIntent2 = PendingIntent.GetService(this, 0, notificationIntent2, PendingIntentFlags.OneShot);
 
 		//Notification.Action notificationAction = new Notification.Action(0, "Snooze", snoozeIntent);
 

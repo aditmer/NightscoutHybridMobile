@@ -76,66 +76,66 @@ namespace NightscoutMobileHybrid.iOS
 			return base.WillFinishLaunching(uiApplication, launchOptions);
 		}
 
-		// And do this, instead of creating a seperate delegate
-		#region IUNUserNotificationCenterDelegate
+		//// And do this, instead of creating a seperate delegate
+		//#region IUNUserNotificationCenterDelegate
 
-		[Export("userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:")]
-		public void DidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler)
-		{
+		//[Export("userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:")]
+		//public void DidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler)
+		//{
 
-			var manager = BITHockeyManager.SharedHockeyManager;
-			manager.MetricsManager.TrackEvent("iOS Notification Ack");
+		//	var manager = BITHockeyManager.SharedHockeyManager;
+		//	manager.MetricsManager.TrackEvent("iOS Notification Ack");
 
-			// Take action based on Action ID
-			switch (response.ActionIdentifier)
-			{
-				case "snooze":
+		//	// Take action based on Action ID
+		//	switch (response.ActionIdentifier)
+		//	{
+		//		case "snooze":
 
-					AckRequest ack = new AckRequest();
+		//			AckRequest ack = new AckRequest();
 
-					var userInfo = response.Notification.Request.Content.UserInfo;
+		//			var userInfo = response.Notification.Request.Content.UserInfo;
 
-					if (userInfo.ContainsKey(new NSString("level")))
-					{
-						ack.level = userInfo.ValueForKey(new NSString("level")) as NSString;
-						//ack.Level = level.Int32Value;
-					}
+		//			if (userInfo.ContainsKey(new NSString("level")))
+		//			{
+		//				ack.level = userInfo.ValueForKey(new NSString("level")) as NSString;
+		//				//ack.Level = level.Int32Value;
+		//			}
 
-					if (userInfo.ContainsKey(new NSString("group")))
-					{
-						ack.group = (userInfo.ValueForKey(new NSString("group")) as NSString).ToString();
-					}
+		//			if (userInfo.ContainsKey(new NSString("group")))
+		//			{
+		//				ack.group = (userInfo.ValueForKey(new NSString("group")) as NSString).ToString();
+		//			}
 
-					if (userInfo.ContainsKey(new NSString("key")))
-					{
-						ack.key = (userInfo.ValueForKey(new NSString("key")) as NSString).ToString();
-					}
+		//			if (userInfo.ContainsKey(new NSString("key")))
+		//			{
+		//				ack.key = (userInfo.ValueForKey(new NSString("key")) as NSString).ToString();
+		//			}
 
-					ack.time = 15;
+		//			ack.time = 15;
 
-					Webservices.SilenceAlarm(ack);
-					break;
-					// default:
-					// Take action based on identifier
-					//switch (response.ActionIdentifier)
-					//{
-					//    case UNActionIdentifier.Default:
-					//// Handle default
-					//...
-					//break;
-					//    case UNActionIdentifier.Dismiss:
-					// Handle dismiss
-					//...
-					//break;
-					//}
-					//break;
-			}
+		//			Webservices.SilenceAlarm(ack);
+		//			break;
+		//			// default:
+		//			// Take action based on identifier
+		//			//switch (response.ActionIdentifier)
+		//			//{
+		//			//    case UNActionIdentifier.Default:
+		//			//// Handle default
+		//			//...
+		//			//break;
+		//			//    case UNActionIdentifier.Dismiss:
+		//			// Handle dismiss
+		//			//...
+		//			//break;
+		//			//}
+		//			//break;
+		//	}
 
-			// Inform caller it has been handled
-			completionHandler();
-		}
+		//	// Inform caller it has been handled
+		//	completionHandler();
+		//}
 
-		#endregion
+		//#endregion
 
 		public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
 		{
