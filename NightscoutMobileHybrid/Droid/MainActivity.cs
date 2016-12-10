@@ -4,6 +4,8 @@ using Android.Content.PM;
 using Android.OS;
 using HockeyApp.Android;
 using HockeyApp.Android.Metrics;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
 
 namespace NightscoutMobileHybrid.Droid
 {
@@ -19,6 +21,10 @@ namespace NightscoutMobileHybrid.Droid
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
 
+			if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Lollipop)
+			{
+				Window.SetStatusBarColor(Color.FromHex("#000000").ToAndroid());
+			}
 			//HockeyApp
 			CrashManager.Register(this);
 			MetricsManager.Register(Application);
