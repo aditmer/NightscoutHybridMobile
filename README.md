@@ -19,5 +19,5 @@ If you would like to Beta Test this app, please join our [HockeyApp Team](https:
 
 # Updating your Nightscout for Push Notifications
 
-TODO:  Scott update this section with instructions to fork your branch and deploy it to Azure.
+TODO:  Scott, update this section with instructions to fork your branch and deploy it to Azure.
 
