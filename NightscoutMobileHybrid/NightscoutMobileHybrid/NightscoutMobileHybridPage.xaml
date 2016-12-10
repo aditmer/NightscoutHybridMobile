@@ -26,11 +26,19 @@
 		<WebView x:Name="wvNightscout" HeightRequest="700" WidthRequest="1000"></WebView>
 
 		<Slider x:Name="slVolume" Minimum="0"  ValueChanged="SlVolume_ValueChanged" />
-		<StackLayout Orientation="Horizontal">
-			<Button x:Name="btnChangeURL" Text="Change URL" Clicked="BtnChangeURL_Clicked" WidthRequest="100" FontSize="10" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />
-			<Button x:Name="btnRefresh" Text="Refresh" Clicked="BtnRefresh_Clicked" WidthRequest="70" FontSize="10" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />
-			<Label Text="Stay Awake" FontSize="10" WidthRequest="100" HorizontalTextAlignment="End" VerticalTextAlignment="Center" TextColor="White" />
-			<Switch x:Name="swScreenLockOverride" Toggled="SwScreenLockOverride_Toggled" VerticalOptions="Center" />
-		</StackLayout>
+		<!--<StackLayout Orientation="Horizontal">-->
+		<Grid Margin="10,0,10,5">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Button x:Name="btnSettings" Text="Settings" Grid.Column="0" Clicked="BtnSettings_Clicked" WidthRequest="100" FontSize="10" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />
+			<Button x:Name="btnRefresh" Text="Refresh" Grid.Column="1" Clicked="BtnRefresh_Clicked" WidthRequest="70" FontSize="10" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />
+			<Label Text="Stay Awake" FontSize="10" Grid.Column="2" WidthRequest="100" HorizontalTextAlignment="End" VerticalTextAlignment="Center" TextColor="White" />
+			<Switch x:Name="swScreenLockOverride" Grid.Column="3" Toggled="SwScreenLockOverride_Toggled" VerticalOptions="Center" />
+		</Grid>
+			<!--</StackLayout>-->
 	</StackLayout>
 </ContentPage>

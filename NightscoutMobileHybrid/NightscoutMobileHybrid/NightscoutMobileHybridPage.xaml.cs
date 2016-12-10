@@ -47,7 +47,7 @@ namespace NightscoutMobileHybrid
 			wvNightscout.Source = ApplicationSettings.URL;
 		}
 
-		void BtnChangeURL_Clicked(object sender, System.EventArgs e)
+		void BtnSettings_Clicked(object sender, System.EventArgs e)
 		{
 			Navigation.PushModalAsync(new SettingsPage(), true);
 		}

@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="NightscoutMobileHybrid.SettingsPage">
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness">
+	      <OnPlatform.iOS>
+	        0, 20, 0, 0
+	      </OnPlatform.iOS>
+	      <OnPlatform.Android>
+	        0, 0, 0, 0
+	      </OnPlatform.Android>
+	      <OnPlatform.WinPhone>
+	        0, 0, 0, 0
+	      </OnPlatform.WinPhone>
+	    <!--<OnPlatform.Windows>
+	      0,0,0,0
+	    </OnPlatform.Windows>-->
+	    </OnPlatform>
+	</ContentPage.Padding>
+	
 	<ContentPage.Content>
 		<StackLayout Padding="0,15,0,0" BackgroundColor="Black">
-			<Label Text="Enter your Nightscout URL below" TextColor="White" />
-			<Entry x:Name="entURL" BackgroundColor="White" Placeholder="https://your-nightscout-url.azurewebsites.net" />
+			<Label Text="Enter your Nightscout URL below" TextColor="White" Margin="10,0,10,0" />
+			<Entry x:Name="entURL" BackgroundColor="White" Placeholder="https://your-nightscout-url.azurewebsites.net" Margin="10,0,10,0" />
 
-			<Label Text="Info Notifications" TextColor="White"/>
-			<Switch x:Name="swInfo" />
+			<Label Text="Info Notifications" TextColor="White" Margin="10,10,0,0"/>
+			<Switch x:Name="swInfo" HorizontalOptions="End" Margin="0,0,10,0" />
 
-			<Label Text="Alert Notifications" TextColor="White" />
-			<Switch x:Name="swAlert" />
+			<Label Text="Alert Notifications" TextColor="White" Margin="10,0,0,0" />
+			<Switch x:Name="swAlert" HorizontalOptions="End" Margin="0,0,10,0" />
 
-			<Label Text="Anouncement Notifications" TextColor="White" />
-			<Switch x:Name="swAnouncement" />
+			<Label Text="Anouncement Notifications" TextColor="White" Margin="10,0,0,0"/>
+			<Switch x:Name="swAnouncement" HorizontalOptions="End" Margin="0,0,10,0"/>
 			
-			<StackLayout Orientation="Horizontal">
+			<StackLayout Orientation="Horizontal" Margin="10,0,10,0">
 				<Button x:Name="btnSave" Text="Save" Clicked="btnSave_Clicked" WidthRequest="100" TextColor="White" BackgroundColor="Gray" />
 				<Button x:Name="btnCancel" Text="Cancel" Clicked="BtnCancel_Clicked" WidthRequest="100" TextColor="White" BackgroundColor="Gray" />
 			</StackLayout>
