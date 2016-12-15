@@ -48,6 +48,8 @@ namespace NightscoutMobileHybrid.UITests
 			app.Tap(x => x.Class("AppCompatButton").Text("Save"));
 			app.Screenshot("Tapped on Save button");
 
+
+
 			//Toggle Screen Lock Switch
 			app.Tap(x => x.Class("SwitchCompat"));
 			app.Screenshot("Turned Screenlock on");

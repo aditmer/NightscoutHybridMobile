@@ -142,6 +142,12 @@
     <Reference Include="Calabash">
       <HintPath>..\packages\Xamarin.TestCloud.Agent.0.20.3\lib\Xamarin.iOS10\Calabash.dll</HintPath>
     </Reference>
+    <Reference Include="Lamp.Plugin.Abstractions">
+      <HintPath>..\packages\kphillpotts.Lamp.Plugin.1.0.0.1\lib\Xamarin.iOS10\Lamp.Plugin.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Lamp.Plugin">
+      <HintPath>..\packages\kphillpotts.Lamp.Plugin.1.0.0.1\lib\Xamarin.iOS10\Lamp.Plugin.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NightscoutMobileHybrid\NightscoutMobileHybrid.csproj">
@@ -203,6 +209,7 @@
     <BundleResource Include="Resources\Logo_120.png" />
     <BundleResource Include="Resources\alarm2.mp3" />
     <BundleResource Include="Resources\alarm.mp3" />
+    <BundleResource Include="Resources\settings.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="azure-messaging">

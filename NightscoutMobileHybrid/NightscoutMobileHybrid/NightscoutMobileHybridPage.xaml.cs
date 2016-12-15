@@ -1,4 +1,5 @@
 ﻿using System;
+using Lamp.Plugin;
 using Xamarin.Forms;
 
 namespace NightscoutMobileHybrid
@@ -61,6 +62,18 @@ namespace NightscoutMobileHybrid
 			else
 			{
 				DependencyService.Get<IScreenLock>().Unlock();
+			}
+		}
+
+		void SwLight_Toggled(object sender, ToggledEventArgs e)
+		{
+			if (e.Value)
+			{
+				CrossLamp.Current.TurnOn();
+			}
+			else
+			{
+				CrossLamp.Current.TurnOff();
 			}
 		}
 	}
