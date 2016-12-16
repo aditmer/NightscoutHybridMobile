@@ -8,7 +8,7 @@ For more information about Nightscout and remote continuous glucose monitoring i
 1. Your full Nightscout website displayed inside the app
 2. The ability to prevent the screen from locking so you can enjoy alarms throughout the night :)
 3. Volume control in case you enjoy alarms throughout the day.
-4. NEW: Push notifications for Alerts, Announcements, and Info events (customizable) 
+4. NEW: Push notifications for Alerts, Announcements, and Info events (customizable per device) so you can get alarms when the app is not running.  This is an alternative (FREE!) to Pushover, and works very similarly. 
 5. NEW: Support for iOS and Android 
 6. NEW: A flashlight so you can sneak into your child's room in the middle of the night for blood sugar checks and treatments.
 
