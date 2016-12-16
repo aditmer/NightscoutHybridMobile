@@ -20,10 +20,10 @@ If you would like to Beta Test this app, please join our [HockeyApp Team](https:
 
 # Updating your Nightscout for Push Notifications 
 
-Your Nightscout website will generate push notifications and send them to this new mobile app for any events (Highs, Lows, Announcements, etc) that happen.  You can customize which types of notifications you want to receive.  You will, however, need to update your Azure website from this Work In Progress (WIP) branch of the [Nightscout repo](https://github.com/nightscout/cgm-remote-monitor/tree/wip/azurepush).
+Your Nightscout website will generate push notifications and send them to this new mobile app for any events (Highs, Lows, Announcements, etc) that happen.  You can customize which types of notifications you want to receive when in the mobile application.  However, you need  to update your Azure website from this Work In Progress (WIP) branch of the [Nightscout repo](https://github.com/nightscout/cgm-remote-monitor/tree/wip/azurepush).
 
 The steps to do this are:
 
 1. Update to the wip/azurepush branch via the [Updater Tool](http://nightscout.github.io/pages/test-beta/?branch=wip%2Fazurepush).  
 2. Add the `azurepush` variable to your Enable string in application settings.
-3. Ensure the `BASE_URL` is set in your App settings as described [here](https://github.com/srmoss/cgm-remote-monitor#required)
+3. Ensure the `BASE_URL` is set in your App settings as described [here](https://github.com/srmoss/cgm-remote-monitor#required).  It should look something like this: `https://<your-website>.azurewebsties.net`.
