@@ -19,6 +19,7 @@ We welcome your feedback and feature requests.  Please add them as [issues](http
 If you would like to Beta Test this app, please join our [HockeyApp Team](https://rink.hockeyapp.net/recruit/460522d7157b4881a8e64adea9e15c74).  We are using HockyApp to distribute the beta.  If you have issues or questions on how to install this app, feel free to ask in our [Facebook Group](https://www.facebook.com/groups/347752172258608/).
 
 # Updating your Nightscout for Push Notifications 
+## Don't do this yet!  We will update these instructions and post in the Facebook group when this is ready.
 
 Your Nightscout website will generate push notifications and send them to this new mobile app for any events (Highs, Lows, Announcements, etc) that happen.  You can customize which types of notifications you want to receive when in the mobile application.  However, you need  to update your Azure website from this Work In Progress (WIP) branch of the [Nightscout repo](https://github.com/nightscout/cgm-remote-monitor/tree/wip/azurepush).
 
