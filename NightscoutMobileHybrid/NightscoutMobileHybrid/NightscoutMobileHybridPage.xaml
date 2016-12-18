@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:NightscoutMobileHybrid" x:Class="NightscoutMobileHybrid.NightscoutMobileHybridPage"
 		Title="Nightscout" >
-	  <ContentPage.Padding>
+	  <!--<ContentPage.Padding>
     <OnPlatform x:TypeArguments="Thickness">
       <OnPlatform.iOS>
         0, 20, 0, 0
@@ -12,17 +12,16 @@
       <OnPlatform.WinPhone>
         0, 0, 0, 0
       </OnPlatform.WinPhone>
-    <!--<OnPlatform.Windows>
-      0,0,0,0
-    </OnPlatform.Windows>-->
+    
     </OnPlatform>
-  </ContentPage.Padding>
+  </ContentPage.Padding>-->
 
 	<StackLayout   BackgroundColor="Black" >
-
-		<!--<Margin>
+	<StackLayout.Padding>
+		<OnPlatform x:TypeArguments="Thickness">
 			<OnPlatform.iOS>0,20,0,0</OnPlatform.iOS>
-		</Margin>-->
+		</OnPlatform>
+	</StackLayout.Padding>
 		<WebView x:Name="wvNightscout" HeightRequest="700" WidthRequest="1000"></WebView>
 
 		<Slider x:Name="slVolume" Minimum="0"  ValueChanged="SlVolume_ValueChanged" />

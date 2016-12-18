@@ -48,6 +48,7 @@ namespace NightscoutMobileHybrid.iOS
 			return base.FinishedLaunching(app, options);
 		}
 
+
 		public override bool WillFinishLaunching(UIApplication uiApplication, NSDictionary launchOptions)
 		{
 			UNUserNotificationCenter.Current.Delegate = new UserNotificationCenterDelegate();

@@ -10,6 +10,8 @@ namespace NightscoutMobileHybrid
 		{
 			InitializeComponent();
 
+
+
 			if (ApplicationSettings.URL != string.Empty)
 			{
 				wvNightscout.Source = ApplicationSettings.URL;
@@ -67,13 +69,20 @@ namespace NightscoutMobileHybrid
 
 		void SwLight_Toggled(object sender, ToggledEventArgs e)
 		{
-			if (e.Value)
+			try
 			{
-				CrossLamp.Current.TurnOn();
+				if (e.Value)
+				{
+					CrossLamp.Current.TurnOn();
+				}
+				else
+				{
+					CrossLamp.Current.TurnOff();
+				}
 			}
-			else
+			catch (Exception ex)
 			{
-				CrossLamp.Current.TurnOff();
+				HockeyApp.MetricsManager.TrackEvent($"Light issue: {ex.Message}");
 			}
 		}
 	}

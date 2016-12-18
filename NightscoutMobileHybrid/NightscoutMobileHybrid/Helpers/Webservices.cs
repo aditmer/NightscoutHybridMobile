@@ -47,49 +47,53 @@ namespace NightscoutMobileHybrid
 
         public static async Task GetStatusJson(string URL)
         {
+			try
+			{
+	            RootObject site = new RootObject();
 
-            RootObject site = new RootObject();
+	            var client = new HttpClient();
+	            client.MaxResponseContentBufferSize = 256000;
 
-            var client = new HttpClient();
-            client.MaxResponseContentBufferSize = 256000;
+	            string sRestUrl = URL + "/api/v1/status.json";  // $"https://{sNSWebsite}/api/v1/entries/sgv.json?[count]=20";
+	            var uri = new Uri(string.Format(sRestUrl, string.Empty));
 
-            string sRestUrl = URL + "/api/v1/status.json";  // $"https://{sNSWebsite}/api/v1/entries/sgv.json?[count]=20";
-            var uri = new Uri(string.Format(sRestUrl, string.Empty));
+	            var response = await client.GetAsync(uri);
+	            if (response.IsSuccessStatusCode)
+	            {
+	                var content = "";
 
-            var response = await client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
-            {
-                var content = "";
+	               
+	                    content = await response.Content.ReadAsStringAsync();
+	                
+	                site = JsonConvert.DeserializeObject<RootObject>(content);
 
-                try
-                {
-                    content = await response.Content.ReadAsStringAsync();
-                }
-                catch (Exception ex)
-                {
+					if (String.IsNullOrEmpty(site.settings.azureTag))
+					{
 
-                    HockeyApp.MetricsManager.TrackEvent(ex.Message);
-                }
-                site = JsonConvert.DeserializeObject<RootObject>(content);
+						ApplicationSettings.AzureTag = "";
+					}
+					else
+					{
+						ApplicationSettings.AzureTag = site.settings.azureTag;
+					}
 
-                if (!site.settings.enable.Contains("azurepush"))
-                {
-
-                    site.settings.azureTag = "";
-                }
-
-
-            }
-            else
-            {
-                site.settings.azureTag = "";
-            }
+					ApplicationSettings.AlarmUrgentMins1 = site.settings.alarmUrgentMins[0];
+					ApplicationSettings.AlarmUrgentMins2 = site.settings.alarmUrgentMins[1];
+	            }
+	            else
+	            {
+	                ApplicationSettings.AzureTag = "";
+	            }
 
 
+			}
+			catch (Exception ex)
+			{
 
-            ApplicationSettings.AzureTag = site.settings.azureTag;
-			ApplicationSettings.AlarmUrgentMins1 = site.settings.alarmUrgentMins[0];
-			ApplicationSettings.AlarmUrgentMins2 = site.settings.alarmUrgentMins[1];
+				HockeyApp.MetricsManager.TrackEvent(ex.Message);
+			}
+            
+
         }
 
         public async static Task RegisterPush(RegisterRequest request)

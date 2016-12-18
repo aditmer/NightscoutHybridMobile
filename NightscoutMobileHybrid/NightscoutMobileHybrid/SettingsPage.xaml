@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="NightscoutMobileHybrid.SettingsPage">
-	<ContentPage.Padding>
+	<!--<ContentPage.Padding>
 		<OnPlatform x:TypeArguments="Thickness">
 	      <OnPlatform.iOS>
 	        0, 20, 0, 0
@@ -11,14 +11,19 @@
 	      <OnPlatform.WinPhone>
 	        0, 0, 0, 0
 	      </OnPlatform.WinPhone>
-	    <!--<OnPlatform.Windows>
-	      0,0,0,0
-	    </OnPlatform.Windows>-->
+	    
 	    </OnPlatform>
-	</ContentPage.Padding>
+	</ContentPage.Padding>-->
 	
 	<ContentPage.Content>
-		<StackLayout Padding="0,15,0,0" BackgroundColor="Black">
+		
+			
+		<StackLayout  BackgroundColor="Black">
+		<StackLayout.Padding>
+			<OnPlatform x:TypeArguments="Thickness">
+				<OnPlatform.iOS>0,20,0,0</OnPlatform.iOS>
+			</OnPlatform>
+		</StackLayout.Padding>
 			<Label Text="Enter your Nightscout URL below" TextColor="White" Margin="10,0,10,0" />
 			<Entry x:Name="entURL" BackgroundColor="White" Placeholder="https://your-nightscout-url.azurewebsites.net" Margin="10,0,10,0" />
 
