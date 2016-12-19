@@ -6,6 +6,9 @@ namespace NightscoutMobileHybrid
 {
 	public partial class NightscoutMobileHybridPage : ContentPage
 	{
+		private double _width = 0;
+		private double _height = 0;
+
 		public NightscoutMobileHybridPage()
 		{
 			InitializeComponent();
@@ -39,6 +42,31 @@ namespace NightscoutMobileHybrid
 			//btnRefresh.Clicked += BtnRefresh_Clicked;
 			//swScreenLockOverride.Toggled += SwScreenLockOverride_Toggled;
 		}
+
+		protected override void OnSizeAllocated(double width, double height)
+		{
+			base.OnSizeAllocated(width, height); // Important!
+
+			if (width != _width || height != _height)
+			{
+				_width = width;
+				_height = height;
+
+				grdNativeControls.IsVisible = (width < height);
+
+			}
+		}
+
+		//private void ShowExtraButtons(bool visible)
+		//{
+		//	foreach (View child in grdNativeControls.Children)
+		//	{
+		//		//if (child is Button && (int)child.GetValue(Grid.ColumnProperty) < 2)
+		//		//{
+		//			child.IsVisible = visible;
+		//		//}
+		//	}
+		//}
 
 		void SlVolume_ValueChanged(object sender, ValueChangedEventArgs e)
 		{

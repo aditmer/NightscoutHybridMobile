@@ -22,11 +22,11 @@
 			<OnPlatform.iOS>0,20,0,0</OnPlatform.iOS>
 		</OnPlatform>
 	</StackLayout.Padding>
-		<WebView x:Name="wvNightscout" HeightRequest="700" WidthRequest="1000"></WebView>
+		<WebView x:Name="wvNightscout" HeightRequest="1000" WidthRequest="1000"></WebView>
 
-		<Slider x:Name="slVolume" Minimum="0"  ValueChanged="SlVolume_ValueChanged" />
+
 		<!--<StackLayout Orientation="Horizontal">-->
-		<Grid Margin="10,0,10,5">
+		<Grid Margin="10,0,10,5"  x:Name="grdNativeControls">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*" />
 				<ColumnDefinition Width="*" />
@@ -38,15 +38,18 @@
 			<Grid.RowDefinitions>
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
-			<Button x:Name="btnSettings" Text="Settings"  Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Clicked="BtnSettings_Clicked" WidthRequest="100" FontSize="10" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />
-			<Button x:Name="btnRefresh" Text="Refresh" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Clicked="BtnRefresh_Clicked" WidthRequest="70" FontSize="10" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />
+			
+			<Slider x:Name="slVolume" Minimum="0" Grid.Row="0" Grid.ColumnSpan="4" ValueChanged="SlVolume_ValueChanged" />
+			<Button x:Name="btnSettings" Text="Settings"  Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Clicked="BtnSettings_Clicked" WidthRequest="100" FontSize="10" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />
+			<Button x:Name="btnRefresh" Text="Refresh" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Clicked="BtnRefresh_Clicked" WidthRequest="70" FontSize="10" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />
 
-			<Label Text="Stay Awake" FontSize="10" Grid.Column="2" Grid.Row="0"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" />
-			<Switch x:Name="swScreenLockOverride" Grid.Column="2" Grid.Row="1" Toggled="SwScreenLockOverride_Toggled" VerticalOptions="Center" HorizontalOptions="Center" />
+			<Label Text="Stay Awake" FontSize="10" Grid.Column="2" Grid.Row="1"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" />
+			<Switch x:Name="swScreenLockOverride" Grid.Column="2" Grid.Row="2" Toggled="SwScreenLockOverride_Toggled" VerticalOptions="Center" HorizontalOptions="Center" />
 
-			<Label Text="Light" FontSize="10" Grid.Column="3" Grid.Row="0"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" />
-			<Switch x:Name="swLight" Grid.Column="3" Grid.Row="1" Toggled="SwLight_Toggled" VerticalOptions="Center" HorizontalOptions="Center" />
+			<Label Text="Light" FontSize="10" Grid.Column="3" Grid.Row="1"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" />
+			<Switch x:Name="swLight" Grid.Column="3" Grid.Row="2" Toggled="SwLight_Toggled" VerticalOptions="Center" HorizontalOptions="Center" />
 		</Grid>
 			<!--</StackLayout>-->
 	</StackLayout>
