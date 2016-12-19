@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="NightscoutMobileHybrid.SettingsPage">
-	<!--<ContentPage.Padding>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="NightscoutMobileHybrid.SettingsPage"
+		BackgroundColor="Black">
+	<ContentPage.Padding>
 		<OnPlatform x:TypeArguments="Thickness">
 	      <OnPlatform.iOS>
 	        0, 20, 0, 0
@@ -13,35 +14,51 @@
 	      </OnPlatform.WinPhone>
 	    
 	    </OnPlatform>
-	</ContentPage.Padding>-->
+	</ContentPage.Padding>
 	
 	<ContentPage.Content>
+
+		<Grid RowSpacing="25" Margin="10,10,10,0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			
 		
 			
-		<StackLayout  BackgroundColor="Black">
+		<!--<StackLayout  BackgroundColor="Black">
 		<StackLayout.Padding>
 			<OnPlatform x:TypeArguments="Thickness">
 				<OnPlatform.iOS>0,20,0,0</OnPlatform.iOS>
 			</OnPlatform>
-		</StackLayout.Padding>
-			<Label Text="Enter your Nightscout URL below" TextColor="White" Margin="10,0,10,0" />
-			<Entry x:Name="entURL" BackgroundColor="White" Placeholder="https://your-nightscout-url.azurewebsites.net" Margin="10,0,10,0" />
+		</StackLayout.Padding>-->
+			<Label Text="Enter your Nightscout URL below" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextColor="White"  />
+			<Entry x:Name="entURL" BackgroundColor="White" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="https://your-nightscout-url.azurewebsites.net" Margin="0,-15,0,0" />
 
-			<Label Text="Info Notifications" TextColor="White" Margin="10,10,0,0"/>
-			<Switch x:Name="swInfo" HorizontalOptions="End" Margin="0,0,10,0" />
+			<Label Text="Info Notifications" TextColor="White" Grid.Row="2" VerticalTextAlignment="Center" Grid.Column="0" Grid.ColumnSpan="2" />
+			<Switch x:Name="swInfo" HorizontalOptions="End" Grid.Row="2" Grid.Column="1"  />
 
-			<Label Text="Alert Notifications" TextColor="White" Margin="10,0,0,0" />
-			<Switch x:Name="swAlert" HorizontalOptions="End" Margin="0,0,10,0" />
+			<Label Text="Alert Notifications" TextColor="White" Grid.Row="3" VerticalTextAlignment="Center"  Grid.Column="0" Grid.ColumnSpan="2" />
+			<Switch x:Name="swAlert" HorizontalOptions="End" Grid.Row="3" Grid.Column="1"  />
 
-			<Label Text="Anouncement Notifications" TextColor="White" Margin="10,0,0,0"/>
-			<Switch x:Name="swAnouncement" HorizontalOptions="End" Margin="0,0,10,0"/>
+			<Label Text="Anouncement Notifications" Grid.Row="4" Grid.Column="0" VerticalTextAlignment="Center" Grid.ColumnSpan="2" TextColor="White" />
+			<Switch x:Name="swAnouncement" Grid.Row="4" Grid.Column="1" HorizontalOptions="End" />
 			
-			<StackLayout Orientation="Horizontal" Margin="10,0,10,0">
-				<Button x:Name="btnSave" Text="Save" Clicked="btnSave_Clicked" WidthRequest="100" TextColor="White" BackgroundColor="Gray" />
-				<Button x:Name="btnCancel" Text="Cancel" Clicked="BtnCancel_Clicked" WidthRequest="100" TextColor="White" BackgroundColor="Gray" />
+			<StackLayout Orientation="Horizontal"  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+				<Button x:Name="btnSave" Text="Save"   Clicked="btnSave_Clicked" WidthRequest="100" TextColor="White" BackgroundColor="Gray" />
+				<Button x:Name="btnCancel" Text="Cancel"   Clicked="BtnCancel_Clicked" WidthRequest="100" TextColor="White" BackgroundColor="Gray" />
 			</StackLayout>
 
-		
-		</StackLayout>
+		</Grid>
+<!--		</StackLayout>-->
 	</ContentPage.Content>
 </ContentPage>
