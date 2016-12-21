@@ -42,9 +42,18 @@
 			</Grid.RowDefinitions>
 			
 			<Slider x:Name="slVolume" Minimum="0" Grid.Row="0" Grid.ColumnSpan="4" ValueChanged="SlVolume_ValueChanged" />
-			<Button x:Name="btnSettings" Text="Settings"  Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Clicked="BtnSettings_Clicked" WidthRequest="100" FontSize="10" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />
-			<Button x:Name="btnRefresh" Text="Refresh" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Clicked="BtnRefresh_Clicked" WidthRequest="70" FontSize="10" BackgroundColor="Black" BorderWidth="1" BorderColor="White" TextColor="White" />
 
+			<Button x:Name="btnSettings" Text="Settings"  Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Clicked="BtnSettings_Clicked" WidthRequest="100"  BackgroundColor="Gray"   TextColor="White"  >
+				<Button.FontSize>
+					<OnPlatform x:TypeArguments="x:Double" iOS="15" Android="12" />
+				</Button.FontSize>
+			</Button>
+			<Button x:Name="btnRefresh" Text="Refresh" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Clicked="BtnRefresh_Clicked" WidthRequest="70"  BackgroundColor="Gray" TextColor="White" >
+				<Button.FontSize>
+					<OnPlatform x:TypeArguments="x:Double" iOS="15" Android="12" />
+				</Button.FontSize>
+			</Button>
+			
 			<Label Text="Stay Awake" FontSize="10" Grid.Column="2" Grid.Row="1"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" />
 			<Switch x:Name="swScreenLockOverride" Grid.Column="2" Grid.Row="2" Toggled="SwScreenLockOverride_Toggled" VerticalOptions="Center" HorizontalOptions="Center" />
 
