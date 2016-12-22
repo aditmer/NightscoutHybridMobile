@@ -9,6 +9,8 @@ namespace NightscoutMobileHybrid
 	{
 		private double _width = 0;
 		private double _height = 0;
+		private bool _bScreenLocked = false;
+		private bool _bLightOn = false;
 
 		public NightscoutMobileHybridPage()
 		{
@@ -113,6 +115,26 @@ namespace NightscoutMobileHybrid
 			}
 		}
 
+		void btnScreenLockOverride_Clicked(object sender, System.EventArgs e)
+		{
+			if (_bScreenLocked)
+			{
+				_bScreenLocked = false;
+				DependencyService.Get<IScreenLock>().Unlock();
+
+				btnScreenLockOverride.BackgroundColor = Color.Gray;
+				btnScreenLockOverride.Text = "Lock";
+			}
+			else
+			{
+				_bScreenLocked = true;
+				DependencyService.Get<IScreenLock>().Lock();
+
+				btnScreenLockOverride.BackgroundColor = Color.Green;
+				btnScreenLockOverride.Text = "Locked";
+			}
+		}
+
 		void SwLight_Toggled(object sender, ToggledEventArgs e)
 		{
 			try
@@ -124,6 +146,29 @@ namespace NightscoutMobileHybrid
 				else
 				{
 					CrossLamp.Current.TurnOff();
+				}
+			}
+			catch (Exception ex)
+			{
+				HockeyApp.MetricsManager.TrackEvent($"Light issue: {ex.Message}");
+			}
+		}
+
+		void btnLight_Clicked(object sender, EventArgs e)
+		{
+			try
+			{
+				if (_bLightOn)
+				{
+					_bLightOn = false;
+					CrossLamp.Current.TurnOff();
+					btnLight.BackgroundColor = Color.Gray;
+				}
+				else
+				{
+					_bLightOn = true;
+					CrossLamp.Current.TurnOn();
+					btnLight.BackgroundColor = Color.Green;
 				}
 			}
 			catch (Exception ex)

@@ -54,11 +54,22 @@
 				</Button.FontSize>
 			</Button>
 			
-			<Label Text="Stay Awake" FontSize="10" Grid.Column="2" Grid.Row="1"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" />
-			<Switch x:Name="swScreenLockOverride" Grid.Column="2" Grid.Row="2" Toggled="SwScreenLockOverride_Toggled" VerticalOptions="Center" HorizontalOptions="Center" />
-
-			<Label Text="Light" FontSize="10" Grid.Column="3" Grid.Row="1"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" />
-			<Switch x:Name="swLight" Grid.Column="3" Grid.Row="2" Toggled="SwLight_Toggled" VerticalOptions="Center" HorizontalOptions="Center" />
+			<!--<Label IsVisible="false" Text="Stay Awake" FontSize="10" Grid.Column="2" Grid.Row="1"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" />
+			<Switch IsVisible="false" x:Name="swScreenLockOverride" Grid.Column="2" Grid.Row="2" Toggled="SwScreenLockOverride_Toggled" VerticalOptions="Center" HorizontalOptions="Center" />-->
+			<Button x:Name="btnScreenLockOverride" Text="Lock" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Clicked="btnScreenLockOverride_Clicked" WidthRequest="100"  BackgroundColor="Gray"   TextColor="White" >
+				<Button.FontSize>
+					<OnPlatform x:TypeArguments="x:Double" iOS="15" Android="12" />
+				</Button.FontSize>
+			</Button>
+			
+			<!--<Label IsVisible="false" Text="Light" FontSize="10" Grid.Column="3" Grid.Row="1"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" />
+			<Switch IsVisible="false" x:Name="swLight" Grid.Column="3" Grid.Row="2" Toggled="SwLight_Toggled" VerticalOptions="Center" HorizontalOptions="Center" />-->
+			<Button x:Name="btnLight" Text="Light" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" Clicked="btnLight_Clicked" WidthRequest="100"  BackgroundColor="Gray"   TextColor="White" >
+				<Button.FontSize>
+					<OnPlatform x:TypeArguments="x:Double" iOS="15" Android="12" />
+				</Button.FontSize>
+			</Button>
+			
 		</Grid>
 			<!--</StackLayout>-->
 	</StackLayout>
