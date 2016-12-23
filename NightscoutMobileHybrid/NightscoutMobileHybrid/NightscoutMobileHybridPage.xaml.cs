@@ -11,6 +11,7 @@ namespace NightscoutMobileHybrid
 		private double _height = 0;
 		private bool _bScreenLocked = false;
 		private bool _bLightOn = false;
+		private bool _bButtonHide = true;
 
 		public NightscoutMobileHybridPage()
 		{
@@ -26,7 +27,7 @@ namespace NightscoutMobileHybrid
 			{
 				Navigation.PushModalAsync(new SettingsPage(), true);
 			}
-			slVolume.Value = DependencyService.Get<IVolumeControl>().GetVolume();
+			//slVolume.Value = DependencyService.Get<IVolumeControl>().GetVolume();
 
 			MessagingCenter.Subscribe<SettingsPage>(this, "URLChanged", (SettingsPage obj) =>
 			{
@@ -38,7 +39,7 @@ namespace NightscoutMobileHybrid
 				DisplayAlert("Error", $"There was an error registering for push notifications: {errorMessage}.  This has already been reported to the developers.", "Ok");
 			 });
 
-			slVolume.Maximum = DependencyService.Get<IVolumeControl>().GetMaxVolume();
+			//slVolume.Maximum = DependencyService.Get<IVolumeControl>().GetMaxVolume();
 
 			//btnChangeURL.Clicked += BtnChangeURL_Clicked;
 			//slVolume.ValueChanged += SlVolume_ValueChanged;
@@ -88,9 +89,23 @@ namespace NightscoutMobileHybrid
 		//	}
 		//}
 
+		//removed volume control slider on 12/22/16 because you can just use the hardware buttons to change voluem
 		void SlVolume_ValueChanged(object sender, ValueChangedEventArgs e)
 		{
-			DependencyService.Get<IVolumeControl>().SetVolume((float) slVolume.Value);
+			//DependencyService.Get<IVolumeControl>().SetVolume((float) slVolume.Value);
+		}
+
+		//added on 12/22/16 by aed to hide the buttons - don't think I'm going to use this though.
+		void btnHide_Clicked(object sender, System.EventArgs e)
+		{
+			if (_bButtonHide)
+			{
+				_bButtonHide = false;
+			}
+			else
+			{
+				_bButtonHide = true;
+			}
 		}
 
 		void BtnRefresh_Clicked(object sender, System.EventArgs e)

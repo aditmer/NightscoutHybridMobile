@@ -22,11 +22,11 @@
 			<OnPlatform.iOS>0,20,0,0</OnPlatform.iOS>
 		</OnPlatform>
 	</StackLayout.Padding>
-		<WebView x:Name="wvNightscout" HeightRequest="1000" WidthRequest="1000"></WebView>
+		<WebView x:Name="wvNightscout" HeightRequest="2000" WidthRequest="1000"></WebView>
 
-
+		<!--<Button x:Name="btnHide" BackgroundColor="Black" Clicked="btnHide_Clicked" />-->
 		<!--<StackLayout Orientation="Horizontal">-->
-		<Grid Margin="10,0,10,5"  x:Name="grdNativeControls">
+		<Grid Margin="10,0,10,5"  x:Name="grdNativeControls"  >
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*" />
 				<ColumnDefinition Width="*" />
@@ -36,19 +36,19 @@
 				<ColumnDefinition Width="*" />-->
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition Height="Auto" />
-				<RowDefinition Height="Auto" />
-				<RowDefinition Height="Auto" />
+				<RowDefinition Height="25" />
+				<!--<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />-->
 			</Grid.RowDefinitions>
 			
-			<Slider x:Name="slVolume" Minimum="0" Grid.Row="0" Grid.ColumnSpan="4" ValueChanged="SlVolume_ValueChanged" />
+			<!--<Slider IsVisible="false" x:Name="slVolume" Minimum="0" Grid.Row="0" Grid.ColumnSpan="4" ValueChanged="SlVolume_ValueChanged" />-->
 
-			<Button x:Name="btnSettings" Text="Settings"  Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Clicked="BtnSettings_Clicked" WidthRequest="100"  BackgroundColor="Gray"   TextColor="White"  >
+			<Button x:Name="btnSettings" Text="Settings"  Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Clicked="BtnSettings_Clicked" WidthRequest="100"   BackgroundColor="Gray"   TextColor="Black"  >
 				<Button.FontSize>
 					<OnPlatform x:TypeArguments="x:Double" iOS="15" Android="12" />
 				</Button.FontSize>
 			</Button>
-			<Button x:Name="btnRefresh" Text="Refresh" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Clicked="BtnRefresh_Clicked" WidthRequest="70"  BackgroundColor="Gray" TextColor="White" >
+			<Button x:Name="btnRefresh" Text="Refresh" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Clicked="BtnRefresh_Clicked" WidthRequest="70"  BackgroundColor="Gray" TextColor="Black" >
 				<Button.FontSize>
 					<OnPlatform x:TypeArguments="x:Double" iOS="15" Android="12" />
 				</Button.FontSize>
@@ -56,7 +56,7 @@
 			
 			<!--<Label IsVisible="false" Text="Stay Awake" FontSize="10" Grid.Column="2" Grid.Row="1"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" />
 			<Switch IsVisible="false" x:Name="swScreenLockOverride" Grid.Column="2" Grid.Row="2" Toggled="SwScreenLockOverride_Toggled" VerticalOptions="Center" HorizontalOptions="Center" />-->
-			<Button x:Name="btnScreenLockOverride" Text="Lock" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Clicked="btnScreenLockOverride_Clicked" WidthRequest="100"  BackgroundColor="Gray"   TextColor="White" >
+			<Button x:Name="btnScreenLockOverride" Text="Lock" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Clicked="btnScreenLockOverride_Clicked" WidthRequest="100"  BackgroundColor="Gray"   TextColor="Black" >
 				<Button.FontSize>
 					<OnPlatform x:TypeArguments="x:Double" iOS="15" Android="12" />
 				</Button.FontSize>
@@ -64,7 +64,7 @@
 			
 			<!--<Label IsVisible="false" Text="Light" FontSize="10" Grid.Column="3" Grid.Row="1"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" />
 			<Switch IsVisible="false" x:Name="swLight" Grid.Column="3" Grid.Row="2" Toggled="SwLight_Toggled" VerticalOptions="Center" HorizontalOptions="Center" />-->
-			<Button x:Name="btnLight" Text="Light" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" Clicked="btnLight_Clicked" WidthRequest="100"  BackgroundColor="Gray"   TextColor="White" >
+			<Button x:Name="btnLight" Text="Light" Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" Clicked="btnLight_Clicked" WidthRequest="100"  BackgroundColor="Gray"   TextColor="Black" >
 				<Button.FontSize>
 					<OnPlatform x:TypeArguments="x:Double" iOS="15" Android="12" />
 				</Button.FontSize>
