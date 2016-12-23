@@ -11,6 +11,7 @@
     <AssemblyName>NightscoutMobileHybrid</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <ReleaseVersion>0.1.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,6 +57,7 @@
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Helpers\Webservices.cs" />
     <Compile Include="Models\AckRequest.cs" />
+    <Compile Include="Helpers\ILamp.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

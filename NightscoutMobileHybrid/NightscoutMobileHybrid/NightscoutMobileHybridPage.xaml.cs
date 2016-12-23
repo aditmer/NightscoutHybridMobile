@@ -19,7 +19,7 @@ namespace NightscoutMobileHybrid
 
 
 
-			if (ApplicationSettings.URL != string.Empty)
+			if (ApplicationSettings.URL != ApplicationSettings.SettingsDefaultURL)// != "" || ApplicationSettings.URL != null)
 			{
 				TryURL(7000);
 			}
@@ -74,7 +74,10 @@ namespace NightscoutMobileHybrid
 
 				grdNativeControls.IsVisible = (width < height);
 
-				TryURL(7000);
+				if (ApplicationSettings.URL != ApplicationSettings.SettingsDefaultURL)
+				{
+					TryURL(7000);
+				}
 			}
 		}
 
@@ -156,11 +159,13 @@ namespace NightscoutMobileHybrid
 			{
 				if (e.Value)
 				{
-					CrossLamp.Current.TurnOn();
+					//CrossLamp.Current.TurnOn();
+					DependencyService.Get<ILamp>().TurnOn();
 				}
 				else
 				{
-					CrossLamp.Current.TurnOff();
+					//CrossLamp.Current.TurnOff();
+					DependencyService.Get<ILamp>().TurnOff();
 				}
 			}
 			catch (Exception ex)
@@ -176,13 +181,15 @@ namespace NightscoutMobileHybrid
 				if (_bLightOn)
 				{
 					_bLightOn = false;
-					CrossLamp.Current.TurnOff();
+					//CrossLamp.Current.TurnOff();
+					DependencyService.Get<ILamp>().TurnOff();
 					btnLight.BackgroundColor = Color.Gray;
 				}
 				else
 				{
 					_bLightOn = true;
-					CrossLamp.Current.TurnOn();
+					//CrossLamp.Current.TurnOn();
+					DependencyService.Get<ILamp>().TurnOn();
 					btnLight.BackgroundColor = Color.Green;
 				}
 			}

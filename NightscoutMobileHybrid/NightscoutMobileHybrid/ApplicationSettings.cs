@@ -35,6 +35,7 @@ namespace NightscoutMobileHybrid
 		private const string AlarmUrgentMins1key = "AlarmUrgentMins1";
 		private const string AlarmUrgentMins2key = "AlarmUrgentMins2";
 		private static readonly string SettingsDefault = string.Empty;
+		public static readonly string SettingsDefaultURL = "https://your-nightscout-url.azurewebsites.net";
 		private static readonly bool SettingsDefaultBool = false;
 		private static readonly int SettingsDefaultInt = 0;
 
@@ -45,7 +46,7 @@ namespace NightscoutMobileHybrid
 		{
 			get
 			{
-				return AppSettings.GetValueOrDefault<string>(URLkey, SettingsDefault);
+				return AppSettings.GetValueOrDefault<string>(URLkey, SettingsDefaultURL);
 			}
 			set
 			{

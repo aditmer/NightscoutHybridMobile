@@ -19,6 +19,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
+    <ReleaseVersion>0.1.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -149,12 +150,6 @@
     <Reference Include="Microsoft.Azure.Mobile.Crashes">
       <HintPath>..\packages\Microsoft.Azure.Mobile.Crashes.0.2.0\lib\MonoAndroid403\Microsoft.Azure.Mobile.Crashes.dll</HintPath>
     </Reference>
-    <Reference Include="Lamp.Plugin.Abstractions">
-      <HintPath>..\packages\kphillpotts.Lamp.Plugin.1.0.0.1\lib\MonoAndroid10\Lamp.Plugin.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Lamp.Plugin">
-      <HintPath>..\packages\kphillpotts.Lamp.Plugin.1.0.0.1\lib\MonoAndroid10\Lamp.Plugin.dll</HintPath>
-    </Reference>
     <Reference Include="Plugin.Connectivity.Abstractions">
       <HintPath>..\packages\Xam.Plugin.Connectivity.2.3.0.41-beta\lib\MonoAndroid10\Plugin.Connectivity.Abstractions.dll</HintPath>
     </Reference>
@@ -178,6 +173,7 @@
     <Compile Include="ScreenLockImplementation.cs" />
     <Compile Include="PushNotificationImplementation.cs" />
     <Compile Include="NotificationActionService.cs" />
+    <Compile Include="LampImplementation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

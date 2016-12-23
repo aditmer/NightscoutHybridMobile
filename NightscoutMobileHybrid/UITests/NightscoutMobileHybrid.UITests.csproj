@@ -8,6 +8,7 @@
     <RootNamespace>NightscoutMobileHybrid.UITests</RootNamespace>
     <AssemblyName>NightscoutMobileHybrid.UITests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ReleaseVersion>0.1.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

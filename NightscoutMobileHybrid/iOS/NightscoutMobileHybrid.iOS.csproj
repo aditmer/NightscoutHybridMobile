@@ -9,6 +9,7 @@
     <RootNamespace>NightscoutMobileHybrid.iOS</RootNamespace>
     <AssemblyName>NightscoutMobileHybridiOS</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <ReleaseVersion>0.1.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>

@@ -1,10 +1,9 @@
 ﻿using System;
 namespace NightscoutMobileHybrid
 {
-	public class ILamp
+	public interface ILamp
 	{
-		public ILamp()
-		{
-		}
+		void TurnOn();
+		void TurnOff();
 	}
 }
