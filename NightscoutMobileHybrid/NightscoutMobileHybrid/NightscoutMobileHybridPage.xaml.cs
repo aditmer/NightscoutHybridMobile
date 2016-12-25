@@ -113,7 +113,8 @@ namespace NightscoutMobileHybrid
 
 		void BtnRefresh_Clicked(object sender, System.EventArgs e)
 		{
-			wvNightscout.Source = ApplicationSettings.URL;
+			//wvNightscout.Source = ApplicationSettings.URL;
+			TryURL();
 		}
 
 		void BtnSettings_Clicked(object sender, System.EventArgs e)
@@ -176,27 +177,46 @@ namespace NightscoutMobileHybrid
 
 		void btnLight_Clicked(object sender, EventArgs e)
 		{
-			try
+			//try
+			//{
+			if (_bLightOn)
 			{
-				if (_bLightOn)
+				_bLightOn = false;
+
+				Device.OnPlatform(() =>
 				{
-					_bLightOn = false;
-					//CrossLamp.Current.TurnOff();
-					DependencyService.Get<ILamp>().TurnOff();
-					btnLight.BackgroundColor = Color.Gray;
-				}
-				else
-				{
-					_bLightOn = true;
-					//CrossLamp.Current.TurnOn();
-					DependencyService.Get<ILamp>().TurnOn();
+						//iOS
+						CrossLamp.Current.TurnOff();
+				}, () =>
+				 {
+						 //Android
+						 DependencyService.Get<ILamp>().TurnOff();
+
+				 });
+
+				btnLight.BackgroundColor = Color.Gray;
+			}
+			else
+			{
+				_bLightOn = true;
+
+					Device.OnPlatform(() =>
+					{
+						//iOS
+						CrossLamp.Current.TurnOn();
+					}, () =>
+					 {
+						//Android
+						DependencyService.Get<ILamp>().TurnOn();
+					 });
+
 					btnLight.BackgroundColor = Color.Green;
 				}
-			}
-			catch (Exception ex)
-			{
-				HockeyApp.MetricsManager.TrackEvent($"Light issue: {ex.Message}");
-			}
+			//}
+			//catch (Exception ex)
+			//{
+			//	HockeyApp.MetricsManager.TrackEvent($"Light issue: {ex.Message}");
+			//}
 		}
 	}
 }

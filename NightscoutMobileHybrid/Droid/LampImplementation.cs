@@ -83,8 +83,6 @@ namespace NightscoutMobileHybrid.Droid
 				camera.SetParameters(p);
 			}
 
-			camera.StartPreview();
-
 			// nexus 5 fix here: http://stackoverflow.com/questions/21417332/nexus-5-4-4-2-flashlight-led-not-turning-on
 			try
 			{
@@ -94,6 +92,10 @@ namespace NightscoutMobileHybrid.Droid
 			{
 				// Ignore
 			}
+
+			camera.StartPreview();
+
+
 
 		}
 

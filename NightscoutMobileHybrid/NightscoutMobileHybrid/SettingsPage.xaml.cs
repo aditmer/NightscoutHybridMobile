@@ -16,8 +16,10 @@ namespace NightscoutMobileHybrid
 		{
 			InitializeComponent();
 
-
-			entURL.Text = ApplicationSettings.URL;
+			if (ApplicationSettings.URL != ApplicationSettings.SettingsDefaultURL)
+			{
+				entURL.Text = ApplicationSettings.URL;
+			}
 			swInfo.IsToggled = ApplicationSettings.InfoNotifications;
 			swAlert.IsToggled = ApplicationSettings.AlertNotifications;
 			swAnouncement.IsToggled = ApplicationSettings.AnouncementNotifications;
