@@ -53,16 +53,36 @@ namespace NightscoutMobileHybrid.iOS
 		{
 			UNUserNotificationCenter.Current.Delegate = new UserNotificationCenterDelegate();
 
+			//added on 1/4/17 by aed to add 2 customizable snooze options
+			int snoozeTime1 = 1;
+			int snoozeTime2 = 2;
+
+			//Do we have custom snooze times from Nightscout?
+			if (ApplicationSettings.AlarmUrgentMins1 != 0)
+			{
+				snoozeTime1 = ApplicationSettings.AlarmUrgentMins1;
+			}
+
+			if (ApplicationSettings.AlarmUrgentMins2 != 0)
+			{
+				snoozeTime2 = ApplicationSettings.AlarmUrgentMins2;
+			}
+
+
 			//added on 12/03/16 by aed to add custom actions to the notifications (I think this code goes here)
 			// Create action
-			var actionID = "snooze";
-			var title = "Snooze";
+			var actionID = "snooze1";
+			var title = $"Snooze {snoozeTime1} minutes";
 			var action = UNNotificationAction.FromIdentifier(actionID, title, UNNotificationActionOptions.None);
+
+			var actionID2 = "snooze2";
+			var title2 = $"Snooze {snoozeTime2} minutes";
+			var action2 = UNNotificationAction.FromIdentifier(actionID2, title2, UNNotificationActionOptions.None);
 
 
 			// Create category
 			var categoryID = "event";
-			var actions = new UNNotificationAction[] { action };
+			var actions = new UNNotificationAction[] { action, action2 };
 			var intentIDs = new string[] { };
 			var categoryOptions = new UNNotificationCategoryOptions[] { };
 			var category = UNNotificationCategory.FromIdentifier(categoryID, actions, intentIDs, UNNotificationCategoryOptions.AllowInCarPlay);
@@ -227,6 +247,23 @@ namespace NightscoutMobileHybrid.iOS
 				NSDictionary aps = options.ObjectForKey(new NSString("aps")) as NSDictionary;
 
 				string alert = string.Empty;
+				string title = string.Empty;
+
+
+				if (aps.ContainsKey(new NSString("alert")))
+				{
+					NSDictionary alertObj = aps.ObjectForKey(new NSString("alert")) as NSDictionary;
+
+					if (alertObj.ContainsKey(new NSString("body")))
+					{
+						alert = (alertObj[new NSString("body")] as NSString).ToString();
+					}
+
+					if (alertObj.ContainsKey(new NSString("title")))
+					{
+						title = (alertObj[new NSString("title")] as NSString).ToString();
+					}
+				}
 
 				//Extract the alert text
 				// NOTE: If you're using the simple alert by just specifying
@@ -235,8 +272,8 @@ namespace NightscoutMobileHybrid.iOS
 				// your "alert" object from the aps dictionary will be another NSDictionary.
 				// Basically the JSON gets dumped right into a NSDictionary,
 				// so keep that in mind.
-				if (aps.ContainsKey(new NSString("alert")))
-					alert = (aps[new NSString("alert")] as NSString).ToString();
+				//if (aps.ContainsKey(new NSString("alert")))
+					//alert = (aps[new NSString("alert")] as NSString).ToString();
 
 				//NSDictionary alertDictionary = aps.ObjectForKey(new NSString("alert")) as NSDictionary;
 				//string title = string.Empty;
@@ -250,7 +287,7 @@ namespace NightscoutMobileHybrid.iOS
 					//Manually show an alert
 					if (!string.IsNullOrEmpty(alert))
 					{
-						UIAlertView avAlert = new UIAlertView("Notification", alert, null, "OK", null);
+						UIAlertView avAlert = new UIAlertView(title, alert, null, "OK", null);
 						avAlert.Show();
 					}
 				}
