@@ -56,7 +56,37 @@ namespace NightscoutMobileHybrid
 			else
 			{
 				var htmlSource = new HtmlWebViewSource();
-				htmlSource.Html = $"<html><body style=\"background-color:#000; color:fff\"><div ><p>We could not reach the URL {ApplicationSettings.URL}. &nbsp;Please check your URL for typos and make sure you are online.</p>\n<p>&nbsp;</p>\n<p>This is not the Nightscout you are looking for.</p></div></body></html>";
+
+
+
+				htmlSource.Html = @"<!DOCTYPE html>
+					<html><head><meta http-equiv=""Content-Type"" content=""text/html; charset=UTF-8"">
+
+					<title>This is not the Nightscout you are looking for</title>
+					<style type=""text/css"">
+					body,td,th {
+						font-size: x-large;
+						font-family: Constantia, ""Lucida Bright"", ""DejaVu Serif"", Georgia, serif;
+						color: #B9B9B9;
+					}
+					body {
+						background-color: #000000;
+					}
+					</style>
+					</head>
+
+					<body><center>
+					  <h1><strong>OOPS! </strong></h1>
+					  <p>We can't reach that site right now. </p>
+					  <p><img src=""error_page_logo.jpg"" width=""100"" height=""138"" alt=""""></p>
+					  <p>Please check for typos in your URL and make sure you are online.</p>
+					  <p>&nbsp;</p>
+					  <p>&nbsp;</p>
+					</center>
+
+
+					</body></html>";
+//$"<html><body style=\"background-color:#000; color:fff\"><div ><p>We could not reach the URL {ApplicationSettings.URL}. &nbsp;Please check your URL for typos and make sure you are online.</p>\n<p>&nbsp;</p>\n<p>This is not the Nightscout you are looking for.</p></div></body></html>";
 				wvNightscout.Source = htmlSource;
 			}
 

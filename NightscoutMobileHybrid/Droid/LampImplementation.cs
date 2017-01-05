@@ -49,6 +49,11 @@ namespace NightscoutMobileHybrid.Droid
 			}
 
 			camera.StopPreview();
+
+			//added on 1/3/2016 by aed to try to fix the ongoing issue on Android 6.x and the battery drain issue
+			camera.Release();
+			camera = null;
+
 		}
 
 		public void TurnOn()

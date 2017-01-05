@@ -238,6 +238,11 @@ namespace NightscoutMobileHybrid.iOS
 				if (aps.ContainsKey(new NSString("alert")))
 					alert = (aps[new NSString("alert")] as NSString).ToString();
 
+				//NSDictionary alertDictionary = aps.ObjectForKey(new NSString("alert")) as NSDictionary;
+				//string title = string.Empty;
+				//if (alertDictionary.ContainsKey(new NSString("title")))
+				//	title = (alertDictionary[new NSString("title")] as NSString).ToString();
+
 				//If this came from the ReceivedRemoteNotification while the app was running,
 				// we of course need to manually process things like the sound, badge, and alert.
 				if (!fromFinishedLaunching)
