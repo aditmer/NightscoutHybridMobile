@@ -15,7 +15,7 @@ namespace NightscoutMobileHybrid.iOS
         #endregion
 
         #region Override Methods
-        public override void DidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler)
+        public async override void DidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler)
         {
 			var manager = BITHockeyManager.SharedHockeyManager;
 			manager.MetricsManager.TrackEvent("iOS Notification Ack");
@@ -77,7 +77,7 @@ namespace NightscoutMobileHybrid.iOS
 
 
 
-				Webservices.SilenceAlarm(ack);
+				await Webservices.SilenceAlarm(ack);
 			}
 
             // Inform caller it has been handled

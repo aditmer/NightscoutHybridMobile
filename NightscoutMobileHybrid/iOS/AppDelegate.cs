@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -53,7 +53,7 @@ namespace NightscoutMobileHybrid.iOS
 		{
 			UNUserNotificationCenter.Current.Delegate = new UserNotificationCenterDelegate();
 
-			//added on 1/4/17 by aed to add 2 customizable snooze options
+			//added on 1/4/17 by aditmer to add 2 customizable snooze options
 			int snoozeTime1 = 1;
 			int snoozeTime2 = 2;
 
@@ -69,7 +69,7 @@ namespace NightscoutMobileHybrid.iOS
 			}
 
 
-			//added on 12/03/16 by aed to add custom actions to the notifications (I think this code goes here)
+			//added on 12/03/16 by aditmer to add custom actions to the notifications (I think this code goes here)
 			// Create action
 			var actionID = "snooze1";
 			var title = $"Snooze {snoozeTime1} minutes";
@@ -175,7 +175,7 @@ namespace NightscoutMobileHybrid.iOS
 
             
 
-            //Commented out on 11/29/16 by aed so we can register for notifications on the server
+            //Commented out on 11/29/16 by aditmer so we can register for notifications on the server
             //Hub = new SBNotificationHub(Constants.ConnectionString, Constants.NotificationHubPath);
 
             //Hub.UnregisterAllAsync(deviceToken, (error) =>

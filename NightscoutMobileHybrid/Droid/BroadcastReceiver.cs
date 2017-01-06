@@ -94,7 +94,7 @@ public class PushHandlerService : GcmServiceBase
 		PushNotificationImplementation.registerRequest.deviceToken = registrationId;
 		ApplicationSettings.DeviceToken = registrationId;
 		Webservices.RegisterPush(PushNotificationImplementation.registerRequest);
-		//commented out on 11/29/16 by aed so we can register on the server
+		//commented out on 11/29/16 by aditmer so we can register on the server
         //RegistrationID = registrationId;
 
         //Hub = new NotificationHub(NightscoutMobileHybrid.Constants.NotificationHubPath, NightscoutMobileHybrid.Constants.ConnectionString, context);
@@ -134,7 +134,7 @@ public class PushHandlerService : GcmServiceBase
         intent.AddFlags(ActivityFlags.SingleTop);
         var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.UpdateCurrent);
 
-		//addd on 12/5/16 by aed to add actions to the push notifications
+		//addd on 12/5/16 by aditmer to add actions to the push notifications
 
 		AckRequest ack = new AckRequest();
 		ack.group = group;

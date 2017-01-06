@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Android.Graphics;
@@ -50,7 +50,7 @@ namespace NightscoutMobileHybrid.Droid
 
 			camera.StopPreview();
 
-			//added on 1/3/2016 by aed to try to fix the ongoing issue on Android 6.x and the battery drain issue
+			//added on 1/3/2016 by aditmer to try to fix the ongoing issue on Android 6.x and the battery drain issue
 			camera.Release();
 			camera = null;
 

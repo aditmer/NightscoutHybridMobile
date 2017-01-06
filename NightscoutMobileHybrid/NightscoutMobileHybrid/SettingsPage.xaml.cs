@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -51,6 +51,8 @@ namespace NightscoutMobileHybrid
 
 				Navigation.PopModalAsync(true);
 
+
+
 				await Webservices.GetStatusJson(sURL);
 				if ((ApplicationSettings.AzureTag != "") && (Device.OS != TargetPlatform.Windows))
 				{
@@ -86,7 +88,7 @@ namespace NightscoutMobileHybrid
 
 					if (bUnregister)
 					{
-						//added on 1/3/16 by aed to prevent the unsubscribe webservice call when no InstallationID exists.
+						//added on 1/3/16 by aditmer to prevent the unsubscribe webservice call when no InstallationID exists.
 						if (ApplicationSettings.InstallationID != string.Empty)
 						{
 							//if UnregisterPush does NOT return an empty string, display the error message
@@ -96,7 +98,7 @@ namespace NightscoutMobileHybrid
 								await DisplayAlert("Error", response, "Ok");
 							}
 
-							//added on 1/3/16 by aed to remove the InstallationID after unsubscribing. 
+							//added on 1/3/16 by aditmer to remove the InstallationID after unsubscribing. 
 							ApplicationSettings.InstallationID = string.Empty;
 						}
 					}
@@ -116,10 +118,18 @@ namespace NightscoutMobileHybrid
 				}
 				else //azuretag == "" (it's not in the enable string
 				{
-					Device.BeginInvokeOnMainThread(() =>
-						{
-							DisplayAlert("Error", "Your Nightscout website does not have azurepush enabled.  Please ensure you have updated your Nightscout website and added the azurepush string to your enable variable.", "Ok");
-					});
+					//if they registered for any type of notification, but don't have an AzureTag
+					if (ApplicationSettings.InfoNotifications
+						|| ApplicationSettings.AlertNotifications
+						|| ApplicationSettings.AnouncementNotifications)
+					{
+						MessagingCenter.Send(this, "No AzureTag");
+						//Device.BeginInvokeOnMainThread(async () =>
+						//	{
+						//		await DisplayAlert("Error", "Your Nightscout website does not have azurepush enabled.  Please ensure you have updated your Nightscout website and added the azurepush string to your enable variable.", "Ok");
+						//	});
+					}
+
 				}
 			}
 	    }

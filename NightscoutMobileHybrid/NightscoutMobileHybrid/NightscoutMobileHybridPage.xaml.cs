@@ -39,6 +39,17 @@ namespace NightscoutMobileHybrid
 				DisplayAlert("Error", $"There was an error registering for push notifications: {errorMessage}.  This has already been reported to the developers.", "Ok");
 			 });
 
+			MessagingCenter.Subscribe<SettingsPage>(this, "No AzureTag", (obj) =>
+			  {
+				  DisplayAlert("No Notifications!", "Your Nightscout website does not have azurepush enabled.  Please ensure you have updated your Nightscout website and added the azurepush string to your enable variable.", "Ok");
+			});
+
+
+			//added on 1/5/16 by aditmer because most tablets don't have a flash and the light button would not work (or cause a crash)
+			if ( Device.Idiom == TargetIdiom.Tablet)
+			{
+				btnLight.IsVisible = false;
+			}
 			//slVolume.Maximum = DependencyService.Get<IVolumeControl>().GetMaxVolume();
 
 			//btnChangeURL.Clicked += BtnChangeURL_Clicked;
@@ -128,7 +139,7 @@ namespace NightscoutMobileHybrid
 			//DependencyService.Get<IVolumeControl>().SetVolume((float) slVolume.Value);
 		}
 
-		//added on 12/22/16 by aed to hide the buttons - don't think I'm going to use this though.
+		//added on 12/22/16 by aditmer to hide the buttons - don't think I'm going to use this though.
 		void btnHide_Clicked(object sender, System.EventArgs e)
 		{
 			if (_bButtonHide)
