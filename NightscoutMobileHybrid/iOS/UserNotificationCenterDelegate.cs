@@ -31,14 +31,24 @@ namespace NightscoutMobileHybrid.iOS
 				
                 case "snooze1":
 					
-					ack.time = ApplicationSettings.AlarmUrgentMins1;
+					ack.time = ApplicationSettings.AlarmUrgentLowMins1;
 
 					break;
 					
 				case "snooze2":
-					ack.time = ApplicationSettings.AlarmUrgentMins2;
+					ack.time = ApplicationSettings.AlarmUrgentLowMins2;
 
 					break;
+
+				case "snooze3":
+				ack.time = ApplicationSettings.AlarmUrgentMins1;
+
+				break;
+
+				case "snooze4":
+				ack.time = ApplicationSettings.AlarmUrgentMins2;
+
+				break;
                // default:
                     // Take action based on identifier
                     //switch (response.ActionIdentifier)

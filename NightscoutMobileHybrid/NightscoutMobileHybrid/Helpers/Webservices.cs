@@ -77,8 +77,10 @@ namespace NightscoutMobileHybrid
 						ApplicationSettings.AzureTag = site.settings.azureTag;
 					}
 
-					ApplicationSettings.AlarmUrgentMins1 = site.settings.alarmUrgentMins[0];
-					ApplicationSettings.AlarmUrgentMins2 = site.settings.alarmUrgentMins[1];
+					ApplicationSettings.AlarmUrgentMins1 = site.settings.alarmUrgentHighMins[0];
+					ApplicationSettings.AlarmUrgentMins2 = site.settings.alarmUrgentHighMins[1];
+					ApplicationSettings.AlarmUrgentLowMins1 = site.settings.alarmUrgentLowMins[0];
+					ApplicationSettings.AlarmUrgentLowMins2 = site.settings.alarmUrgentLowMins[1];
 	            }
 	            else
 	            {

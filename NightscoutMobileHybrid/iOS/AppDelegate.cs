@@ -44,6 +44,26 @@ namespace NightscoutMobileHybrid.iOS
 				ProcessNotification(UIApplicationLaunchOptionsRemoteNotificationKey, true);
 			}
 
+			//added on 1/7/17 by aditmer to see if the device token from APNS has changed (like after an app update)
+			if (ApplicationSettings.InstallationID != "")
+			{
+				//Push notifications registration
+				if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
+				{
+					var pushSettings = UIUserNotificationSettings.GetSettingsForTypes(
+						   UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
+						   new NSSet());
+
+					UIApplication.SharedApplication.RegisterUserNotificationSettings(pushSettings);
+					UIApplication.SharedApplication.RegisterForRemoteNotifications();
+
+				}
+				else
+				{
+					UIRemoteNotificationType notificationTypes = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
+					UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(notificationTypes);
+				}
+			}
 
 			return base.FinishedLaunching(app, options);
 		}
@@ -53,19 +73,30 @@ namespace NightscoutMobileHybrid.iOS
 		{
 			UNUserNotificationCenter.Current.Delegate = new UserNotificationCenterDelegate();
 
-			//added on 1/4/17 by aditmer to add 2 customizable snooze options
+			//added on 1/4/17 by aditmer to add 4 (1/6/17) customizable snooze options
 			int snoozeTime1 = 1;
 			int snoozeTime2 = 2;
+			int snoozeTime3 = 3;
+			int snoozeTime4 = 4;
 
-			//Do we have custom snooze times from Nightscout?
+			if (ApplicationSettings.AlarmUrgentLowMins1 != 0)
+			{
+				snoozeTime1 = ApplicationSettings.AlarmUrgentLowMins1;
+			}
+
+			if (ApplicationSettings.AlarmUrgentLowMins2 != 0)
+			{
+				snoozeTime2 = ApplicationSettings.AlarmUrgentLowMins2;
+			}
+
 			if (ApplicationSettings.AlarmUrgentMins1 != 0)
 			{
-				snoozeTime1 = ApplicationSettings.AlarmUrgentMins1;
+				snoozeTime3 = ApplicationSettings.AlarmUrgentMins1;
 			}
 
 			if (ApplicationSettings.AlarmUrgentMins2 != 0)
 			{
-				snoozeTime2 = ApplicationSettings.AlarmUrgentMins2;
+				snoozeTime4 = ApplicationSettings.AlarmUrgentMins2;
 			}
 
 
@@ -79,13 +110,40 @@ namespace NightscoutMobileHybrid.iOS
 			var title2 = $"Snooze {snoozeTime2} minutes";
 			var action2 = UNNotificationAction.FromIdentifier(actionID2, title2, UNNotificationActionOptions.None);
 
+			var actionID3 = "snooze3";
+			var title3 = $"Snooze {snoozeTime3} minutes";
+			var action3 = UNNotificationAction.FromIdentifier(actionID3, title3, UNNotificationActionOptions.None);
+
+			var actionID4 = "snooze4";
+			var title4 = $"Snooze {snoozeTime4} minutes";
+			var action4 = UNNotificationAction.FromIdentifier(actionID4, title4, UNNotificationActionOptions.None);
 
 			// Create category
 			var categoryID = "event";
-			var actions = new UNNotificationAction[] { action, action2 };
+			var actions = new List<UNNotificationAction> { action, action2, action3, action4};
 			var intentIDs = new string[] { };
 			var categoryOptions = new UNNotificationCategoryOptions[] { };
-			var category = UNNotificationCategory.FromIdentifier(categoryID, actions, intentIDs, UNNotificationCategoryOptions.AllowInCarPlay);
+
+
+
+			//added on 1/7/17 by aditmer to remove duplicate snooze options (they can be custom set by each user in their Nightscout settings)
+			UNNotificationAction actionToRemove = null;
+			foreach (UNNotificationAction act in actions)
+			{
+				if (actions.Where((arg) => arg.Title.Equals(act.Title)).Count() > 1)
+				{
+					actionToRemove = act;
+				}
+			}
+
+			//removes the duplicate acioint; not ideal - it only detects and removes one duplicate (there are only 4 options; it is unlikely there is more than one duplicate)
+			//TODO:  build a better solution; this works for now...
+			if (actionToRemove != null)
+			{
+				actions.Remove(actionToRemove);
+			}
+
+			var category = UNNotificationCategory.FromIdentifier(categoryID, actions.ToArray(), intentIDs, UNNotificationCategoryOptions.AllowInCarPlay);
 
 			// Register category
 			var categories = new UNNotificationCategory[] { category };
@@ -158,19 +216,42 @@ namespace NightscoutMobileHybrid.iOS
 
 		//#endregion
 
-		public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
+		public async override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
 		{
 			string s = deviceToken.Description.Replace("<","").Replace(">","").Replace(" ","");
 			//Byte[]  tokenBytes = deviceToken.Bytes;
 			//for (int i = 0; i < 8;i++)
 			//{
-				
+
 			//	s += String.Format("%08x%08x%08x%08x%08x%08x%08x%08x", deviceToken.Bytes[i])
 			//}
-			 
-			PushNotificationsImplementation.registerRequest.deviceToken = s;
+
+			RegisterRequest registration = new RegisterRequest();
+
+			//added on 1/7/17 by aditmer to unregister and reregister if the app gets a new device token
+			if (s != ApplicationSettings.InstallationID && ApplicationSettings.InstallationID != "")
+			{
+				await Webservices.UnregisterPush(ApplicationSettings.InstallationID);
+			}
+
+			if (PushNotificationsImplementation.registerRequest != null)
+			{
+				registration = PushNotificationsImplementation.registerRequest;
+			}
+			else
+			{
+				
+				registration.platform = Xamarin.Forms.Device.OS.ToString();
+
+				registration.settings = new RegistrationSettings();
+				registration.settings.info = ApplicationSettings.InfoNotifications;
+				registration.settings.alert = ApplicationSettings.AlertNotifications;
+				registration.settings.announcement = ApplicationSettings.AnouncementNotifications;
+			}
+
+			registration.deviceToken = s;
 			ApplicationSettings.DeviceToken = s;
-			Webservices.RegisterPush(PushNotificationsImplementation.registerRequest);
+			await Webservices.RegisterPush(registration);
 
 
             

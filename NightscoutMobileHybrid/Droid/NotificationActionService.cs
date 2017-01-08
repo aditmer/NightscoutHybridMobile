@@ -12,14 +12,14 @@ namespace NightscoutMobileHybrid.Droid
 		AckRequest _ack;
 
 
-		public override StartCommandResult OnStartCommand(Intent intent, StartCommandFlags flags, int startId)
+		async public override StartCommandResult OnStartCommand(Intent intent, StartCommandFlags flags, int startId)
 		{
 			string text = intent.GetStringExtra("ack") ?? "no data";
 
 			if (text != "no data")
 			{
 				_ack = JsonConvert.DeserializeObject<AckRequest>(text);
-				Webservices.SilenceAlarm(_ack);
+				await Webservices.SilenceAlarm(_ack);
 			}
 
 			StopSelf();
