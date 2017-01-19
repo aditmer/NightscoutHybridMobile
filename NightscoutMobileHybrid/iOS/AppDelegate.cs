@@ -8,6 +8,7 @@ using UIKit;
 using WindowsAzure.Messaging;
 using Newtonsoft.Json.Linq;
 using UserNotifications;
+using MoreLinq;
 
 namespace NightscoutMobileHybrid.iOS
 {
@@ -124,24 +125,25 @@ namespace NightscoutMobileHybrid.iOS
 			var intentIDs = new string[] { };
 			var categoryOptions = new UNNotificationCategoryOptions[] { };
 
-
+			//added on 1/19/17 by aditmer to remove duplicate snooze options (they can be custom set by each user in their Nightscout settings)
+			actions = actions.DistinctBy((arg) => arg.Title).ToList();
 
 			//added on 1/7/17 by aditmer to remove duplicate snooze options (they can be custom set by each user in their Nightscout settings)
-			UNNotificationAction actionToRemove = null;
-			foreach (UNNotificationAction act in actions)
-			{
-				if (actions.Where((arg) => arg.Title.Equals(act.Title)).Count() > 1)
-				{
-					actionToRemove = act;
-				}
-			}
+			//UNNotificationAction actionToRemove = null;
+			//foreach (UNNotificationAction act in actions)
+			//{
+			//	if (actions.Where((arg) => arg.Title.Equals(act.Title)).Count() > 1)
+			//	{
+			//		actionToRemove = act;
+			//	}
+			//}
 
-			//removes the duplicate acioint; not ideal - it only detects and removes one duplicate (there are only 4 options; it is unlikely there is more than one duplicate)
-			//TODO:  build a better solution; this works for now...
-			if (actionToRemove != null)
-			{
-				actions.Remove(actionToRemove);
-			}
+			////removes the duplicate acioint; not ideal - it only detects and removes one duplicate (there are only 4 options; it is unlikely there is more than one duplicate)
+			////TODO:  build a better solution; this works for now...
+			//if (actionToRemove != null)
+			//{
+			//	actions.Remove(actionToRemove);
+			//}
 
 			var category = UNNotificationCategory.FromIdentifier(categoryID, actions.ToArray(), intentIDs, UNNotificationCategoryOptions.AllowInCarPlay);
 

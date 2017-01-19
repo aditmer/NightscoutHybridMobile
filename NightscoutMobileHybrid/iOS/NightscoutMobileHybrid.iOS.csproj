@@ -47,7 +47,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
-    <CodesignProvision>c6548ef7-8736-4bf5-9a03-7bb931fcbe9b</CodesignProvision>
+    <CodesignProvision>9137f3cb-57b4-42bd-9fec-0d1d1e710e2d</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>pdbonly</DebugType>
@@ -79,7 +79,7 @@
     <MtouchUseSGen>true</MtouchUseSGen>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchFloat32>true</MtouchFloat32>
-    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignEntitlements></CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
@@ -155,6 +155,10 @@
     <Reference Include="Plugin.Connectivity">
       <HintPath>..\packages\Xam.Plugin.Connectivity.2.3.0.41-beta\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
     </Reference>
+    <Reference Include="MoreLinq">
+      <HintPath>..\packages\morelinq.2.0.0\lib\netstandard1.0\MoreLinq.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NightscoutMobileHybrid\NightscoutMobileHybrid.csproj">
