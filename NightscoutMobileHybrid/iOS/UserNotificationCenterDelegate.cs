@@ -15,41 +15,40 @@ namespace NightscoutMobileHybrid.iOS
         #endregion
 
         #region Override Methods
-        public override void DidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler)
+        public async override void DidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler)
         {
 			var manager = BITHockeyManager.SharedHockeyManager;
 			manager.MetricsManager.TrackEvent("iOS Notification Ack");
 			Debug.WriteLine("Snooze me");
 			Console.WriteLine("Snoozed");
             // Take action based on Action ID
+
+			AckRequest ack = new AckRequest();
+			ack.time = -1;
+
 			switch (response.ActionIdentifier) 
             {
-                case "snooze":
+				
+                case "snooze1":
 					
-					AckRequest ack = new AckRequest();
+					ack.time = ApplicationSettings.AlarmUrgentLowMins1;
 
-					var userInfo = response.Notification.Request.Content.UserInfo;
+					break;
+					
+				case "snooze2":
+					ack.time = ApplicationSettings.AlarmUrgentLowMins2;
 
-					if (userInfo.ContainsKey(new NSString("level")))
-					{
-						ack.level = userInfo.ValueForKey(new NSString("level")) as NSString;
-						//ack.Level = level.Int32Value;
-					}
+					break;
 
-					if (userInfo.ContainsKey(new NSString("group")))
-					{
-						ack.group = (userInfo.ValueForKey(new NSString("group")) as NSString).ToString();
-					}
+				case "snooze3":
+				ack.time = ApplicationSettings.AlarmUrgentMins1;
 
-					if (userInfo.ContainsKey(new NSString("key")))
-					{
-						ack.key = (userInfo.ValueForKey(new NSString("key")) as NSString).ToString();
-					}
+				break;
 
-					ack.time = 15;
+				case "snooze4":
+				ack.time = ApplicationSettings.AlarmUrgentMins2;
 
-					Webservices.SilenceAlarm(ack);
-                    break;
+				break;
                // default:
                     // Take action based on identifier
                     //switch (response.ActionIdentifier)
@@ -65,6 +64,31 @@ namespace NightscoutMobileHybrid.iOS
                     //}
                     //break;
             }
+
+			if (ack.time != -1)
+			{
+				var userInfo = response.Notification.Request.Content.UserInfo;
+
+				if (userInfo.ContainsKey(new NSString("level")))
+				{
+					ack.level = userInfo.ValueForKey(new NSString("level")) as NSString;
+					//ack.Level = level.Int32Value;
+				}
+
+				if (userInfo.ContainsKey(new NSString("group")))
+				{
+					ack.group = (userInfo.ValueForKey(new NSString("group")) as NSString).ToString();
+				}
+
+				if (userInfo.ContainsKey(new NSString("key")))
+				{
+					ack.key = (userInfo.ValueForKey(new NSString("key")) as NSString).ToString();
+				}
+
+
+
+				await Webservices.SilenceAlarm(ack);
+			}
 
             // Inform caller it has been handled
             completionHandler();

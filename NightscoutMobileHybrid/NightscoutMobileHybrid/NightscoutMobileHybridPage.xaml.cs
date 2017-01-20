@@ -39,6 +39,17 @@ namespace NightscoutMobileHybrid
 				DisplayAlert("Error", $"There was an error registering for push notifications: {errorMessage}.  This has already been reported to the developers.", "Ok");
 			 });
 
+			MessagingCenter.Subscribe<SettingsPage>(this, "No AzureTag", (obj) =>
+			  {
+				  DisplayAlert("No Notifications!", "Your Nightscout website does not have azurepush enabled.  Please ensure you have updated your Nightscout website and added the azurepush string to your enable variable.", "Ok");
+			});
+
+
+			//added on 1/5/16 by aditmer because most tablets don't have a flash and the light button would not work (or cause a crash)
+			if ( Device.Idiom == TargetIdiom.Tablet)
+			{
+				btnLight.IsVisible = false;
+			}
 			//slVolume.Maximum = DependencyService.Get<IVolumeControl>().GetMaxVolume();
 
 			//btnChangeURL.Clicked += BtnChangeURL_Clicked;
@@ -56,7 +67,37 @@ namespace NightscoutMobileHybrid
 			else
 			{
 				var htmlSource = new HtmlWebViewSource();
-				htmlSource.Html = $"<html><body style=\"background-color:#000; color:fff\"><div ><p>We could not reach the URL {ApplicationSettings.URL}. &nbsp;Please check your URL for typos and make sure you are online.</p>\n<p>&nbsp;</p>\n<p>This is not the Nightscout you are looking for.</p></div></body></html>";
+
+
+
+				htmlSource.Html = @"<!DOCTYPE html>
+					<html><head><meta http-equiv=""Content-Type"" content=""text/html; charset=UTF-8"">
+
+					<title>This is not the Nightscout you are looking for</title>
+					<style type=""text/css"">
+					body,td,th {
+						font-size: x-large;
+						font-family: Constantia, ""Lucida Bright"", ""DejaVu Serif"", Georgia, serif;
+						color: #B9B9B9;
+					}
+					body {
+						background-color: #000000;
+					}
+					</style>
+					</head>
+
+					<body><center>
+					  <h1><strong>OOPS! </strong></h1>
+					  <p>We can't reach that site right now. </p>
+					  <p><img src=""error_page_logo.jpg"" width=""100"" height=""138"" alt=""""></p>
+					  <p>Please check for typos in your URL and make sure you are online.</p>
+					  <p>&nbsp;</p>
+					  <p>&nbsp;</p>
+					</center>
+
+
+					</body></html>";
+//$"<html><body style=\"background-color:#000; color:fff\"><div ><p>We could not reach the URL {ApplicationSettings.URL}. &nbsp;Please check your URL for typos and make sure you are online.</p>\n<p>&nbsp;</p>\n<p>This is not the Nightscout you are looking for.</p></div></body></html>";
 				wvNightscout.Source = htmlSource;
 			}
 
@@ -98,7 +139,7 @@ namespace NightscoutMobileHybrid
 			//DependencyService.Get<IVolumeControl>().SetVolume((float) slVolume.Value);
 		}
 
-		//added on 12/22/16 by aed to hide the buttons - don't think I'm going to use this though.
+		//added on 12/22/16 by aditmer to hide the buttons - don't think I'm going to use this though.
 		void btnHide_Clicked(object sender, System.EventArgs e)
 		{
 			if (_bButtonHide)
@@ -113,7 +154,8 @@ namespace NightscoutMobileHybrid
 
 		void BtnRefresh_Clicked(object sender, System.EventArgs e)
 		{
-			wvNightscout.Source = ApplicationSettings.URL;
+			//wvNightscout.Source = ApplicationSettings.URL;
+			TryURL();
 		}
 
 		void BtnSettings_Clicked(object sender, System.EventArgs e)
@@ -176,27 +218,46 @@ namespace NightscoutMobileHybrid
 
 		void btnLight_Clicked(object sender, EventArgs e)
 		{
-			try
+			//try
+			//{
+			if (_bLightOn)
 			{
-				if (_bLightOn)
+				_bLightOn = false;
+
+				Device.OnPlatform(() =>
 				{
-					_bLightOn = false;
-					//CrossLamp.Current.TurnOff();
-					DependencyService.Get<ILamp>().TurnOff();
-					btnLight.BackgroundColor = Color.Gray;
-				}
-				else
-				{
-					_bLightOn = true;
-					//CrossLamp.Current.TurnOn();
-					DependencyService.Get<ILamp>().TurnOn();
+						//iOS
+						CrossLamp.Current.TurnOff();
+				}, () =>
+				 {
+						 //Android
+						 DependencyService.Get<ILamp>().TurnOff();
+
+				 });
+
+				btnLight.BackgroundColor = Color.Gray;
+			}
+			else
+			{
+				_bLightOn = true;
+
+					Device.OnPlatform(() =>
+					{
+						//iOS
+						CrossLamp.Current.TurnOn();
+					}, () =>
+					 {
+						//Android
+						DependencyService.Get<ILamp>().TurnOn();
+					 });
+
 					btnLight.BackgroundColor = Color.Green;
 				}
-			}
-			catch (Exception ex)
-			{
-				HockeyApp.MetricsManager.TrackEvent($"Light issue: {ex.Message}");
-			}
+			//}
+			//catch (Exception ex)
+			//{
+			//	HockeyApp.MetricsManager.TrackEvent($"Light issue: {ex.Message}");
+			//}
 		}
 	}
 }

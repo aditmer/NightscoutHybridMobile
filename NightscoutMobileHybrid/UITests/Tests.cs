@@ -40,6 +40,7 @@ namespace NightscoutMobileHybrid.UITests
 		[Test]
 		public void CarePortal()
 		{
+			
 			//Enter URL
 			app.Tap(x => x.Class("EntryEditText"));
 			//app.Screenshot("Tapped on view EntryEditText");

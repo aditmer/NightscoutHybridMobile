@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Android.Graphics;
@@ -49,6 +49,11 @@ namespace NightscoutMobileHybrid.Droid
 			}
 
 			camera.StopPreview();
+
+			//added on 1/3/2016 by aditmer to try to fix the ongoing issue on Android 6.x and the battery drain issue
+			camera.Release();
+			camera = null;
+
 		}
 
 		public void TurnOn()
@@ -83,8 +88,6 @@ namespace NightscoutMobileHybrid.Droid
 				camera.SetParameters(p);
 			}
 
-			camera.StartPreview();
-
 			// nexus 5 fix here: http://stackoverflow.com/questions/21417332/nexus-5-4-4-2-flashlight-led-not-turning-on
 			try
 			{
@@ -94,6 +97,10 @@ namespace NightscoutMobileHybrid.Droid
 			{
 				// Ignore
 			}
+
+			camera.StartPreview();
+
+
 
 		}
 
