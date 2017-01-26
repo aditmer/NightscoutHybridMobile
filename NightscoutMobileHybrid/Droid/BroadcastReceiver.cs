@@ -93,6 +93,10 @@ public class PushHandlerService : GcmServiceBase
     {
 		PushNotificationImplementation.registerRequest.deviceToken = registrationId;
 		ApplicationSettings.DeviceToken = registrationId;
+
+		//added on 1/25/17 by aditmer to unregister the device if the registrationId has changed
+		CheckInstallationID.CheckNewInstallationID(registrationId);
+
 		Webservices.RegisterPush(PushNotificationImplementation.registerRequest);
 		//commented out on 11/29/16 by aditmer so we can register on the server
         //RegistrationID = registrationId;

@@ -128,7 +128,7 @@ namespace NightscoutMobileHybrid.iOS
 			//added on 1/19/17 by aditmer to remove duplicate snooze options (they can be custom set by each user in their Nightscout settings)
 			actions = actions.DistinctBy((arg) => arg.Title).ToList();
 
-
+		
 
 			////removes the duplicate acioint; not ideal - it only detects and removes one duplicate (there are only 4 options; it is unlikely there is more than one duplicate)
 			////TODO:  build a better solution; this works for now...
@@ -223,10 +223,11 @@ namespace NightscoutMobileHybrid.iOS
 			RegisterRequest registration = new RegisterRequest();
 
 			//added on 1/7/17 by aditmer to unregister and reregister if the app gets a new device token
-			if (s != ApplicationSettings.InstallationID && ApplicationSettings.InstallationID != "")
-			{
-				await Webservices.UnregisterPush(ApplicationSettings.InstallationID);
-			}
+			//if (s != ApplicationSettings.InstallationID && ApplicationSettings.InstallationID != "")
+			//{
+			//	await Webservices.UnregisterPush(ApplicationSettings.InstallationID);
+			//}
+			await CheckInstallationID.CheckNewInstallationID(s);
 
 			if (PushNotificationsImplementation.registerRequest != null)
 			{

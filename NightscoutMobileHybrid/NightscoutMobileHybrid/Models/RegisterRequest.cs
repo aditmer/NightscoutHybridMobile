@@ -27,6 +27,12 @@ namespace NightscoutMobileHybrid
 			set;
 		}
 
+		public string sharedAccessKey
+		{
+			get;
+			set;
+		}
+
 		public RegisterRequest()
 		{
 		}

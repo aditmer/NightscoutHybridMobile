@@ -1,6 +1,9 @@
 # Autosave files
 *~
 
+#added on 1/25/17 by aditmer
+ServerSettings.config
+
 # build
 [Oo]bj/
 [Bb]in/

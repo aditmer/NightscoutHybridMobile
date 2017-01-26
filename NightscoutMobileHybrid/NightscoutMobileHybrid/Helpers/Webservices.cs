@@ -7,6 +7,8 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.IO;
+using System.Reflection;
 
 namespace NightscoutMobileHybrid
 {
@@ -104,7 +106,7 @@ namespace NightscoutMobileHybrid
 
             string resourceAddress = ApplicationSettings.URL + "/api/v1/notifications/azure/register";
 
-
+			request.sharedAccessKey = GetAccessKey();
 
             string postBody = JsonConvert.SerializeObject(request);
 
@@ -158,6 +160,18 @@ namespace NightscoutMobileHybrid
 
         }
 
+		private static string GetAccessKey()
+		{
+			var assembly = typeof(Webservices).GetTypeInfo().Assembly;
+			Stream stream = assembly.GetManifestResourceStream("NightscoutMobileHybrid.Helpers.ServerSettings.config");
+			string text = "";
+			using (var reader = new System.IO.StreamReader(stream))
+			{
+				text = reader.ReadToEnd();
+			}
 
+
+			return text;
+		}
     }
 }
