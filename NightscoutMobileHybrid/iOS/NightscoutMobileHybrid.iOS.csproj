@@ -79,7 +79,7 @@
     <MtouchUseSGen>true</MtouchUseSGen>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchFloat32>true</MtouchFloat32>
-    <CodesignEntitlements></CodesignEntitlements>
+    <CodesignEntitlements>Entitlements-dev.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
@@ -201,6 +201,7 @@
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
     <None Include="MobileCenterFrameworks\CrashReporter.framework\CrashReporter" />
+    <None Include="Entitlements-dev.plist" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />

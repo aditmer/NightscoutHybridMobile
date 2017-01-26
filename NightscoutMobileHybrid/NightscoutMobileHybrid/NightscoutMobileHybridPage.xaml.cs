@@ -17,7 +17,7 @@ namespace NightscoutMobileHybrid
 		{
 			InitializeComponent();
 
-
+			slVolume.IsVisible = ApplicationSettings.VolumeSliderVisible;
 
 			if (ApplicationSettings.URL != ApplicationSettings.SettingsDefaultURL)// != "" || ApplicationSettings.URL != null)
 			{
@@ -32,6 +32,13 @@ namespace NightscoutMobileHybrid
 			MessagingCenter.Subscribe<SettingsPage>(this, "URLChanged", (SettingsPage obj) =>
 			{
 				TryURL(7000);
+
+			});
+
+			//added on 1/25/17 by aditmer to allow the volume slider to be turned on/off
+			MessagingCenter.Subscribe<SettingsPage>(this, "VolumeSlider", (obj) =>
+			{
+				slVolume.IsVisible = ApplicationSettings.VolumeSliderVisible;
 			});
 
 			MessagingCenter.Subscribe<Exception,string>(this, "Register Error", (page,errorMessage) =>

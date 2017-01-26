@@ -36,6 +36,8 @@ namespace NightscoutMobileHybrid
 		private const string AlarmUrgentMins2key = "AlarmUrgentMins2";
 		private const string AlarmUrgentLowMins1key = "AlarmUrgentLowMins1";
 		private const string AlarmUrgentLowMins2key = "AlarmUrgentLowMins2";
+		private const string VolumeSliderVisiblekey = "VolumeSliderVisible";
+
 		private static readonly string SettingsDefault = string.Empty;
 		public static readonly string SettingsDefaultURL = "https://your-nightscout-url.azurewebsites.net";
 		private static readonly bool SettingsDefaultBool = false;
@@ -178,5 +180,16 @@ namespace NightscoutMobileHybrid
 			}
 		}
 
+		public static bool VolumeSliderVisible
+		{
+			get
+			{
+				return AppSettings.GetValueOrDefault<bool>(VolumeSliderVisiblekey, SettingsDefaultBool);
+			}
+			set
+			{
+				AppSettings.AddOrUpdateValue<bool>(VolumeSliderVisiblekey, value);
+			}
+		}
 	}
 }

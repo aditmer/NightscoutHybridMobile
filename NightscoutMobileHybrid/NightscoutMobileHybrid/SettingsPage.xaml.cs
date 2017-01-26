@@ -23,6 +23,7 @@ namespace NightscoutMobileHybrid
 			swInfo.IsToggled = ApplicationSettings.InfoNotifications;
 			swAlert.IsToggled = ApplicationSettings.AlertNotifications;
 			swAnouncement.IsToggled = ApplicationSettings.AnouncementNotifications;
+			swVolume.IsToggled = ApplicationSettings.VolumeSliderVisible;
 		}
 
 		async void btnSave_Clicked(object sender, System.EventArgs e)
@@ -42,12 +43,18 @@ namespace NightscoutMobileHybrid
 
 				sURL = "https://" + sURL;
 
+				if (sURL != ApplicationSettings.URL)
+				{
+					MessagingCenter.Send<SettingsPage>(this, "URLChanged");
+				}
+
 				ApplicationSettings.URL = sURL;
 				ApplicationSettings.InfoNotifications = swInfo.IsToggled;
 				ApplicationSettings.AlertNotifications = swAlert.IsToggled;
 				ApplicationSettings.AnouncementNotifications = swAnouncement.IsToggled;
+				ApplicationSettings.VolumeSliderVisible = swVolume.IsToggled;
 
-				MessagingCenter.Send<SettingsPage>(this, "URLChanged");
+				MessagingCenter.Send<SettingsPage>(this, "VolumeSlider");
 
 				Navigation.PopModalAsync(true);
 
@@ -116,7 +123,7 @@ namespace NightscoutMobileHybrid
 						}
 					}
 				}
-				else //azuretag == "" (it's not in the enable string
+				else //azuretag == "" (it's not in the enable string)
 				{
 					//if they registered for any type of notification, but don't have an AzureTag
 					if (ApplicationSettings.InfoNotifications

@@ -26,6 +26,7 @@
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
 
 			<Grid.ColumnDefinitions>
@@ -52,8 +53,11 @@
 
 			<Label Text="Anouncement Notifications" Grid.Row="4" Grid.Column="0" VerticalTextAlignment="Center" Grid.ColumnSpan="2" TextColor="White" />
 			<Switch x:Name="swAnouncement" Grid.Row="4" Grid.Column="1" HorizontalOptions="End" />
+
+			<Label Text="Show Volume Control?" Grid.Row="5" Grid.Column="0" VerticalTextAlignment="Center" Grid.ColumnSpan="2" TextColor="White" />
+			<Switch x:Name="swVolume" Grid.Row="5" Grid.Column="1" HorizontalOptions="End" />
 			
-			<StackLayout Orientation="Horizontal"  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+			<StackLayout Orientation="Horizontal"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
 				<Button x:Name="btnSave" Text="Save"   Clicked="btnSave_Clicked" WidthRequest="100" TextColor="White" BackgroundColor="Gray" />
 				<Button x:Name="btnCancel" Text="Cancel"   Clicked="BtnCancel_Clicked" WidthRequest="100" TextColor="White" BackgroundColor="Gray" />
 			</StackLayout>

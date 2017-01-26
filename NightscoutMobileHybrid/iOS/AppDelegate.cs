@@ -128,15 +128,7 @@ namespace NightscoutMobileHybrid.iOS
 			//added on 1/19/17 by aditmer to remove duplicate snooze options (they can be custom set by each user in their Nightscout settings)
 			actions = actions.DistinctBy((arg) => arg.Title).ToList();
 
-			//added on 1/7/17 by aditmer to remove duplicate snooze options (they can be custom set by each user in their Nightscout settings)
-			//UNNotificationAction actionToRemove = null;
-			//foreach (UNNotificationAction act in actions)
-			//{
-			//	if (actions.Where((arg) => arg.Title.Equals(act.Title)).Count() > 1)
-			//	{
-			//		actionToRemove = act;
-			//	}
-			//}
+
 
 			////removes the duplicate acioint; not ideal - it only detects and removes one duplicate (there are only 4 options; it is unlikely there is more than one duplicate)
 			////TODO:  build a better solution; this works for now...
