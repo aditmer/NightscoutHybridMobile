@@ -46,6 +46,11 @@ namespace NightscoutMobileHybrid
 				if (sURL != ApplicationSettings.URL)
 				{
 					MessagingCenter.Send<SettingsPage>(this, "URLChanged");
+
+					if (ApplicationSettings.InstallationID != "")
+					{
+						await Webservices.UnregisterPush(ApplicationSettings.InstallationID);
+					}
 				}
 
 				ApplicationSettings.URL = sURL;

@@ -65,15 +65,6 @@ namespace NightscoutMobileHybrid.iOS
 					UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(notificationTypes);
 				}
 			}
-
-			return base.FinishedLaunching(app, options);
-		}
-
-
-		public override bool WillFinishLaunching(UIApplication uiApplication, NSDictionary launchOptions)
-		{
-			UNUserNotificationCenter.Current.Delegate = new UserNotificationCenterDelegate();
-
 			//added on 1/4/17 by aditmer to add 4 (1/6/17) customizable snooze options
 			int snoozeTime1 = 1;
 			int snoozeTime2 = 2;
@@ -121,27 +112,28 @@ namespace NightscoutMobileHybrid.iOS
 
 			// Create category
 			var categoryID = "event";
-			var actions = new List<UNNotificationAction> { action, action2, action3, action4};
+			var actions = new List<UNNotificationAction> { action, action2, action3, action4 };
 			var intentIDs = new string[] { };
 			var categoryOptions = new UNNotificationCategoryOptions[] { };
 
 			//added on 1/19/17 by aditmer to remove duplicate snooze options (they can be custom set by each user in their Nightscout settings)
 			actions = actions.DistinctBy((arg) => arg.Title).ToList();
 
-		
-
-			////removes the duplicate acioint; not ideal - it only detects and removes one duplicate (there are only 4 options; it is unlikely there is more than one duplicate)
-			////TODO:  build a better solution; this works for now...
-			//if (actionToRemove != null)
-			//{
-			//	actions.Remove(actionToRemove);
-			//}
 
 			var category = UNNotificationCategory.FromIdentifier(categoryID, actions.ToArray(), intentIDs, UNNotificationCategoryOptions.AllowInCarPlay);
 
 			// Register category
 			var categories = new UNNotificationCategory[] { category };
 			UNUserNotificationCenter.Current.SetNotificationCategories(new NSSet<UNNotificationCategory>(categories));
+
+			return base.FinishedLaunching(app, options);
+		}
+
+
+		public override bool WillFinishLaunching(UIApplication uiApplication, NSDictionary launchOptions)
+		{
+			UNUserNotificationCenter.Current.Delegate = new UserNotificationCenterDelegate();
+
 
 
 
@@ -321,7 +313,7 @@ namespace NightscoutMobileHybrid.iOS
 			{
 				//Get the aps dictionary
 				NSDictionary aps = options.ObjectForKey(new NSString("aps")) as NSDictionary;
-
+				Console.WriteLine(aps.ToString());
 				string alert = string.Empty;
 				string title = string.Empty;
 
@@ -334,7 +326,7 @@ namespace NightscoutMobileHybrid.iOS
 					{
 						alert = (alertObj[new NSString("body")] as NSString).ToString();
 					}
-
+					Console.WriteLine($"============{alert}++++++++");
 					if (alertObj.ContainsKey(new NSString("title")))
 					{
 						title = (alertObj[new NSString("title")] as NSString).ToString();

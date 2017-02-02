@@ -27,7 +27,7 @@ namespace NightscoutMobileHybrid
 			{
 				Navigation.PushModalAsync(new SettingsPage(), true);
 			}
-			//slVolume.Value = DependencyService.Get<IVolumeControl>().GetVolume();
+			slVolume.Value = DependencyService.Get<IVolumeControl>().GetVolume();
 
 			MessagingCenter.Subscribe<SettingsPage>(this, "URLChanged", (SettingsPage obj) =>
 			{
@@ -140,10 +140,11 @@ namespace NightscoutMobileHybrid
 		//	}
 		//}
 
-		//removed volume control slider on 12/22/16 because you can just use the hardware buttons to change voluem
+		//added again on 1/27/17 by aditmer by request; Added a setting to hide it
+		//removed volume control slider on 12/22/16 because you can just use the hardware buttons to change volume
 		void SlVolume_ValueChanged(object sender, ValueChangedEventArgs e)
 		{
-			//DependencyService.Get<IVolumeControl>().SetVolume((float) slVolume.Value);
+			DependencyService.Get<IVolumeControl>().SetVolume((float) slVolume.Value);
 		}
 
 		//added on 12/22/16 by aditmer to hide the buttons - don't think I'm going to use this though.
