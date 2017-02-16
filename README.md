@@ -25,7 +25,7 @@ Your Nightscout website will generate push notifications and send them to this n
 The steps to do this are:
 
 1. Add the `azurepush` variable to your Enable string in application settings.
-2. Ensure the `BASE_URL` is set in your App settings as described [here](https://github.com/srmoss/cgm-remote-monitor#required).  It should look something like this: `https://<your-website>.azurewebsties.net`.
+2. IMPORTANT! Ensure the `BASE_URL` is set in your App settings as described [here](https://github.com/srmoss/cgm-remote-monitor#required).  It should look something like this: `https://<your-website>.azurewebsties.net`.
 3. Create a new branch on your fork in GitHub named wip/azurepush.  Do this by selecting the Branch drop down and typing in wip/azurepush and then selecting Create Branch.  More info [here](https://github.com/blog/1377-create-and-delete-branches).
 4. Update your new wip/azurepush branch with the new code from the main repo.  You can create your own link to do this using this format: `https://github.com/nightscout/cgm-remote-monitor/compare/<your-github-username>:wip/azurepush...nightscout:wip/azurepush`.  Make sure you are logged in to GitHub first!
 5. Approve and merge the pull request.
