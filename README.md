@@ -30,11 +30,11 @@ The steps to do this are:
 4. Update your new wip/azurepush branch with the new code from the main repo.  You can create your own link to do this using this format: `https://github.com/nightscout/cgm-remote-monitor/compare/<your-github-username>:wip/azurepush...nightscout:wip/azurepush`.  Make sure you are logged in to GitHub first!
 5. Approve and merge the pull request.
 6. Go to Azure/Heroku and swap the branch that's deployed to your site.  You can either disconnect and re-connect, or follow these steps (for Azure):
-* Go to your scm site `https://<your-website>.scm.azurewebsites.net`
-* Go to the Debug Console - CMD from the top
-* Navigate to site\deployments
-* Edit the settings.xml file (using the little pencil)
-* Change the value for the branch key from dev/master to wip/azurepush.  It should look like this:
+> Go to your scm site `https://<your-website>.scm.azurewebsites.net`
+> Go to the Debug Console - CMD from the top
+> Navigate to site\deployments
+> Edit the settings.xml file (using the little pencil)
+> Change the value for the branch key from dev/master to wip/azurepush.  It should look like this:
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <settings>
