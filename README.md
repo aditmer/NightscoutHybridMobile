@@ -24,6 +24,25 @@ Your Nightscout website will generate push notifications and send them to this n
 
 The steps to do this are:
 
-1. Update to the wip/azurepush branch via the [Updater Tool](http://nightscout.github.io/pages/test-beta/?branch=wip%2Fazurepush).  
-2. Add the `azurepush` variable to your Enable string in application settings.
-3. Ensure the `BASE_URL` is set in your App settings as described [here](https://github.com/srmoss/cgm-remote-monitor#required).  It should look something like this: `https://<your-website>.azurewebsties.net`.
+1. Add the `azurepush` variable to your Enable string in application settings.
+2. Ensure the `BASE_URL` is set in your App settings as described [here](https://github.com/srmoss/cgm-remote-monitor#required).  It should look something like this: `https://<your-website>.azurewebsties.net`.
+3. Create a new branch on your fork in GitHub named wip/azurepush.  Do this by selecting the Branch drop down and typing in wip/azurepush and then selecting Create Branch.  More info [here](https://github.com/blog/1377-create-and-delete-branches).
+4. Update your new wip/azurepush branch with the new code from the main repo.  You can create your own link to do this using this format: `https://github.com/nightscout/cgm-remote-monitor/compare/<your-github-username>:wip/azurepush...nightscout:wip/azurepush`.  Make sure you are logged in to GitHub first!
+5. Approve and merge the pull request.
+6. Go to Azure/Heroku and swap the branch that's deployed to your site.  You can either disconnect and re-connect, or follow these steps (for Azure):
+>* Go to your scm site `https://<your-website>.scm.azurewebsites.net`
+>* Go to the Debug Console - CMD from the top
+>* Navigate to site\deployments
+>* Edit the settings.xml file (using the little pencil)
+>* Change the value for the branch key from dev/master to wip/azurepush.  It should look like this:
+>```xml
+><?xml version="1.0" encoding="utf-8"?>
+><settings>
+>    <deployment>
+>        <add key="branch" value="wip/azurepush" />
+>    </deployment>
+></settings>
+>```
+7. Sync your deployment to move your site to the new code.  In Azure, go to your site, Deployment Options, select Sync.
+
+And Voila!  The notification settings in the app will work now!
