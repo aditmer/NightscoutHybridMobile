@@ -41,6 +41,7 @@ namespace NightscoutMobileHybrid
             {
                 HockeyApp.MetricsManager.TrackEvent(ex.Message);
                 MessagingCenter.Send<Exception, string>(ex, "Snooze Error", ex.Message);
+
             }
 
 
@@ -60,14 +61,14 @@ namespace NightscoutMobileHybrid
 	            var uri = new Uri(string.Format(sRestUrl, string.Empty));
 
 	            var response = await client.GetAsync(uri);
-	            if (response.IsSuccessStatusCode)
-	            {
-	                var content = "";
+				if (response.IsSuccessStatusCode)
+				{
+					var content = "";
 
-	               
-	                    content = await response.Content.ReadAsStringAsync();
-	                
-	                site = JsonConvert.DeserializeObject<RootObject>(content);
+
+					content = await response.Content.ReadAsStringAsync();
+
+					site = JsonConvert.DeserializeObject<RootObject>(content);
 
 					if (String.IsNullOrEmpty(site.settings.azureTag))
 					{
@@ -79,15 +80,18 @@ namespace NightscoutMobileHybrid
 						ApplicationSettings.AzureTag = site.settings.azureTag;
 					}
 
-					ApplicationSettings.AlarmUrgentMins1 = site.settings.alarmUrgentHighMins[0];
-					ApplicationSettings.AlarmUrgentMins2 = site.settings.alarmUrgentHighMins[1];
-					ApplicationSettings.AlarmUrgentLowMins1 = site.settings.alarmUrgentLowMins[0];
-					ApplicationSettings.AlarmUrgentLowMins2 = site.settings.alarmUrgentLowMins[1];
-	            }
-	            else
-	            {
-	                ApplicationSettings.AzureTag = "";
-	            }
+					if (site.settings.alarmUrgentHighMins != null)
+					{
+						ApplicationSettings.AlarmUrgentMins1 = site.settings.alarmUrgentHighMins[0];
+						ApplicationSettings.AlarmUrgentMins2 = site.settings.alarmUrgentHighMins[1];
+						ApplicationSettings.AlarmUrgentLowMins1 = site.settings.alarmUrgentLowMins[0];
+						ApplicationSettings.AlarmUrgentLowMins2 = site.settings.alarmUrgentLowMins[1];
+					}
+				}
+				else
+				{
+					ApplicationSettings.AzureTag = "";
+				}
 
 
 			}
@@ -114,6 +118,7 @@ namespace NightscoutMobileHybrid
 
             try
             {
+                
                 HttpResponseMessage httpResponse = await httpClient.PostAsync(resourceAddress, new StringContent(postBody, Encoding.UTF8, "application/json"));
                 var content = await httpResponse.Content.ReadAsStringAsync();
                 RegisterResponse response = JsonConvert.DeserializeObject<RegisterResponse>(content);

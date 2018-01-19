@@ -355,8 +355,9 @@ namespace NightscoutMobileHybrid.iOS
 					//Manually show an alert
 					if (!string.IsNullOrEmpty(alert))
 					{
-						UIAlertView avAlert = new UIAlertView(title, alert, null, "OK", null);
-						avAlert.Show();
+						//removed on 3/22/17 by aditmer - I think this is preventing alarms from playing.
+						//UIAlertView avAlert = new UIAlertView(title, alert, null, "OK", null);
+						//avAlert.Show();
 					}
 				}
 			}

@@ -180,6 +180,7 @@ namespace NightscoutMobileHybrid
 			else
 			{
 				DependencyService.Get<IScreenLock>().Unlock();
+
 			}
 		}
 
