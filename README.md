@@ -1,5 +1,7 @@
 
-[![Build status](https://build.appcenter.ms/v0.1/apps/df61161d-5155-4a09-a235-4a81ed8a14f3/branches/master/badge)](https://appcenter.ms)
+iOS: [![Build status](https://build.appcenter.ms/v0.1/apps/df61161d-5155-4a09-a235-4a81ed8a14f3/branches/master/badge)](https://appcenter.ms)
+
+Android: [![Build status](https://build.appcenter.ms/v0.1/apps/0ce8f702-0331-43f6-80e6-4c7decc0d10f/branches/master/badge)](https://appcenter.ms)
 
 # NightscoutHybridMobile
 A cross platform mobile app that shows your Nightscout website in a WebView.
