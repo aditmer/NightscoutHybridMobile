@@ -127,7 +127,7 @@ namespace NightscoutMobileHybrid
             }
             catch (Exception ex)
             {
-                HockeyApp.MetricsManager.TrackEvent(ex.Message);
+                //HockeyApp.MetricsManager.TrackEvent(ex.Message);
                 MessagingCenter.Send<Exception, string>(ex, "Register Error", ex.Message);
             }
 

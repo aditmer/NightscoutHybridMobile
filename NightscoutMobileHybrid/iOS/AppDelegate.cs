@@ -228,7 +228,7 @@ namespace NightscoutMobileHybrid.iOS
 			else
 			{
 				
-				registration.platform = Xamarin.Forms.Device.OS.ToString();
+				registration.platform = Xamarin.Forms.Device.RuntimePlatform.ToString();
 
 				registration.settings = new RegistrationSettings();
 				registration.settings.info = ApplicationSettings.InfoNotifications;

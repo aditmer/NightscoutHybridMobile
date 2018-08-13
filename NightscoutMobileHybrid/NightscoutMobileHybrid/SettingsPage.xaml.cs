@@ -73,7 +73,7 @@ namespace NightscoutMobileHybrid
 
 
 				await Webservices.GetStatusJson(sURL);
-				if ((ApplicationSettings.AzureTag != "") && (Device.OS != TargetPlatform.Windows))
+                if ((ApplicationSettings.AzureTag != "") && (Device.RuntimePlatform != Device.UWP))
 				{
 					//ApplicationSettings.AzureTag = azureTag;
 
@@ -82,7 +82,7 @@ namespace NightscoutMobileHybrid
 
 					RegisterRequest registration = new RegisterRequest();
 					//registration.deviceToken = DependencyService.Get<IPushNotifications>().GetDeviceToken();
-					registration.platform = Device.OS.ToString();
+					registration.platform = Device.RuntimePlatform;
 
 					registration.settings = new RegistrationSettings();
 					registration.settings.info = ApplicationSettings.InfoNotifications;

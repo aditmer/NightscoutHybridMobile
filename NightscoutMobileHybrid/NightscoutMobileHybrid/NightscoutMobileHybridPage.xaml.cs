@@ -17,6 +17,7 @@ namespace NightscoutMobileHybrid
 		{
 			InitializeComponent();
 
+
 			slVolume.IsVisible = ApplicationSettings.VolumeSliderVisible;
 
 			if (ApplicationSettings.URL != ApplicationSettings.SettingsDefaultURL)// != "" || ApplicationSettings.URL != null)
