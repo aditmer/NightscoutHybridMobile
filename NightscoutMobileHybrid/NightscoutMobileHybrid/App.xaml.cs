@@ -1,4 +1,7 @@
-﻿using Xamarin.Forms;
+﻿using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Xamarin.Forms;
 
 namespace NightscoutMobileHybrid
 {
@@ -17,7 +20,10 @@ namespace NightscoutMobileHybrid
 
 		protected override void OnStart()
 		{
-			// Handle when your app starts
+            // Handle when your app starts
+
+            //added by aditmer on 8/13/18.  Replacing Hockeyapp crash reporting and analytics w/ AppCenter
+            AppCenter.Start("ios=39f67042-930a-44c1-81df-b483513212e9;" + "android=9af95349-58b9-4f72-9bf2-fe74575551cf;", typeof(Analytics), typeof(Crashes));
 		}
 
 		protected override void OnSleep()

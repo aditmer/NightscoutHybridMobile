@@ -2,8 +2,6 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using HockeyApp.Android;
-using HockeyApp.Android.Metrics;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
@@ -26,11 +24,7 @@ namespace NightscoutMobileHybrid.Droid
 			{
 				Window.SetStatusBarColor(Color.FromHex("#000000").ToAndroid());
 			}
-			//HockeyApp
-			CrashManager.Register(this);
-			MetricsManager.Register(Application);
-			//MetricsManager.EnableUserMetrics();
-			CheckForUpdates();
+			
 
 
 			LoadApplication(new App());
@@ -39,26 +33,26 @@ namespace NightscoutMobileHybrid.Droid
 		void CheckForUpdates()
 		{
 			// Remove this for store builds!
-			UpdateManager.Register(this);
+			
 		}
 
 		void UnregisterManagers()
 		{
-			UpdateManager.Unregister();
+			
 		}
 
 		protected override void OnPause()
 		{
 			base.OnPause();
 
-			UnregisterManagers();
+			
 		}
 
 		protected override void OnDestroy()
 		{
 			base.OnDestroy();
 
-			UnregisterManagers();
+			
 		}
 	}
 }

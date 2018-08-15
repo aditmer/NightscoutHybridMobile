@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 using Foundation;
-using HockeyApp.iOS;
+using Microsoft.AppCenter.Analytics;
 using UserNotifications;
 
 namespace NightscoutMobileHybrid.iOS
@@ -17,8 +17,8 @@ namespace NightscoutMobileHybrid.iOS
         #region Override Methods
         public async override void DidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler)
         {
-			var manager = BITHockeyManager.SharedHockeyManager;
-			manager.MetricsManager.TrackEvent("iOS Notification Ack");
+            //changed on 8/12/18 by aditmer.  Replaces HockeyApp analytics w/ AppCenter
+            Analytics.TrackEvent("iOS Notification Ack");
 			Debug.WriteLine("Snooze me");
 			Console.WriteLine("Snoozed");
             // Take action based on Action ID
