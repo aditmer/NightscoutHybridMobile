@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.IO;
 using System.Reflection;
+using Microsoft.AppCenter.Crashes;
 
 namespace NightscoutMobileHybrid
 {
@@ -39,7 +40,7 @@ namespace NightscoutMobileHybrid
             }
             catch (Exception ex)
             {
-                HockeyApp.MetricsManager.TrackEvent(ex.Message);
+                Crashes.TrackError(ex);
                 MessagingCenter.Send<Exception, string>(ex, "Snooze Error", ex.Message);
 
             }
@@ -98,7 +99,7 @@ namespace NightscoutMobileHybrid
 			catch (Exception ex)
 			{
 
-				HockeyApp.MetricsManager.TrackEvent(ex.Message);
+                Crashes.TrackError(ex);
 			}
             
 
@@ -154,7 +155,7 @@ namespace NightscoutMobileHybrid
             }
             catch (Exception ex)
             {
-                HockeyApp.MetricsManager.TrackEvent(ex.Message);
+                Crashes.TrackError(ex);
 
                 //returns an error message to show the user if it occurs
                 return $"There was an error unregistering for push notifications: {ex.Message}.  This has already been reported to the developers.";

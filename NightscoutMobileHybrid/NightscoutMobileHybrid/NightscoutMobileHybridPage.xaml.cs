@@ -1,5 +1,6 @@
 ﻿using System;
 using Lamp.Plugin;
+using Microsoft.AppCenter.Crashes;
 using Plugin.Connectivity;
 using Xamarin.Forms;
 
@@ -222,7 +223,7 @@ namespace NightscoutMobileHybrid
 			}
 			catch (Exception ex)
 			{
-				HockeyApp.MetricsManager.TrackEvent($"Light issue: {ex.Message}");
+                Crashes.TrackError(ex);
 			}
 		}
 
