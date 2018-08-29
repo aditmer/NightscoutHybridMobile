@@ -1,0 +1,45 @@
+{
+  "project_info": {
+    "project_number": "266366775484",
+    "firebase_url": "https://nightscout-viewer.firebaseio.com",
+    "project_id": "nightscout-viewer",
+    "storage_bucket": "nightscout-viewer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266366775484:android:1c0b2a1b198eaa15",
+        "android_client_info": {
+          "package_name": "com.nightscout.nightscoutmobilehybrid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "266366775484-ugeg2mpdmqagmgb9tobk5ongvnd961hn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrlJ8u7RYZOcVa3gAX1e2I64npn_oSE5o"
+        },
+        {
+          "current_key": "AIzaSyAWefWiTWrd5eFBoP1Xotcs3DJRfzVnRJI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

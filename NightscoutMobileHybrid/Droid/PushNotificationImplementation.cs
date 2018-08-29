@@ -1,36 +1,51 @@
 ﻿using Gcm.Client;
 using Xamarin.Forms;
 using NightscoutMobileHybrid.Droid;
+using System;
+using Android.App;
+using Firebase.Iid;
+using Android.Util;
 
 [assembly: Xamarin.Forms.Dependency(typeof(PushNotificationImplementation))]
 namespace NightscoutMobileHybrid.Droid
 {
-	public class PushNotificationImplementation : Java.Lang.Object, IPushNotifications
+    [Service]
+    [IntentFilter(new[] { "com.google.firebase.INSTANCE_ID_EVENT" })]
+    public class PushNotificationImplementation : FirebaseInstanceIdService, IPushNotifications
 	{
 		public static RegisterRequest registerRequest;
+        const string TAG = "MyFirebaseIIDService";
 
-		public PushNotificationImplementation()
-		{
-		}
+        public override void OnTokenRefresh()
+        {
+            var refreshedToken = FirebaseInstanceId.Instance.Token;
+            SendRegistrationToServer(refreshedToken);
+        }
+        async void SendRegistrationToServer(string token)
+        {
+            if (registerRequest != null)
+            {
+                //registerRequest.deviceToken = token;
+                await Webservices.RegisterPush(registerRequest);
+            }
+        }
+
+        //public PushNotificationImplementation()
+		//{
+		//}
 
 		public void Register(RegisterRequest request)
 		{
-            var ctx = Forms.Context;
-			registerRequest = request;
+            var ctx = BaseContext;
+              registerRequest = request;
+            OnTokenRefresh();
 
-            // Check to ensure everything's set up right
-            GcmClient.CheckDevice(ctx);
-            GcmClient.CheckManifest(ctx);
-
-            // Register for push notifications
-            GcmClient.Register(ctx, Constants.SenderID);
+            
         }
 
-		public void Unregister()
+        public void Unregister()
 		{
-            var ctx = Forms.Context;
 
-            GcmClient.UnRegister(ctx);
 		}
 
 
