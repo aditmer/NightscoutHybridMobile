@@ -26,7 +26,6 @@ namespace NightscoutMobileHybrid.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::Gcm.Client.Resource.String.library_name = global::NightscoutMobileHybrid.Droid.Resource.String.library_name;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::NightscoutMobileHybrid.Droid.Resource.Attribute.actionBarSize;
 		}
 		
@@ -4265,9 +4264,6 @@ namespace NightscoutMobileHybrid.Droid
 			
 			// aapt resource value: 0x7f080006
 			public const int google_storage_bucket = 2131230726;
-			
-			// aapt resource value: 0x7f080056
-			public const int library_name = 2131230806;
 			
 			// aapt resource value: 0x7f08001a
 			public const int mr_button_content_description = 2131230746;

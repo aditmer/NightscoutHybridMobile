@@ -119,7 +119,6 @@ namespace NightscoutMobileHybrid
 
             try
             {
-                
                 HttpResponseMessage httpResponse = await httpClient.PostAsync(resourceAddress, new StringContent(postBody, Encoding.UTF8, "application/json"));
                 var content = await httpResponse.Content.ReadAsStringAsync();
                 RegisterResponse response = JsonConvert.DeserializeObject<RegisterResponse>(content);

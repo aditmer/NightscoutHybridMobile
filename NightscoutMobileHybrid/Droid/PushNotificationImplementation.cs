@@ -1,4 +1,4 @@
-﻿using Gcm.Client;
+﻿//using Gcm.Client;
 using Xamarin.Forms;
 using NightscoutMobileHybrid.Droid;
 using System;
@@ -25,7 +25,8 @@ namespace NightscoutMobileHybrid.Droid
         {
             if (registerRequest != null)
             {
-                //registerRequest.deviceToken = token;
+                registerRequest.deviceToken = token;//.Split(':')[1];
+                registerRequest.installationId = token.Split(':')[0];
                 await Webservices.RegisterPush(registerRequest);
             }
         }
